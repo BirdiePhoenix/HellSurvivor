@@ -1,29 +1,23 @@
 using UnityEngine;
 
-public class EnemySetup : MonoBehaviour
+public class FlyingEye : MonoBehaviour
 {
-    [SerializeField] private EnemyStartingStats  startingStats;
-    
+    [SerializeField] private SO_EnemyStats enemyStats;
+
     private int currentHealth;
     private float currentMovementSpeed;
     private int currentStrength;
     private float currentAttackSpeed;
     private float currentAttackRange;
     
-    private bool isInRange;
-    private bool isDead;
-
     
     private void Awake()
     {
-        startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
-        currentHealth = startingStats.CurrentMaxHealth;
-        currentMovementSpeed = startingStats.CurrentMovementSpeed;
-        currentStrength = startingStats.CurrentStrength;
-        currentAttackSpeed = startingStats.CurrentAttackSpeed;
-        currentAttackRange = startingStats.CurrentAttackRange;
-        isDead = false;
-        IsInRange = false;
+        currentHealth = enemyStats.MaxHealth;
+        currentMovementSpeed = enemyStats.MovementSpeed;
+        currentStrength = enemyStats.Strength;
+        currentAttackSpeed = enemyStats.AttackSpeed;
+        currentAttackRange = enemyStats.AttackRange;
     }
     
     public int CurrentHealth
@@ -51,16 +45,5 @@ public class EnemySetup : MonoBehaviour
     {
         get { return currentAttackRange; }
         set { currentAttackRange = value; }
-    }
-
-    public bool IsDead
-    {
-        get {return isDead;}
-        set {isDead = value;}
-    }
-    
-    public bool IsInRange{
-        get {return isInRange;}
-        set {isInRange = value;}
     }
 }
