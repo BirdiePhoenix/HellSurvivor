@@ -14,11 +14,12 @@ GameObject:
   - component: {fileID: 3952971582485507658}
   - component: {fileID: 6259741871391180043}
   - component: {fileID: 7921696973053417444}
+  - component: {fileID: 6200747617108011736}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: 7141227058000091740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +190,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerSetup: {fileID: 6259741871391180043}
   playerMovementState: {fileID: 4594516371035884517}
+--- !u!114 &6200747617108011736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6338419814338829297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3373aff6e5d78c04f9994d6130bfff87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  playerSetup: {fileID: 6259741871391180043}
+  moveState: {fileID: 4594516371035884517}
 --- !u!114 &4594516371035884517
 MonoBehaviour:
   m_ObjectHideFlags: 0
