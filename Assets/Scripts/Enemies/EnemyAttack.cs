@@ -5,13 +5,15 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     //[SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private EnemySetup enemySetup;
+    [SerializeField] private EnemyStartingStats startingStats;
+    [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private MovementState moveState;
     
     private PlayerHealth playerHealth;
 
     private void Start()
     {
+        startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         Debug.Log(playerHealth);
     }
@@ -30,10 +32,10 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator Attack()
     {
         //moveState.SetMoveState(MovementState.MoveState.Attack);
-        playerHealth.TakeDamage(enemySetup.CurrentStrength);
-        yield return new WaitForSeconds(enemySetup.CurrentAttackSpeed);
+        playerHealth.TakeDamage(startingStats.CurrentStrength);
+        yield return new WaitForSeconds(startingStats.CurrentAttackSpeed);
    
-        if (enemySetup.IsInRange)
+        if (enemyMovement.IsInRange)
         {
             StartCoroutine(Attack());
         }

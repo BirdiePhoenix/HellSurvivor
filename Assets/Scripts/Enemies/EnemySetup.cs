@@ -16,6 +16,11 @@ public class EnemySetup : MonoBehaviour
     
     private void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
         currentHealth = startingStats.CurrentMaxHealth;
         currentMovementSpeed = startingStats.CurrentMovementSpeed;

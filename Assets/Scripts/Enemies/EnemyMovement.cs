@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private EnemySetup enemySetup;
+    [SerializeField] private EnemyStartingStats  startingStats;
     [SerializeField] private MovementState enemyMovementState;
     [SerializeField] private SpriteRenderer spriteRenderer; 
 
@@ -14,11 +14,16 @@ public class EnemyMovement : MonoBehaviour
     
     private float moveSpeed;
     
+    private bool isInRange;
+    
     void Start()
     {
+        startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        moveSpeed = enemySetup.CurrentMovementSpeed; 
+        //moveSpeed = enemySetup.CurrentMovementSpeed; 
+        moveSpeed = startingStats.CurrentMovementSpeed;
+        Debug.Log(moveSpeed);
     }
 
     void FixedUpdate()
@@ -31,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        EnemyMove(enemySetup.IsInRange);
+        EnemyMove(isInRange);
     }
 
     void EnemyMove(bool _isInRange)
@@ -47,5 +52,11 @@ public class EnemyMovement : MonoBehaviour
         {
             enemyMovementState.SetMoveState(MovementState.MoveState.Idle);
         }
+    }
+
+    public bool IsInRange
+    {
+        get { return isInRange; }
+        set { isInRange = value; }
     }
 }

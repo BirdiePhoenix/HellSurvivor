@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1054059925757435384}
   - component: {fileID: 5047139412016876866}
   - component: {fileID: 6999941931433872152}
-  - component: {fileID: 8159250495178138016}
   - component: {fileID: 4735120953940981454}
   - component: {fileID: 6224082336221303397}
   - component: {fileID: 772735918360729574}
@@ -163,19 +162,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.46
---- !u!114 &8159250495178138016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7601076057249476200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baaf345465dd16a48920b07c27564383, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySetup
-  enemyStats: {fileID: 11400000, guid: 095d84704a094c845a51fd4b5e408390, type: 2}
 --- !u!114 &4735120953940981454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f71452d21c9ec249983cdc433cb2a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  enemySetup: {fileID: 8159250495178138016}
+  startingStats: {fileID: 0}
   enemyMovementState: {fileID: 772735918360729574}
   spriteRenderer: {fileID: 1054059925757435384}
   enemyRb: {fileID: 5047139412016876866}
@@ -205,7 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55adc69d8fa1047ae3e666fed98f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  enemySetup: {fileID: 8159250495178138016}
+  startingStats: {fileID: 0}
+  enemyMovement: {fileID: 4735120953940981454}
   moveState: {fileID: 772735918360729574}
 --- !u!114 &772735918360729574
 MonoBehaviour:
@@ -234,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
   enemyAttack: {fileID: 6224082336221303397}
-  enemySetup: {fileID: 8159250495178138016}
+  enemyMovement: {fileID: 4735120953940981454}
 --- !u!95 &6704874515199131448
 Animator:
   serializedVersion: 7
