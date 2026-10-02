@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] protected SO_Bullet bulletType;
-
-    protected virtual void WeaponBehaviour() { }
+    //[SerilizeField] protected SO_Bullet bullet;
 }

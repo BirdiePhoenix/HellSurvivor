@@ -3,16 +3,5 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<GameObject> weapons;
-    [SerializeField] private GameObject machineGun;
-
-    private void Start()
-    {
-        AddWeapon(machineGun);
-    }
-
-    private void AddWeapon(GameObject weapon)
-    {
-        weapons.Add(weapon);
-    }
+    [SerializeField] private List<Weapon> weapons;
 }

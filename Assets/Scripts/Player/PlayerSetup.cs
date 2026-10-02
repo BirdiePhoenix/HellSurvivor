@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerSetup : MonoBehaviour
 {
     [SerializeField] private SO_PlayerStats playerStats;
+    
     //private static PlayerSetup playerSetup;
     private int currentHealth;
     private float currentMovementSpeed;
     private bool isDead;
-    
 
     private void Awake()
     {
