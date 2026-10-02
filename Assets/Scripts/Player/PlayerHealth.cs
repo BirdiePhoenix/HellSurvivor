@@ -15,19 +15,20 @@ public class PlayerHealth : MonoBehaviour
             //moveState.SetMoveState(MovementState.MoveState.Damage);
             StartCoroutine(ChangeColor());
         }
-        else if (playerSetup.CurrentHealth <= 0)
+        else if (playerSetup.CurrentHealth <= 0 && !playerSetup.IsDead)
         {
             moveState.SetMoveState(MovementState.MoveState.Die);
-            playerSetup.IsDead = true;
             OnDeath();
+            playerSetup.IsDead = true;
             Debug.Log("Player is dead");
+            
         }
         Debug.Log("Hit");
     }
 
     private void OnDeath()
     {
-        spriteRenderer.flipY = true;
+        StartCoroutine(ChangeColor());
     }
 
     private IEnumerator ChangeColor()
