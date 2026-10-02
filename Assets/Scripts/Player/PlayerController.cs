@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private MovementState playerMovementState;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private DirectionState directionState;
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
             
             if (moveInput.x > 0)
             {
-                spriteRenderer.flipX = false;
+                directionState.SetLookDirection(DirectionState.LookDirection.Right);
             }
             else if (moveInput.x < 0)
             {
-                spriteRenderer.flipX = true;
+                directionState.SetLookDirection(DirectionState.LookDirection.Left);
             }
         }
         else
