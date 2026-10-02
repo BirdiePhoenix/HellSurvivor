@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private MovementState playerMovementState;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -47,12 +48,11 @@ public class PlayerController : MonoBehaviour
             
             if (moveInput.x > 0)
             {
-                transform.rotation = Quaternion.Euler(0,0,0);
-                
+                spriteRenderer.flipX = false;
             }
             else if (moveInput.x < 0)
             {
-                transform.rotation = Quaternion.Euler(0,180,0);
+                spriteRenderer.flipX = true;
             }
         }
         else
