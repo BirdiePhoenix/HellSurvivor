@@ -16,9 +16,13 @@ public class MachineGun : Weapon
     {
         for (int i = 0; i < bulletType.MagSize; i++)
         {
-            
+            StartCoroutine(Shoot());
         }
     }
 
-    
+    protected override IEnumerator Shoot()
+    {
+        Instantiate(bulletType.BulletPrefab);
+        yield return new WaitForSeconds(bulletType.ShootingSpeed);
+    }
 }

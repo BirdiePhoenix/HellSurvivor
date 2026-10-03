@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5408734311362938645}
   - component: {fileID: 7921696973053417444}
   - component: {fileID: 6200747617108011736}
-  - component: {fileID: 382922735458120265}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: -4698887816781541060}
   - component: {fileID: 7141227058000091740}
@@ -192,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
   weapons: []
+  weaponStorage: {fileID: 0}
   machineGun: {fileID: 8260909492897234530, guid: d54c14533633a374fa8da8da7341b801, type: 3}
 --- !u!114 &7921696973053417444
 MonoBehaviour:
@@ -223,20 +223,6 @@ MonoBehaviour:
   playerSetup: {fileID: 6259741871391180043}
   moveState: {fileID: 4594516371035884517}
   spriteRenderer: {fileID: 4946254177960963457}
---- !u!114 &382922735458120265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6338419814338829297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f434aa89cac2f4a8be7a672e98b161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  playerSetup: {fileID: 6259741871391180043}
-  playerInventory: {fileID: 5408734311362938645}
 --- !u!114 &4594516371035884517
 MonoBehaviour:
   m_ObjectHideFlags: 0
