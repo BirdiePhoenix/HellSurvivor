@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class DirectionState : MonoBehaviour
 {
-    
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private Rigidbody2D rb;
     
     public enum LookDirection
     {
         Right,
-        Left
+        Left,
+        Up,
+        Down
     }
-
     public LookDirection CurrentDirection { get; private set; }
-    
     public static Action<LookDirection> OnLookDirectionChange;
     
     public void SetLookDirection(LookDirection lookDirection)
@@ -27,6 +28,10 @@ public class DirectionState : MonoBehaviour
                 break;
             case LookDirection.Left:
                 spriteRenderer.flipX = true;
+                break;
+            case LookDirection.Up:
+                break;
+            case LookDirection.Down:
                 break;
             default:
                 Debug.LogError($"{lookDirection} is an invalid look direction!");

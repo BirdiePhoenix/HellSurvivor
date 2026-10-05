@@ -9,8 +9,9 @@ public class FireProjectile : MonoBehaviour
     [SerializeField] private DirectionState directionState;
     [SerializeField] private SO_Bullet mgBullet;
     [SerializeField] private BulletPool bulletPool;
-    
 
+    private DirectionState.LookDirection lookDirection;
+    
     private void Start()
     {
         bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
@@ -25,13 +26,22 @@ public class FireProjectile : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            if (directionState.CurrentDirection == DirectionState.LookDirection.Left)
+            switch (directionState.CurrentDirection)
             {
-                rb.linearVelocity = bullet.transform.right * -mgBullet.ShootingSpeed;
-            }
-            else if (directionState.CurrentDirection == DirectionState.LookDirection.Right)
-            {
-                rb.linearVelocity = bullet.transform.right * mgBullet.ShootingSpeed;
+                case DirectionState.LookDirection.Right:
+                    rb.linearVelocity = bullet.transform.right * mgBullet.ShootingSpeed;
+                    break;
+                case DirectionState.LookDirection.Left:
+                    rb.linearVelocity = bullet.transform.right * -mgBullet.ShootingSpeed;
+                    break;
+                case DirectionState.LookDirection.Up:
+                    rb.linearVelocity = bullet.transform.up * mgBullet.ShootingSpeed;
+                    break;
+                case DirectionState.LookDirection.Down:
+                    rb.linearVelocity = bullet.transform.up * -mgBullet.ShootingSpeed;
+                    break;
+                default:
+                    break;
             }
         }
 

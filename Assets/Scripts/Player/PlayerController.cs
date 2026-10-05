@@ -54,6 +54,14 @@ public class PlayerController : MonoBehaviour
             {
                 directionState.SetLookDirection(DirectionState.LookDirection.Left);
             }
+            else if (moveInput.y > 0)
+            {
+                directionState.SetLookDirection(DirectionState.LookDirection.Up);
+            }
+            else if (moveInput.y < 0)
+            {
+                directionState.SetLookDirection(DirectionState.LookDirection.Down);
+            }
         }
         else
         {
