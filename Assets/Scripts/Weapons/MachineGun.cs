@@ -5,7 +5,6 @@ using UnityEngine;
 public class MachineGun : Weapon
 {
     [SerializeField] private GameObject player;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
