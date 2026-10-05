@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class BulletPool : MonoBehaviour
+public class BulletPool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject bulletPrefab;
     private Queue<GameObject>  bulletPool = new Queue<GameObject>();

@@ -7,7 +7,7 @@ public class BulletBehaviour : MonoBehaviour
     [SerializeField] private SO_Bullet bullet;
     private void Start()
     {
-        bulletPool = GameObject.FindGameObjectWithTag("PoolManager").GetComponent<BulletPool>();
+        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

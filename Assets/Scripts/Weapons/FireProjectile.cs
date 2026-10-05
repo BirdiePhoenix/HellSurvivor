@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FireProjectile : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class FireProjectile : MonoBehaviour
 
     private void Start()
     {
-        bulletPool = GameObject.FindGameObjectWithTag("PoolManager").GetComponent<BulletPool>();
+        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
         StartCoroutine(Shoot());
     }
     

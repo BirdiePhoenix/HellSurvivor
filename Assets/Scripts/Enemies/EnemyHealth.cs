@@ -10,9 +10,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
     private int currentHealth;
+    private EnemyPool enemyPool;
 
     private void Start()
     {
+        enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
         currentHealth = enemySetup.CurrentHealth;
     }
 
@@ -24,13 +26,18 @@ public class EnemyHealth : MonoBehaviour
             StartCoroutine(ChangeColor());
             if (enemySetup.CurrentHealth <= 0)
             {
-                moveState.SetMoveState(MovementState.MoveState.Die);
-                enemySetup.IsDead = true;
-                capsuleCollider2D.enabled = false;
-                Debug.Log("Enemy is dead");
+                StartCoroutine(ReturnEnemy());
             }
-            Debug.Log("Hit");
         }
+    }
+
+    private IEnumerator ReturnEnemy()
+    {
+        moveState.SetMoveState(MovementState.MoveState.Die);
+        enemySetup.IsDead = true;
+        capsuleCollider2D.enabled = false;
+        yield return new WaitForSeconds(2);
+        enemyPool.ReturnObject(gameObject);
     }
 
     private IEnumerator ChangeColor()
