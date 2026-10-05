@@ -26,6 +26,9 @@ public class EnemyHealth : MonoBehaviour
             StartCoroutine(ChangeColor());
             if (enemySetup.CurrentHealth <= 0)
             {
+                moveState.SetMoveState(MovementState.MoveState.Die);
+                enemySetup.IsDead = true;
+                capsuleCollider2D.enabled = false;
                 StartCoroutine(ReturnEnemy());
             }
         }
@@ -33,9 +36,6 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator ReturnEnemy()
     {
-        moveState.SetMoveState(MovementState.MoveState.Die);
-        enemySetup.IsDead = true;
-        capsuleCollider2D.enabled = false;
         yield return new WaitForSeconds(2);
         enemyPool.ReturnObject(gameObject);
     }

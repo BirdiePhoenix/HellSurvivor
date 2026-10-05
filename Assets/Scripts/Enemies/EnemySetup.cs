@@ -15,7 +15,7 @@ public class EnemySetup : MonoBehaviour
     
     private void Start()
     {
-        startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
+        startingStats = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyStartingStats>();
         currentHealth = startingStats.CurrentMaxHealth;
         currentMovementSpeed = startingStats.CurrentMovementSpeed;
         currentStrength = startingStats.CurrentStrength;
