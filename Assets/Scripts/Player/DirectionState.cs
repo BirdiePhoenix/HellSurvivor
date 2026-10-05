@@ -5,6 +5,7 @@ public class DirectionState : MonoBehaviour
 {
     
     [SerializeField] private SpriteRenderer spriteRenderer;
+    
     public enum LookDirection
     {
         Left,

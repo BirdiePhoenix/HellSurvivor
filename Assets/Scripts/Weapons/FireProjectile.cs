@@ -1,21 +1,41 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class FireProjectile : MonoBehaviour
 {
     //Redo!!!
     [SerializeField] private DirectionState directionState;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private SO_Bullet mgBullet;
+    [SerializeField] private BulletPool bulletPool;
+    
 
-    private void TriggerShooting()
+    private void Start()
     {
-        if (directionState.CurrentDirection == DirectionState.LookDirection.Left)
+        bulletPool = GameObject.FindGameObjectWithTag("PoolManager").GetComponent<BulletPool>();
+        StartCoroutine(Shoot());
+    }
+    
+    private IEnumerator Shoot()
+    {
+        GameObject bullet = bulletPool.GetObject();
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            //BulletPoolManager.SpawnBullet(bulletPrefab, bulletSpawnPoint.position)
+            //if (directionState.CurrentDirection == DirectionState.LookDirection.Left)
+                rb.linearVelocity = bullet.transform.forward * mgBullet.ShootingSpeed;
         }
-        else if (directionState.CurrentDirection == DirectionState.LookDirection.Right)
-        {
-            
-        }
+
+        StartCoroutine(DeactivateBullet(bullet));
+        yield return new WaitForSeconds(mgBullet.ShootingSpeed);
+        StartCoroutine(Shoot());
+    }
+
+    private IEnumerator DeactivateBullet(GameObject bullet)
+    {
+        yield return new WaitForSeconds(2f);
+        bulletPool.ReturnObject(bullet);
     }
 }

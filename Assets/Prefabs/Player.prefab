@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6200747617108011736}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: -4698887816781541060}
+  - component: {fileID: 8720692891556861175}
   - component: {fileID: 7141227058000091740}
   m_Layer: 3
   m_Name: Player
@@ -250,6 +251,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DirectionState
   spriteRenderer: {fileID: 4946254177960963457}
+--- !u!114 &8720692891556861175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6338419814338829297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183fc23f0a772994d8280fd3eca4a914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
+  directionState: {fileID: -4698887816781541060}
+  mgBullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
+  bulletPool: {fileID: 0}
 --- !u!95 &7141227058000091740
 Animator:
   serializedVersion: 7

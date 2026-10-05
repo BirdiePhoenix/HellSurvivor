@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9070475342772786484}
   - component: {fileID: 6998368523370892169}
   - component: {fileID: 4236511292979502631}
-  - component: {fileID: -6953864608230223825}
   m_Layer: 7
   m_Name: MGBullet
   m_TagString: Bullet
@@ -158,16 +157,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.49999997
---- !u!114 &-6953864608230223825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260909492897234530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee99a6d949acc474bba32cf966e35e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineGun
-  bulletType: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
