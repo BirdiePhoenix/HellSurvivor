@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1137340782104748143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619229331511466015}
+  - component: {fileID: 3315747985991306466}
+  m_Layer: 3
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619229331511466015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137340782104748143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52, y: 0.58, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2882209526302944068}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3315747985991306466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137340782104748143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183fc23f0a772994d8280fd3eca4a914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
+  directionState: {fileID: -4698887816781541060}
+  mgBullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
+  bulletPool: {fileID: 0}
 --- !u!1 &6338419814338829297
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,7 +65,6 @@ GameObject:
   - component: {fileID: 6200747617108011736}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: -4698887816781541060}
-  - component: {fileID: 8720692891556861175}
   - component: {fileID: 7141227058000091740}
   m_Layer: 3
   m_Name: Player
@@ -39,7 +85,8 @@ Transform:
   m_LocalPosition: {x: 4.64, y: -0.69, z: 0}
   m_LocalScale: {x: 0.58457, y: 0.58457, z: 0.58457}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1619229331511466015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4946254177960963457
@@ -251,21 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DirectionState
   spriteRenderer: {fileID: 4946254177960963457}
---- !u!114 &8720692891556861175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6338419814338829297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183fc23f0a772994d8280fd3eca4a914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
-  directionState: {fileID: -4698887816781541060}
-  mgBullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
-  bulletPool: {fileID: 0}
 --- !u!95 &7141227058000091740
 Animator:
   serializedVersion: 7

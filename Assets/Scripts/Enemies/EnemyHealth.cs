@@ -1,22 +1,29 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private PlayerSetup playerSetup;
+    [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    
+    private int currentHealth;
+
+    private void Start()
+    {
+        currentHealth = enemySetup.CurrentHealth;
+    }
+
     public void TakeDamage(int damage)
     {
-        playerSetup.CurrentHealth -= damage;
+        enemySetup.CurrentHealth -= damage;
         StartCoroutine(ChangeColor());
-        if (playerSetup.CurrentHealth <= 0 && !playerSetup.IsDead)
+        if (enemySetup.CurrentHealth <= 0 && !enemySetup.IsDead)
         {
             moveState.SetMoveState(MovementState.MoveState.Die);
-            playerSetup.IsDead = true;
-            Debug.Log("Player is dead");
-            
+            enemySetup.IsDead = true;
+            Debug.Log("Enemy is dead");
         }
         Debug.Log("Hit");
     }

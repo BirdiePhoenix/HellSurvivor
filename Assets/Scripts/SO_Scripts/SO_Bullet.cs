@@ -9,6 +9,7 @@ public class SO_Bullet : ScriptableObject
     [SerializeField] private float shootingRange;
     [SerializeField] private float reloadSpeed;
     [SerializeField] private int magSize;
+    [SerializeField] private int damage;
 
     public GameObject BulletPrefab
     {
@@ -33,5 +34,10 @@ public class SO_Bullet : ScriptableObject
     public int MagSize
     {
         get { return magSize; }
+    }
+
+    public int Damage
+    {
+        get { return damage; }
     }
 }

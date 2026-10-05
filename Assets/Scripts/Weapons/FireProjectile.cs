@@ -24,18 +24,24 @@ public class FireProjectile : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            //if (directionState.CurrentDirection == DirectionState.LookDirection.Left)
-                rb.linearVelocity = bullet.transform.forward * mgBullet.ShootingSpeed;
+            if (directionState.CurrentDirection == DirectionState.LookDirection.Left)
+            {
+                rb.linearVelocity = bullet.transform.right * -mgBullet.ShootingSpeed;
+            }
+            else if (directionState.CurrentDirection == DirectionState.LookDirection.Right)
+            {
+                rb.linearVelocity = bullet.transform.right * mgBullet.ShootingSpeed;
+            }
         }
 
         StartCoroutine(DeactivateBullet(bullet));
-        yield return new WaitForSeconds(mgBullet.ShootingSpeed);
+        yield return new WaitForSeconds(mgBullet.ReloadSpeed);
         StartCoroutine(Shoot());
     }
 
     private IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(mgBullet.ShootingRange);
         bulletPool.ReturnObject(bullet);
     }
 }

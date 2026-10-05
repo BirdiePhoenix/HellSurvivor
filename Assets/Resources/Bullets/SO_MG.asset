@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SO_MG
   m_EditorClassIdentifier: Assembly-CSharp::SO_Bullet
   bulletPrefab: {fileID: 8260909492897234530, guid: d54c14533633a374fa8da8da7341b801, type: 3}
-  shootingSpeed: 1.52
+  shootingSpeed: 5
   shootingRange: 4.94
   reloadSpeed: 2
   magSize: 4
+  damage: 5

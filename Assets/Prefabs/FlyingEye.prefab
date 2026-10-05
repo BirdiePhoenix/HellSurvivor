@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8910782734428108870}
   - component: {fileID: 1054059925757435384}
   - component: {fileID: 5047139412016876866}
-  - component: {fileID: 6999941931433872152}
+  - component: {fileID: 3845458282377547689}
+  - component: {fileID: 3481334637566462215}
   - component: {fileID: 4735120953940981454}
+  - component: {fileID: 8539189336869814556}
   - component: {fileID: 6224082336221303397}
   - component: {fileID: 772735918360729574}
   - component: {fileID: 7685919213768944583}
@@ -126,8 +128,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6999941931433872152
-CircleCollider2D:
+--- !u!70 &3845458282377547689
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,8 +162,22 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.46
+  m_Offset: {x: 0.03, y: 0}
+  m_Size: {x: 0.68, y: 0.0001}
+  m_Direction: 0
+--- !u!114 &3481334637566462215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601076057249476200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baaf345465dd16a48920b07c27564383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySetup
+  startingStats: {fileID: 0}
 --- !u!114 &4735120953940981454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,10 +191,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   startingStats: {fileID: 0}
+  enemySetup: {fileID: 3481334637566462215}
   enemyMovementState: {fileID: 772735918360729574}
   spriteRenderer: {fileID: 1054059925757435384}
   enemyRb: {fileID: 5047139412016876866}
   stoppingDistance: 0
+--- !u!114 &8539189336869814556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601076057249476200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c48fdc22a1ebff4c9a6d1afcc293835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  enemySetup: {fileID: 3481334637566462215}
+  moveState: {fileID: 772735918360729574}
+  spriteRenderer: {fileID: 1054059925757435384}
 --- !u!114 &6224082336221303397
 MonoBehaviour:
   m_ObjectHideFlags: 0

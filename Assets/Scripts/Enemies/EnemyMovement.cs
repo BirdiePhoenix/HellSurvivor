@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private EnemyStartingStats  startingStats;
+    [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MovementState enemyMovementState;
     [SerializeField] private SpriteRenderer spriteRenderer; 
 
@@ -36,7 +37,15 @@ public class EnemyMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        EnemyMove(isInRange);
+
+        if (!enemySetup.IsDead)
+        {
+            EnemyMove(isInRange);
+        }
+        else if (enemySetup.IsDead)
+        {
+            enemyMovementState.SetMoveState(MovementState.MoveState.Die);
+        }
     }
 
     void EnemyMove(bool _isInRange)

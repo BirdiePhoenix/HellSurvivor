@@ -8,8 +8,8 @@ public class DirectionState : MonoBehaviour
     
     public enum LookDirection
     {
-        Left,
-        Right
+        Right,
+        Left
     }
 
     public LookDirection CurrentDirection { get; private set; }
@@ -22,11 +22,11 @@ public class DirectionState : MonoBehaviour
 
         switch (lookDirection)
         {
-            case LookDirection.Left:
-                spriteRenderer.flipX = true;
-                break;
             case LookDirection.Right:
                 spriteRenderer.flipX = false;
+                break;
+            case LookDirection.Left:
+                spriteRenderer.flipX = true;
                 break;
             default:
                 Debug.LogError($"{lookDirection} is an invalid look direction!");
