@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyStartingStats : MonoBehaviour
 {
-    //Create list and loop
+    //Sets the stats att the beginning of the game, when difficulty rises here is where the changes happen
     
     [SerializeField] private SO_EnemyStats enemyStats;
 

@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private CapsuleCollider2D capsuleCollider2D;
     private int currentHealth;
 
     private void Start()
@@ -17,15 +18,19 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        enemySetup.CurrentHealth -= damage;
-        StartCoroutine(ChangeColor());
-        if (enemySetup.CurrentHealth <= 0 && !enemySetup.IsDead)
+        if (!enemySetup.IsDead)
         {
-            moveState.SetMoveState(MovementState.MoveState.Die);
-            enemySetup.IsDead = true;
-            Debug.Log("Enemy is dead");
+            enemySetup.CurrentHealth -= damage;
+            StartCoroutine(ChangeColor());
+            if (enemySetup.CurrentHealth <= 0)
+            {
+                moveState.SetMoveState(MovementState.MoveState.Die);
+                enemySetup.IsDead = true;
+                capsuleCollider2D.enabled = false;
+                Debug.Log("Enemy is dead");
+            }
+            Debug.Log("Hit");
         }
-        Debug.Log("Hit");
     }
 
     private IEnumerator ChangeColor()

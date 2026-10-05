@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class EnemySetup : MonoBehaviour
-{
+{   //This controls the stats of each different enemy
     [SerializeField] private EnemyStartingStats  startingStats;
     
     private int currentHealth;
@@ -12,13 +12,7 @@ public class EnemySetup : MonoBehaviour
     
     private bool isInRange;
     private bool isDead;
-
     
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
         startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();

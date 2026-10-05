@@ -2,29 +2,20 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private EnemyStartingStats  startingStats;
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MovementState enemyMovementState;
     [SerializeField] private SpriteRenderer spriteRenderer; 
-
-    public Rigidbody2D enemyRb;
+    [SerializeField] private Rigidbody2D enemyRb;
+    
     private GameObject player;
     private float distance;
-    [SerializeField] private float stoppingDistance;
     private Vector2 moveDirection;
-    
-    private float moveSpeed;
-    
     private bool isInRange;
-    
+
     void Start()
     {
-        startingStats = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyStartingStats>();
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        //moveSpeed = enemySetup.CurrentMovementSpeed; 
-        moveSpeed = startingStats.CurrentMovementSpeed;
-        Debug.Log(moveSpeed);
     }
 
     void FixedUpdate()
@@ -54,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
         {
             distance = Vector2.Distance(player.transform.position, transform.position);
             Vector2 lookDirection = (player.transform.position - transform.position).normalized;
-            enemyRb.MovePosition(enemyRb.position + lookDirection * moveSpeed * Time.fixedDeltaTime);
+            enemyRb.MovePosition(enemyRb.position + lookDirection * (enemySetup.CurrentMovementSpeed * Time.fixedDeltaTime));
             enemyMovementState.SetMoveState(MovementState.MoveState.Run);
         }
         else
