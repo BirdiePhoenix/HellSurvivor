@@ -10,11 +10,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
     private int currentHealth;
+    private FireProjectile fireProjectile;
     private EnemyPool enemyPool;
 
     private void Start()
     {
         enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
+        fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
         currentHealth = enemySetup.CurrentHealth;
     }
 
@@ -36,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator ReturnEnemy()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
         enemyPool.ReturnObject(gameObject);
     }
 

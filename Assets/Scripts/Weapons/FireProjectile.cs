@@ -11,26 +11,41 @@ public class FireProjectile : MonoBehaviour
     [SerializeField] private BulletPool bulletPool;
 
     private bool hasStartedShooting;
+
+    public bool HasStartedShooting
+    {
+        get => hasStartedShooting;
+        set => hasStartedShooting = value;
+    }
+
     private EnemySpawner enemySpawner;
     private DirectionState.LookDirection lookDirection;
     
-    
-    
+    private Vector2 shootDirection;
+
+    public Vector2 ShootDirection
+    {
+        get => shootDirection;
+        set => shootDirection = value;
+    }
+
+
     private void Start()
     {
         enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
         bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D targetEnemy)
     {
-        if (enemySpawner.HasSpawned && !hasStartedShooting)
+        if (targetEnemy.CompareTag("Enemy") && !HasStartedShooting)
         {
-            hasStartedShooting = true;
+            HasStartedShooting = true;
             StartCoroutine(Shoot());
+            //ShootDirection = (targetEnemy.transform.position - transform.position).normalized;
         }
     }
-
+    
     private IEnumerator Shoot()
     {
         GameObject bullet = bulletPool.GetObject();
@@ -41,6 +56,7 @@ public class FireProjectile : MonoBehaviour
         yield return new WaitForSeconds(mgBullet.ReloadSpeed);
         
         StartCoroutine(Shoot());
+        
     }
 
     private IEnumerator DeactivateBullet(GameObject bullet)

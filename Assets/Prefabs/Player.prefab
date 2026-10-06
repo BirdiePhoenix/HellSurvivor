@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1619229331511466015}
   - component: {fileID: 3315747985991306466}
+  - component: {fileID: 1843135770183458780}
   m_Layer: 3
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: MGWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,42 @@ MonoBehaviour:
   directionState: {fileID: -4698887816781541060}
   mgBullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
   bulletPool: {fileID: 0}
+--- !u!58 &1843135770183458780
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137340782104748143}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.58, y: 0}
+  m_Radius: 6.81
 --- !u!1 &6338419814338829297
 GameObject:
   m_ObjectHideFlags: 0
