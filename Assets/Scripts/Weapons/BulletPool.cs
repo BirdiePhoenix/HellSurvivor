@@ -12,6 +12,7 @@ public class BulletPool : MonoBehaviour, IObjectPool
         {
             GameObject obj = bulletPool.Dequeue();
             obj.SetActive(true);
+            obj.GetComponent<BulletBehaviour>().enabled = true;
             return obj;
         }
 
@@ -21,6 +22,7 @@ public class BulletPool : MonoBehaviour, IObjectPool
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
+        obj.GetComponent<BulletBehaviour>().enabled = false;
         bulletPool.Enqueue(obj);
     }
 }

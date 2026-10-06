@@ -170,4 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c928fdf83cd8384092f38e8e965657b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehaviour
-  bullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
+  bulletSO: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}

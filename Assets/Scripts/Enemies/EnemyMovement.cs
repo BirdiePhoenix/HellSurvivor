@@ -6,10 +6,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private MovementState enemyMovementState;
     [SerializeField] private SpriteRenderer spriteRenderer; 
     [SerializeField] private Rigidbody2D enemyRb;
+    [SerializeField] private CalculateDistance calculateDistance;
     
     private GameObject player;
-    private float distance;
-    private Vector2 moveDirection;
     private bool isInRange;
 
     void Start()
@@ -43,7 +42,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!_isInRange)
         {
-            distance = Vector2.Distance(player.transform.position, transform.position);
             Vector2 lookDirection = (player.transform.position - transform.position).normalized;
             enemyRb.MovePosition(enemyRb.position + lookDirection * (enemySetup.CurrentMovementSpeed * Time.fixedDeltaTime));
             enemyMovementState.SetMoveState(MovementState.MoveState.Run);
