@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06921a81dc9e540408f547d139b204ad, type: 3}
   m_Name: PlayerStartingStats
   m_EditorClassIdentifier: Assembly-CSharp::SO_PlayerStartingStats
-  maxHealth: 0
-  movementSpeed: 0
-  maxXp: 0
+  maxHealth: 100
+  movementSpeed: 3
+  maxXp: 100

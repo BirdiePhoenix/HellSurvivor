@@ -4,26 +4,18 @@ using UnityEngine;
 public class CoinPickup : MonoBehaviour
 {
     [SerializeField] private float xpValue;
-    private BarUI xpBar;
-    private PlayerSetup playerSetup;
+    private PlayerXp playerXp;
 
     private void Start()
     {
-        xpBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<BarUI>();
-        playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
+        playerXp = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerXp>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            ChangeXpBar();
+            playerXp.GainXp(xpValue);
         }
-    }
-
-    private void ChangeXpBar()
-    {
-        xpValue = Mathf.Clamp(playerSetup.CurrentHealth, 0, playerSetup.CurrentMaxHealth);
-        xpBar.SetValue(xpValue);
     }
 }

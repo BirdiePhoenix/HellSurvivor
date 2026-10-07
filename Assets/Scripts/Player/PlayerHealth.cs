@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Hit");
     }
 
-    public void ChangeHealthBar()
+    private void ChangeHealthBar()
     {
         barValue = Mathf.Clamp(playerSetup.CurrentHealth, 0, playerSetup.CurrentMaxHealth);
         healthBar.SetValue(barValue);

@@ -1,18 +1,27 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
-
     [SerializeField] private Vector2 playerSpawnPos;
+    [SerializeField] private float xpValue;
+    private PlayerSetup playerSetup;
+    private BarUI xpBar;
     
     private void Awake()
     {
         SpawnPlayer();
         
     }
-    
+
+    private void Start()
+    {
+        xpBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<BarUI>();
+        playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
+    }
+
     private void SpawnPlayer()
     {
         Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
@@ -26,5 +35,11 @@ public class GameManager : MonoBehaviour
     public void SceneTransition()
     {
         
+    }
+    
+    private void ChangeXpBar()
+    {
+        xpValue = Mathf.Clamp(playerSetup.CurrentXp, 0, playerSetup.CurrentMaxXp);
+        xpBar.SetValue(xpValue);
     }
 }

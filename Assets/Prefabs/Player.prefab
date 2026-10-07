@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5408734311362938645}
   - component: {fileID: 7921696973053417444}
   - component: {fileID: 6200747617108011736}
+  - component: {fileID: 5469886726730919725}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: -4698887816781541060}
   - component: {fileID: 7141227058000091740}
@@ -307,6 +308,19 @@ MonoBehaviour:
   playerSetup: {fileID: 6259741871391180043}
   moveState: {fileID: 4594516371035884517}
   spriteRenderer: {fileID: 4946254177960963457}
+--- !u!114 &5469886726730919725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6338419814338829297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9030c65be0a354b84fefda8a69b920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerXp
+  playerSetup: {fileID: 6259741871391180043}
 --- !u!114 &4594516371035884517
 MonoBehaviour:
   m_ObjectHideFlags: 0

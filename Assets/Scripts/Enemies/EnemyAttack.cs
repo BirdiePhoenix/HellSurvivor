@@ -13,7 +13,6 @@ public class EnemyAttack : MonoBehaviour
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        Debug.Log(playerHealth);
     }
 
     public void TriggerAttack()
