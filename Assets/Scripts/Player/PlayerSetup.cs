@@ -4,7 +4,8 @@ public class PlayerSetup : MonoBehaviour
 {
     [SerializeField] private SO_PlayerStats playerStats;
     //private static PlayerSetup playerSetup;
-    private int currentHealth;
+    private float currentHealth;
+    private float currentMaxHealth;
     private float currentMovementSpeed;
     private bool isDead;
     
@@ -25,14 +26,21 @@ public class PlayerSetup : MonoBehaviour
     {
         //DontDestroyOnLoad(gameObject);
         currentHealth = playerStats.MaxHealth;
+        currentMaxHealth = playerStats.MaxHealth;
         currentMovementSpeed = playerStats.MovementSpeed;
         isDead = false;
     }
     
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get {return currentHealth;}
         set {currentHealth = value;}
+    }
+
+    public float CurrentMaxHealth
+    {
+        get { return currentMaxHealth; }
+        set { currentMaxHealth = value; }
     }
     
     public float CurrentMovementSpeed

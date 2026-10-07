@@ -3,13 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO_EnemyStats", menuName = "Scriptable Objects/SO_EnemyStats")]
 public class SO_EnemyStats : ScriptableObject
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private int strength;
+    [SerializeField] private float strength;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float attackRange;
     
-    public int MaxHealth
+    public float MaxHealth
     {
         get { return maxHealth; }
     }
@@ -17,7 +17,7 @@ public class SO_EnemyStats : ScriptableObject
     {
         get { return movementSpeed; }
     }
-    public int Strength
+    public float Strength
     {
         get { return strength; }
     }

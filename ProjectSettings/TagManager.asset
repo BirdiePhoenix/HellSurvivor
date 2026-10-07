@@ -11,6 +11,7 @@ TagManager:
   - PoolManager
   - BulletManager
   - MGWeapon
+  - HealthBar
   layers:
   - Default
   - TransparentFX

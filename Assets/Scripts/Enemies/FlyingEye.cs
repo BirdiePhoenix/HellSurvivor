@@ -4,9 +4,9 @@ public class FlyingEye : MonoBehaviour
 {
     [SerializeField] private SO_EnemyStats enemyStats;
 
-    private int currentHealth;
+    private float currentHealth;
     private float currentMovementSpeed;
-    private int currentStrength;
+    private float currentStrength;
     private float currentAttackSpeed;
     private float currentAttackRange;
     
@@ -20,7 +20,7 @@ public class FlyingEye : MonoBehaviour
         currentAttackRange = enemyStats.AttackRange;
     }
     
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get {return currentHealth;}
         set {currentHealth = value;}
@@ -30,7 +30,7 @@ public class FlyingEye : MonoBehaviour
         get {return currentMovementSpeed;}
         set {currentMovementSpeed = value;}
     }
-    public int CurrentStrength
+    public float CurrentStrength
     {
         get {return currentStrength;}
         set {currentStrength = value;}

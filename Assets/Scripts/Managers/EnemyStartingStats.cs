@@ -6,9 +6,9 @@ public class EnemyStartingStats : MonoBehaviour
     
     [SerializeField] private SO_EnemyStats enemyStats;
 
-    private int currentMaxHealth;
+    private float currentMaxHealth;
     private float currentMovementSpeed;
-    private int currentStrength;
+    private float currentStrength;
     private float currentAttackSpeed;
     private float currentAttackRange;
     
@@ -22,7 +22,7 @@ public class EnemyStartingStats : MonoBehaviour
         currentAttackRange = enemyStats.AttackRange;
     }
     
-    public int CurrentMaxHealth
+    public float CurrentMaxHealth
     {
         get {return currentMaxHealth;}
         set {currentMaxHealth = value;}
@@ -32,7 +32,7 @@ public class EnemyStartingStats : MonoBehaviour
         get {return currentMovementSpeed;}
         set {currentMovementSpeed = value;}
     }
-    public int CurrentStrength
+    public float CurrentStrength
     {
         get {return currentStrength;}
         set {currentStrength = value;}

@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
-    private int currentHealth;
+    private float currentHealth;
     private FireProjectile fireProjectile;
     private EnemyPool enemyPool;
 
@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = enemySetup.CurrentHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (!enemySetup.IsDead)
         {

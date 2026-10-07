@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,11 +7,21 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    
-    public void TakeDamage(int damage)
+    private BarUI healthBar;
+    private float barValue;
+
+    private void Start()
+    {
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<BarUI>();
+    }
+
+    public void TakeDamage(float damage)
     {
         playerSetup.CurrentHealth -= damage;
+        ChangeHealthBar();
         StartCoroutine(ChangeColor());
+
+        
         if (playerSetup.CurrentHealth <= 0 && !playerSetup.IsDead)
         {
             moveState.SetMoveState(MovementState.MoveState.Die);
@@ -19,6 +30,12 @@ public class PlayerHealth : MonoBehaviour
             
         }
         Debug.Log("Hit");
+    }
+
+    public void ChangeHealthBar()
+    {
+        barValue = Mathf.Clamp(playerSetup.CurrentHealth, 0, playerSetup.CurrentMaxHealth);
+        healthBar.SetValue(barValue);
     }
 
     private IEnumerator ChangeColor()
