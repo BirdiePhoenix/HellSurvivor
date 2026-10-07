@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SpawnPlayer();
+        
     }
     
     private void SpawnPlayer()

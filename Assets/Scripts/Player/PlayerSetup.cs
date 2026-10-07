@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PlayerSetup : MonoBehaviour
 {
-    [SerializeField] private SO_PlayerStats playerStats;
+    [SerializeField] private SO_PlayerStartingStats playerStats;
     //private static PlayerSetup playerSetup;
     private float currentHealth;
     private float currentMaxHealth;
     private float currentMovementSpeed;
+    private float currentXp;
+    private float currentMaxXp;
     private bool isDead;
     
 
@@ -25,33 +27,47 @@ public class PlayerSetup : MonoBehaviour
     private void Start()
     {
         //DontDestroyOnLoad(gameObject);
-        currentHealth = playerStats.MaxHealth;
-        currentMaxHealth = playerStats.MaxHealth;
-        currentMovementSpeed = playerStats.MovementSpeed;
-        isDead = false;
+        CurrentHealth = playerStats.MaxHealth;
+        CurrentMaxHealth = playerStats.MaxHealth;
+        CurrentXp = 0;
+        CurrentMaxXp = playerStats.MaxXp;
+        CurrentMovementSpeed = playerStats.MovementSpeed;
+        IsDead = false;
     }
     
     public float CurrentHealth
     {
-        get {return currentHealth;}
-        set {currentHealth = value;}
+        get => currentHealth;
+        set => currentHealth = value;
     }
 
     public float CurrentMaxHealth
     {
-        get { return currentMaxHealth; }
-        set { currentMaxHealth = value; }
+        get => currentMaxHealth;
+        set => currentMaxHealth = value;
     }
-    
+
+    public float CurrentXp
+    {
+        get => currentXp;
+        set => currentXp = value;
+    }
+
+    public float CurrentMaxXp
+    {
+        get => currentMaxXp;
+        set => currentMaxXp = value;
+    }
+
     public float CurrentMovementSpeed
     {
-        get {return currentMovementSpeed;}
-        set {currentMovementSpeed = value;}
+        get => currentMovementSpeed;
+        set => currentMovementSpeed = value;
     }
 
     public bool IsDead
     {
-        get {return isDead;}
-        set {isDead = value;}
+        get => isDead;
+        set => isDead = value;
     }
 }

@@ -5,13 +5,9 @@ public class SO_PlayerStats : ScriptableObject
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float maxXp;
     
-    public float MaxHealth
-    {
-        get { return maxHealth; }
-    }
-    public float MovementSpeed
-    {
-        get { return movementSpeed; }
-    }
+    public float MaxHealth => maxHealth;
+    public float MaxXp => maxXp;
+    public float MovementSpeed => movementSpeed;
 }

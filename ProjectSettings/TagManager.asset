@@ -12,6 +12,7 @@ TagManager:
   - BulletManager
   - MGWeapon
   - HealthBar
+  - XPBar
   layers:
   - Default
   - TransparentFX

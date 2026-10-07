@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
   directionState: {fileID: -4698887816781541060}
-  mgBullet: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
   bulletPool: {fileID: 0}
 --- !u!58 &1843135770183458780
 CircleCollider2D:
@@ -262,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501084e4f8ee88a41abff67ffa176a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSetup
-  playerStats: {fileID: 11400000, guid: bc93f11ef4cc3db46881fabedf544ffd, type: 2}
+  playerStats: {fileID: 11400000, guid: 01eaad12cc087e343863b12a3a2db691, type: 2}
 --- !u!114 &5408734311362938645
 MonoBehaviour:
   m_ObjectHideFlags: 0
