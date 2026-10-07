@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06921a81dc9e540408f547d139b204ad, type: 3}
-  m_Name: PlayerStartingStats
+  m_Name: SO_PlayerStartingStats
   m_EditorClassIdentifier: Assembly-CSharp::SO_PlayerStartingStats
   maxHealth: 100
   movementSpeed: 3
-  maxXp: 100
+  maxXp: 10

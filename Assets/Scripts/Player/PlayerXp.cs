@@ -14,7 +14,7 @@ public class PlayerXp : MonoBehaviour
 
     public void GainXp(float amount)
     {
-        playerSetup.CurrentXp += amount;
+        //playerSetup.CurrentXp += amount;
         ChangeXpBar();
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - MGWeapon
   - HealthBar
   - XPBar
+  - Canvas
   layers:
   - Default
   - TransparentFX

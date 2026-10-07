@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 playerSpawnPos;
     [SerializeField] private float xpValue;
     private PlayerSetup playerSetup;
-    private BarUI xpBar;
-    
     private void Awake()
     {
         SpawnPlayer();
@@ -18,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        xpBar = GameObject.FindGameObjectWithTag("XPBar").GetComponent<BarUI>();
         playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
     }
 
@@ -37,9 +34,4 @@ public class GameManager : MonoBehaviour
         
     }
     
-    private void ChangeXpBar()
-    {
-        xpValue = Mathf.Clamp(playerSetup.CurrentXp, 0, playerSetup.CurrentMaxXp);
-        xpBar.SetValue(xpValue);
-    }
 }

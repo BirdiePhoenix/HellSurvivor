@@ -7,8 +7,10 @@ public class PlayerSetup : MonoBehaviour
     private float currentHealth;
     private float currentMaxHealth;
     private float currentMovementSpeed;
-    private float currentXp;
-    private float currentMaxXp;
+    private int currentXp;
+    private int currentMaxXp;
+    private int currentLvl;
+    
     private bool isDead;
     
 
@@ -31,6 +33,7 @@ public class PlayerSetup : MonoBehaviour
         CurrentMaxHealth = playerStats.MaxHealth;
         CurrentXp = 0;
         CurrentMaxXp = playerStats.MaxXp;
+        
         CurrentMovementSpeed = playerStats.MovementSpeed;
         IsDead = false;
     }
@@ -47,16 +50,22 @@ public class PlayerSetup : MonoBehaviour
         set => currentMaxHealth = value;
     }
 
-    public float CurrentXp
+    public int CurrentXp
     {
         get => currentXp;
         set => currentXp = value;
     }
 
-    public float CurrentMaxXp
+    public int CurrentMaxXp
     {
         get => currentMaxXp;
         set => currentMaxXp = value;
+    }
+
+    public int CurrentLvl
+    {
+        get => currentLvl;
+        set => currentLvl = value;
     }
 
     public float CurrentMovementSpeed

@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
-    [SerializeField] private float xpValue;
-    private PlayerXp playerXp;
+    [SerializeField] private int xpValue;
+    private XPManager playerXp;
 
     private void Start()
     {
-        playerXp = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerXp>();
+        playerXp = GameObject.FindGameObjectWithTag("Canvas").GetComponent<XPManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

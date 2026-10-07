@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_EnemyStats
   maxHealth: 10
   movementSpeed: 1.2
-  strength: 25
+  strength: 10
   attackSpeed: 2.97
   attackRange: 0
