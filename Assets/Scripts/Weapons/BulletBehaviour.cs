@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    [SerializeField] private SO_Bullet bulletSO;
+    [SerializeField] private BulletSetup bulletSetup;
     private FireProjectile fireProjectile;
     private BulletPool bulletPool;
     private Rigidbody2D bulletRb;
@@ -35,7 +35,7 @@ public class BulletBehaviour : MonoBehaviour
             hasCalculated = false;
         }
         
-        bulletRb.MovePosition(bulletRb.position + shootDirection * (bulletSO.ShootingSpeed * Time.fixedDeltaTime));
+        bulletRb.MovePosition(bulletRb.position + shootDirection * (bulletSetup.BulletSpeed * Time.fixedDeltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,7 +43,7 @@ public class BulletBehaviour : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             bulletPool.ReturnObject(gameObject);
-            other.GetComponent<EnemyHealth>().TakeDamage(bulletSO.Damage);
+            other.GetComponent<EnemyHealth>().TakeDamage(bulletSetup.BulletDamage);
         }
     }
     

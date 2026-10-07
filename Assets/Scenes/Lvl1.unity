@@ -379,7 +379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 63}
+  m_AnchoredPosition: {x: -1, y: 197}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395754436
@@ -680,6 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStorage
   weapons:
   - {fileID: 8260909492897234530, guid: d54c14533633a374fa8da8da7341b801, type: 3}
+  mgBulletSO: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
 --- !u!1 &1750282675
 GameObject:
   m_ObjectHideFlags: 0

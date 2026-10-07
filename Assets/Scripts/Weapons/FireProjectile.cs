@@ -7,8 +7,14 @@ public class FireProjectile : MonoBehaviour
 {
     //Redo!!!
     [SerializeField] private DirectionState directionState;
-    [SerializeField] private SO_Bullet mgBullet;
     [SerializeField] private BulletPool bulletPool;
+    private float weaponReloadSpeed;
+
+    public float WeaponReloadSpeed
+    {
+        get => weaponReloadSpeed;
+        set => weaponReloadSpeed = value;
+    }
 
     private bool hasStartedShooting;
 
@@ -53,7 +59,7 @@ public class FireProjectile : MonoBehaviour
         bullet.transform.rotation = transform.rotation;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         StartCoroutine(DeactivateBullet(bullet));
-        yield return new WaitForSeconds(mgBullet.ReloadSpeed);
+        yield return new WaitForSeconds(weaponReloadSpeed);
         
         StartCoroutine(Shoot());
         
@@ -61,7 +67,7 @@ public class FireProjectile : MonoBehaviour
 
     private IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(mgBullet.ShootingRange);
+        yield return new WaitForSeconds(weaponReloadSpeed);
         bulletPool.ReturnObject(bullet);
     }
     
