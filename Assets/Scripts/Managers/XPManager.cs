@@ -15,9 +15,9 @@ public class XPManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void GainXp(int xp)
+    public void GainXp(int xpValue)
     {
-        playerSetup.CurrentXp += xp;
+        playerSetup.CurrentXp += xpValue;
         if(playerSetup.CurrentXp >= playerSetup.CurrentMaxXp)
         {
             LevelUp();

@@ -10,7 +10,7 @@ public class BulletSetup : MonoBehaviour
     private float bulletRange;
     private float bulletReloadSpeed;
     private int bulletMagSize;
-    private float bulletDamage;
+    private int bulletDamage;
 
     private void Start()
     {
@@ -45,7 +45,7 @@ public class BulletSetup : MonoBehaviour
         get => bulletMagSize;
     }
 
-    public float BulletDamage
+    public int BulletDamage
     {
         get => bulletDamage;
     }

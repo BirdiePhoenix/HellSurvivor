@@ -13,7 +13,7 @@ public class WeaponStorage : MonoBehaviour
     private float mgBulletRange;
     private float mgBulletReloadSpeed;
     private int mgBulletMagSize;
-    private float mgBulletDamage;
+    private int mgBulletDamage;
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class WeaponStorage : MonoBehaviour
         set => mgBulletMagSize = value;
     }
 
-    public float MgBulletDamage
+    public int MgBulletDamage
     {
         get => mgBulletDamage;
         set => mgBulletDamage = value;

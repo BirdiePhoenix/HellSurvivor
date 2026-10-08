@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = enemySetup.CurrentHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (!enemySetup.IsDead)
         {

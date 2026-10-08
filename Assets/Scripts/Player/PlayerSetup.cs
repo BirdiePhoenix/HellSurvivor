@@ -4,8 +4,8 @@ public class PlayerSetup : MonoBehaviour
 {
     [SerializeField] private SO_PlayerStartingStats playerStats;
     //private static PlayerSetup playerSetup;
-    private float currentHealth;
-    private float currentMaxHealth;
+    private int currentHealth;
+    private int currentMaxHealth;
     private float currentMovementSpeed;
     private int currentXp;
     private int currentMaxXp;
@@ -38,13 +38,13 @@ public class PlayerSetup : MonoBehaviour
         IsDead = false;
     }
     
-    public float CurrentHealth
+    public int CurrentHealth
     {
         get => currentHealth;
         set => currentHealth = value;
     }
 
-    public float CurrentMaxHealth
+    public int CurrentMaxHealth
     {
         get => currentMaxHealth;
         set => currentMaxHealth = value;

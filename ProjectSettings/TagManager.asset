@@ -14,6 +14,7 @@ TagManager:
   - HealthBar
   - XPBar
   - Canvas
+  - HPBar
   layers:
   - Default
   - TransparentFX

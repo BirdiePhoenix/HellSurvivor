@@ -7,17 +7,17 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    private float barValue;
+    private HealthManager healthManager;
 
     private void Start()
     {
+        healthManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<HealthManager>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        playerSetup.CurrentHealth -= damage;
+        healthManager.UpdateHealth(-damage);
         StartCoroutine(ChangeColor());
-
         
         if (playerSetup.CurrentHealth <= 0 && !playerSetup.IsDead)
         {

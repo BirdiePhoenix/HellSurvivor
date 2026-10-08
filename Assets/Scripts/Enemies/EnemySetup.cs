@@ -4,9 +4,9 @@ public class EnemySetup : MonoBehaviour
 {   //This controls the stats of each different enemy
     [SerializeField] private EnemyStartingStats  startingStats;
     
-    private float currentHealth;
+    private int currentHealth;
     private float currentMovementSpeed;
-    private float currentStrength;
+    private int currentStrength;
     private float currentAttackSpeed;
     private float currentAttackRange;
     
@@ -25,7 +25,7 @@ public class EnemySetup : MonoBehaviour
         IsInRange = false;
     }
     
-    public float CurrentHealth
+    public int CurrentHealth
     {
         get {return currentHealth;}
         set {currentHealth = value;}
@@ -35,7 +35,7 @@ public class EnemySetup : MonoBehaviour
         get {return currentMovementSpeed;}
         set {currentMovementSpeed = value;}
     }
-    public float CurrentStrength
+    public int CurrentStrength
     {
         get {return currentStrength;}
         set {currentStrength = value;}
