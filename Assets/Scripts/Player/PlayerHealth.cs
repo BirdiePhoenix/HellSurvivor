@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        healthManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<HealthManager>();
+        healthManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HealthManager>();
     }
 
     public void TakeDamage(int damage)

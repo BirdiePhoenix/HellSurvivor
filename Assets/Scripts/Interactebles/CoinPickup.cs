@@ -10,7 +10,7 @@ public class CoinPickup : MonoBehaviour
     private void Start()
     {
         coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
-        playerXp = GameObject.FindGameObjectWithTag("Canvas").GetComponent<XPManager>();
+        playerXp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<XPManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

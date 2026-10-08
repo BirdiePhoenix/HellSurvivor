@@ -16,6 +16,7 @@ TagManager:
   - Canvas
   - HPBar
   - PickUpManager
+  - GameManager
   layers:
   - Default
   - TransparentFX
