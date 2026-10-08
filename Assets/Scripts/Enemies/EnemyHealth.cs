@@ -12,10 +12,12 @@ public class EnemyHealth : MonoBehaviour
     private float currentHealth;
     private FireProjectile fireProjectile;
     private EnemyPool enemyPool;
+    private CoinPool coinPool;
 
     private void Start()
     {
         enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
+        coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
         fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
         currentHealth = enemySetup.CurrentHealth;
     }
@@ -32,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
                 enemySetup.IsDead = true;
                 capsuleCollider2D.enabled = false;
                 StartCoroutine(ReturnEnemy());
+                coinPool.GetObject();
             }
         }
     }

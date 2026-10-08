@@ -5,9 +5,11 @@ public class CoinPickup : MonoBehaviour
 {
     [SerializeField] private int xpValue;
     private XPManager playerXp;
+    private CoinPool coinPool;
 
     private void Start()
     {
+        coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
         playerXp = GameObject.FindGameObjectWithTag("Canvas").GetComponent<XPManager>();
     }
 
@@ -16,6 +18,7 @@ public class CoinPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerXp.GainXp(xpValue);
+            coinPool.ReturnObject(gameObject);
         }
     }
 }

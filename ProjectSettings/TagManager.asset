@@ -15,6 +15,7 @@ TagManager:
   - XPBar
   - Canvas
   - HPBar
+  - PickUpManager
   layers:
   - Default
   - TransparentFX
