@@ -7,14 +7,18 @@ public class CoinPool : MonoBehaviour, IObjectPool
     private Queue<GameObject> coinPool = new  Queue<GameObject>();
     public GameObject GetObject()
     {
+        GameObject obj;
         if (coinPool.Count > 0)
         {
-            GameObject obj = coinPool.Dequeue();
+            obj = coinPool.Dequeue();
             obj.SetActive(true);
-            return obj;
+        }
+        else
+        {
+            obj = Instantiate(coinPrefab, transform.position, transform.rotation);
         }
 
-        return Instantiate(coinPrefab);
+        return obj;
     }
     
     public void ReturnObject(GameObject obj)

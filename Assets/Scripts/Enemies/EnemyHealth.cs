@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private MovementState moveState;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
+    public CapsuleCollider2D CapsuleCollider2D{ get { return capsuleCollider2D; } set { capsuleCollider2D = value; } }
     private float currentHealth;
     private FireProjectile fireProjectile;
     private EnemyPool enemyPool;
@@ -32,9 +33,14 @@ public class EnemyHealth : MonoBehaviour
             {
                 moveState.SetMoveState(MovementState.MoveState.Die);
                 enemySetup.IsDead = true;
-                capsuleCollider2D.enabled = false;
+                if (enemySetup.IsInRange)
+                {
+                    enemySetup.IsInRange = false;
+                }
                 StartCoroutine(ReturnEnemy());
-                coinPool.GetObject();
+                GameObject coin = coinPool.GetObject();
+                coin.transform.position = transform.position;
+                
             }
         }
     }
@@ -43,6 +49,8 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         enemyPool.ReturnObject(gameObject);
+        enemySetup.IsDead = false;
+        enemySetup.CurrentHealth = enemySetup.CurrentMaxHealth;
     }
 
     private IEnumerator ChangeColor()

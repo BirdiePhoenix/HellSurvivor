@@ -1639,6 +1639,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
   spawnInterval: 3.5
+  enemyPool: {fileID: 0}
 --- !u!114 &1750282679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,7 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17023e1362f14514fb33edea3642ff19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
 --- !u!1 &1826670135
 GameObject:
   m_ObjectHideFlags: 0

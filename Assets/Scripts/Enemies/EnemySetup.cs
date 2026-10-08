@@ -5,6 +5,7 @@ public class EnemySetup : MonoBehaviour
     [SerializeField] private EnemyStartingStats  startingStats;
     
     private int currentHealth;
+    private int currentMaxHealth;
     private float currentMovementSpeed;
     private int currentStrength;
     private float currentAttackSpeed;
@@ -16,50 +17,58 @@ public class EnemySetup : MonoBehaviour
     private void Start()
     {
         startingStats = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyStartingStats>();
-        currentHealth = startingStats.CurrentMaxHealth;
-        currentMovementSpeed = startingStats.CurrentMovementSpeed;
-        currentStrength = startingStats.CurrentStrength;
-        currentAttackSpeed = startingStats.CurrentAttackSpeed;
-        currentAttackRange = startingStats.CurrentAttackRange;
+        CurrentHealth = startingStats.CurrentMaxHealth;
+        CurrentMaxHealth = startingStats.CurrentMaxHealth;
+        CurrentMovementSpeed = startingStats.CurrentMovementSpeed;
+        CurrentStrength = startingStats.CurrentStrength;
+        CurrentAttackSpeed = startingStats.CurrentAttackSpeed;
+        CurrentAttackRange = startingStats.CurrentAttackRange;
         isDead = false;
         IsInRange = false;
     }
     
     public int CurrentHealth
     {
-        get {return currentHealth;}
-        set {currentHealth = value;}
+        get => currentHealth;
+        set => currentHealth = value;
     }
+
+    public int CurrentMaxHealth
+    {
+        get => currentMaxHealth;
+        set => currentMaxHealth = value;
+    }
+    
     public float CurrentMovementSpeed
     {
-        get {return currentMovementSpeed;}
-        set {currentMovementSpeed = value;}
+        get => currentMovementSpeed;
+        set => currentMovementSpeed = value;
     }
     public int CurrentStrength
     {
-        get {return currentStrength;}
-        set {currentStrength = value;}
+        get => currentStrength;
+        set => currentStrength = value;
     }
     public float CurrentAttackSpeed
     {
-        get {return currentAttackSpeed;}
-        set {currentAttackSpeed = value;}
+        get => currentAttackSpeed;
+        set => currentAttackSpeed = value;
     }
 
     public float CurrentAttackRange
     {
-        get { return currentAttackRange; }
-        set { currentAttackRange = value; }
+        get => currentAttackRange;
+        set => currentAttackRange = value;
     }
 
     public bool IsDead
     {
-        get {return isDead;}
-        set {isDead = value;}
+        get => isDead;
+        set => isDead = value;
     }
     
     public bool IsInRange{
-        get {return isInRange;}
-        set {isInRange = value;}
+        get => isInRange;
+        set => isInRange = value;
     }
 }

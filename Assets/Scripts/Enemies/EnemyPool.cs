@@ -9,14 +9,18 @@ public class EnemyPool : MonoBehaviour, IObjectPool
 
     public GameObject GetObject()
     {
+        GameObject obj;
         if (enemyPool.Count > 0)
         {
-            GameObject obj = enemyPool.Dequeue();
+            obj = enemyPool.Dequeue();
             obj.SetActive(true);
-            return obj;
+        }
+        else
+        {
+            obj = Instantiate(enemyPrefab, transform.position, transform.rotation);
         }
 
-        return Instantiate(enemyPrefab);
+        return obj;
     }
 
     public void ReturnObject(GameObject obj)
