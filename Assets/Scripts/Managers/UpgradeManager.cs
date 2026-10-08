@@ -27,21 +27,21 @@ public class UpgradeManager : MonoBehaviour
     
     private void AssignStatType(StatType statType)
     {
-        switch (statType)
-        {
-            case StatType.MovementSpeed:
-                upgradeStatUpgrades[0] = new StatUpgrade(upgradeModifier, "Movement Speed");
-                break;
-            case StatType.Damage:
-                UpgradeName = "Damage";
-                break;
-            case StatType.AttackSpeed:
-                UpgradeName = "Attack Speed";
-                break;
-            case StatType.Health:
-                UpgradeName = "Health";
-                break;
-        }
+        // switch (statType)
+        // {
+        //     case StatType.MovementSpeed:
+        //         upgradeStatUpgrades[0] = new StatUpgrade(upgradeModifier, "Movement Speed");
+        //         break;
+        //     case StatType.Damage:
+        //         UpgradeName = "Damage";
+        //         break;
+        //     case StatType.AttackSpeed:
+        //         UpgradeName = "Attack Speed";
+        //         break;
+        //     case StatType.Health:
+        //         UpgradeName = "Health";
+        //         break;
+        // }
     }
 
     private void SetStatTypes()

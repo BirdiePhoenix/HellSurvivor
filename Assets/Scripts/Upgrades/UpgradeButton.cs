@@ -5,7 +5,7 @@ public class UpgradeButton : MonoBehaviour
 {
     [SerializeField] private TMP_Text buttonText;
 
-    public void UpgradeButtonText()
+    public void UpdateButtonText()
     {
         
     }

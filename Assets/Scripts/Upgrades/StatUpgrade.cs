@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class StatUpgrade : MonoBehaviour
 {
-    
-
+    [SerializeField] private SO_Upgrade statUpgrade;
     [SerializeField] private float upgradeModifier;
     [SerializeField] private string  upgradeName;
 
