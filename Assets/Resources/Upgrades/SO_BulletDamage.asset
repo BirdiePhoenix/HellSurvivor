@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: SO_BulletDamage
   m_EditorClassIdentifier: Assembly-CSharp::SO_Upgrade
   upgradeName: Bullet Damage
-  upgradeModifier: 1.2
-  enumInt: 3
+  upgradeModifier: 1.5
