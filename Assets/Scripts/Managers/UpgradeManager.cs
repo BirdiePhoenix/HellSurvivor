@@ -13,13 +13,16 @@ public class UpgradeManager : MonoBehaviour
     [Header("Upgrade Buttons")]
     [SerializeField] private Button[] buttons;
     private List<SO_Upgrade> availableUpgrades;
+    
+    [Header("Upgrade Types")]
+    [SerializeField] private HealthManager healthManager;
 
     private void Start()
     {
         ButtonSetUp();
     }
 
-    private void ButtonSetUp()
+    public void ButtonSetUp()
     {
         availableUpgrades = new List<SO_Upgrade>();
         for (int i = 0; i < upgradeList.Length; i++)
@@ -37,9 +40,13 @@ public class UpgradeManager : MonoBehaviour
             int rndmNum = (int)UnityEngine.Random.Range(0, availableUpgrades.Count);
             
             button.GetComponentInChildren<TextMeshProUGUI>().text = availableUpgrades[rndmNum].UpgradeName;
-            
             availableUpgrades.RemoveAt(rndmNum);
         }
+    }
+
+    public void UpgradeMaxHealth()
+    {
         
     }
+    
 }

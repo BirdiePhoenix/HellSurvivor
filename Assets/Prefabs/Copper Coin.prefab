@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c606a5bc44bae9b40b35adfacf16e8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
-  xpValue: 1
+  xpValue: 5

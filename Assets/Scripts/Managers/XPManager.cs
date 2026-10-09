@@ -8,11 +8,13 @@ public class XPManager : MonoBehaviour
     [SerializeField] private float xpGrowthMultiplier = 1.2f;
     [SerializeField] private Slider xpSlider;
     [SerializeField] private TMP_Text currentLvlText;
+    [SerializeField] UIManager uiManager;
+    [SerializeField] UpgradeManager upgradeManager;
 
     void Start()
     {
         playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
-        UpdateUI();
+        UpdateXpUI();
     }
 
     public void GainXp(int xpValue)
@@ -22,7 +24,7 @@ public class XPManager : MonoBehaviour
         {
             LevelUp();
         }
-        UpdateUI();
+        UpdateXpUI();
     }
 
     private void LevelUp()
@@ -31,12 +33,15 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentXp = 0;
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
+        upgradeManager.ButtonSetUp();
+        uiManager.EnableUpgradeMenu();
     }
     
-    private void UpdateUI()
+    private void UpdateXpUI()
     {
-        xpSlider.maxValue = playerSetup.CurrentMaxXp;
-        xpSlider.value = playerSetup.CurrentXp;
+        uiManager.UpdateUI(xpSlider, playerSetup.CurrentMaxXp, playerSetup.CurrentXp);
         currentLvlText.text = $"Level {playerSetup.CurrentLvl}";
     }
+    
+    
 }

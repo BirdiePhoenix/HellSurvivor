@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
+    //Redo with SO
     [SerializeField] private int xpValue;
     private XPManager playerXp;
     private CoinPool coinPool;

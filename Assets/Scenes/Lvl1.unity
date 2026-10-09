@@ -259,6 +259,8 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
+  uiManager: {fileID: 386402079}
+  upgradeManager: {fileID: 0}
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +276,7 @@ MonoBehaviour:
   hpGrowthMultiplier: 1.2
   hpSlider: {fileID: 1941472329}
   currentHpText: {fileID: 1056100650}
+  uiManager: {fileID: 386402079}
 --- !u!114 &386402079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,18 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 386402074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ba53c707d1be143bbacff2ce99d993, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b7b7884749cb1045a8c333dcf75e414, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  upgradeList:
-  - {fileID: 11400000, guid: 180f7e5a815ea6e409cd094667e40894, type: 2}
-  - {fileID: 11400000, guid: 697cb8b6ea6757c409e482387cf15d5a, type: 2}
-  - {fileID: 11400000, guid: 2f56b467c3ea1d646bf4e50a619f0672, type: 2}
-  - {fileID: 11400000, guid: aabda062e16ed464fb285f181a76b3eb, type: 2}
-  buttons:
-  - {fileID: 594728047}
-  - {fileID: 1805360181}
-  - {fileID: 1823364672}
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  upgradeCanvas: {fileID: 1465142118}
 --- !u!224 &594728046 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2413299135116192435, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
@@ -911,7 +906,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465142115}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1341,6 +1336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1743072061}
   - component: {fileID: 1743072062}
+  - component: {fileID: 1743072063}
   m_Layer: 0
   m_Name: UpgradeStorage
   m_TagString: Storage
@@ -1378,6 +1374,28 @@ MonoBehaviour:
   weapons:
   - {fileID: 8260909492897234530, guid: d54c14533633a374fa8da8da7341b801, type: 3}
   mgBulletSO: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
+--- !u!114 &1743072063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743072060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ba53c707d1be143bbacff2ce99d993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
+  upgradeList:
+  - {fileID: 11400000, guid: 180f7e5a815ea6e409cd094667e40894, type: 2}
+  - {fileID: 11400000, guid: 697cb8b6ea6757c409e482387cf15d5a, type: 2}
+  - {fileID: 11400000, guid: 2f56b467c3ea1d646bf4e50a619f0672, type: 2}
+  - {fileID: 11400000, guid: aabda062e16ed464fb285f181a76b3eb, type: 2}
+  buttons:
+  - {fileID: 594728047}
+  - {fileID: 1805360181}
+  - {fileID: 1823364672}
+  healthManager: {fileID: 0}
 --- !u!1 &1750282675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Option2
       objectReference: {fileID: 0}
+    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
+      propertyPath: upgradeManager
+      value: 
+      objectReference: {fileID: 1743072063}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1659,6 +1681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Option3
       objectReference: {fileID: 0}
+    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
+      propertyPath: upgradeManager
+      value: 
+      objectReference: {fileID: 1743072063}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2145,6 +2171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Option1
       objectReference: {fileID: 0}
+    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
+      propertyPath: upgradeManager
+      value: 
+      objectReference: {fileID: 1743072063}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
