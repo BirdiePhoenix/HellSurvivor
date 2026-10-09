@@ -8,23 +8,25 @@ using Random = System.Random;
 public class UpgradeManager : MonoBehaviour
 {
     [Header("Upgrade Settings")]
-    [SerializeField] private SO_Upgrade[] upgradeList;
+    [SerializeField] private UpgradeSetup[] upgradeList;
     
     [Header("Upgrade Buttons")]
     [SerializeField] private Button[] buttons;
-    private List<SO_Upgrade> availableUpgrades;
+    private List<UpgradeSetup> availableUpgrades;
     
     [Header("Upgrade Types")]
     [SerializeField] private HealthManager healthManager;
+    [SerializeField] private PlayerSetup playerSetup;
 
     private void Start()
     {
+        playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
         ButtonSetUp();
     }
 
     public void ButtonSetUp()
     {
-        availableUpgrades = new List<SO_Upgrade>();
+        availableUpgrades = new List<UpgradeSetup>();
         for (int i = 0; i < upgradeList.Length; i++)
         {
             availableUpgrades.Add(upgradeList[i]);
@@ -40,13 +42,29 @@ public class UpgradeManager : MonoBehaviour
             int rndmNum = (int)UnityEngine.Random.Range(0, availableUpgrades.Count);
             
             button.GetComponentInChildren<TextMeshProUGUI>().text = availableUpgrades[rndmNum].UpgradeName;
+            button.GetComponent<UpgradeButton>().UpgradeType = availableUpgrades[rndmNum].UpgradeName;
             availableUpgrades.RemoveAt(rndmNum);
         }
     }
 
     public void UpgradeMaxHealth()
     {
-        
+        Debug.Log("Health");
+    }
+
+    public void UpgradeMovementSpeed()
+    {
+        Debug.Log("MovementSpeed");
+    }
+
+    public void UpgradeReloadSpeed()
+    {
+        Debug.Log("ReloadSpeed");
+    }
+
+    public void UpgradeBulletDamage()
+    {
+        Debug.Log("BulletDamage");
     }
     
 }

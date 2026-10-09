@@ -1,9 +1,11 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class UpgradeButton : MonoBehaviour
 {
     [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private TMP_Text upgradeName;
 
     private float upgrademodifier;
 
@@ -12,36 +14,35 @@ public class UpgradeButton : MonoBehaviour
         get => upgrademodifier;
         set => upgrademodifier = value;
     }
-    public enum UpgradeType
-    {
-        Health,
-        MovementSpeed,
-        ReloadSpeed,
-        BulletDamage
-    }
     
-    public UpgradeType ChosenUpgradeType { get; private set; }
+    private string upgradeType;
+
+    public string UpgradeType
+    {
+        get => upgradeType;
+        set => upgradeType = value;
+    }
 
     public void OnButtonClick()
     {
-        UpgradeStats(ChosenUpgradeType);
+        UpgradeStats();
     } 
     
-    private void UpgradeStats(UpgradeType upgradeType)
+    public void UpgradeStats()
     {
-        switch (upgradeType)
+        switch (UpgradeType)
         {
-            case UpgradeType.Health:
-                
+            case "Health":
+                upgradeManager.UpgradeMaxHealth();
                 break;
-            case UpgradeType.MovementSpeed:
-                
+            case "Movement Speed":
+                upgradeManager.UpgradeMovementSpeed();
                 break;
-            case UpgradeType.ReloadSpeed:
-                
+            case "Reload Speed":
+                upgradeManager.UpgradeReloadSpeed();
                 break;
-            case UpgradeType.BulletDamage:
-                
+            case "Bullet Damage":
+                upgradeManager.UpgradeBulletDamage();
                 break;
         }
     }
