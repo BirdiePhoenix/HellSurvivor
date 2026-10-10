@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private EnemySetup enemySetup;
-    [SerializeField] private MovementState moveState;
+    [SerializeField] private MoveStateManager moveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
     public CapsuleCollider2D CapsuleCollider2D{ get { return capsuleCollider2D; } set { capsuleCollider2D = value; } }
@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
             StartCoroutine(ChangeColor());
             if (enemySetup.CurrentHealth <= 0)
             {
-                moveState.SetMoveState(MovementState.MoveState.Die);
+                moveStateManager.SetMoveState(MoveStateManager.MoveState.Die);
                 enemySetup.IsDead = true;
                 if (enemySetup.IsInRange)
                 {

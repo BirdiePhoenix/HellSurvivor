@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private EnemyMovement enemyMovement;
-    [SerializeField] private MovementState moveState;
+    [FormerlySerializedAs("moveState")] [SerializeField] private MoveStateManager moveStateManager;
     
     private PlayerHealth playerHealth;
 

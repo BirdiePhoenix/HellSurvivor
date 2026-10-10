@@ -10,6 +10,7 @@ public class XPManager : MonoBehaviour
     [SerializeField] private TMP_Text currentLvlText;
     [SerializeField] UIManager uiManager;
     [SerializeField] UpgradeManager upgradeManager;
+    [SerializeField] GameStateManager gameStateManager;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
         upgradeManager.ButtonSetUp();
-        uiManager.EnableUpgradeMenu();
+        gameStateManager.SetGameState(GameStateManager.GameState.Upgrade);
     }
     
     private void UpdateXpUI()

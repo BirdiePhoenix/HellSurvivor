@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 386402078}
   - component: {fileID: 386402077}
   - component: {fileID: 386402079}
+  - component: {fileID: 386402080}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -393,6 +394,7 @@ MonoBehaviour:
   currentLvlText: {fileID: 1230759857}
   uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
+  gameStateManager: {fileID: 386402080}
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +423,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7b7884749cb1045a8c333dcf75e414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  upgradeCanvas: {fileID: 1465142118}
+  upgradeMenu: {fileID: 1465142115}
+--- !u!114 &386402080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386402074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa66b1cde05330240aaa93f5a66c8e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
+  upgradeMenu: {fileID: 1465142115}
 --- !u!224 &594728046 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2413299135116192435, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
@@ -590,17 +605,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886584349}
   m_CullTransparentMesh: 1
---- !u!114 &936088347 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3654918066981034779, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
-  m_PrefabInstance: {fileID: 7219486726220197460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1056100649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1099,7 @@ GameObject:
   - component: {fileID: 1465142117}
   - component: {fileID: 1465142116}
   m_Layer: 5
-  m_Name: LevelUpCanvas
+  m_Name: UpgradeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1152,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465142115}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1813,6 +1817,10 @@ PrefabInstance:
       value: Option2
       objectReference: {fileID: 0}
     - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 386402080}
+    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 386402079}
@@ -1937,6 +1945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Option3
       objectReference: {fileID: 0}
+    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 386402080}
     - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
       propertyPath: uiManager
       value: 
@@ -2535,13 +2547,9 @@ PrefabInstance:
       value: Option1
       objectReference: {fileID: 0}
     - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
-      propertyPath: uiManager
+      propertyPath: gameState
       value: 
-      objectReference: {fileID: 386402079}
-    - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
-      propertyPath: upgradeName
-      value: 
-      objectReference: {fileID: 936088347}
+      objectReference: {fileID: 386402080}
     - target: {fileID: 4644478004734284631, guid: 861ca8b3e1ee5c84f9e72196b45b0bb3, type: 3}
       propertyPath: upgradeManager
       value: 

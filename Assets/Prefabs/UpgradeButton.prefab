@@ -284,3 +284,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
   upgradeManager: {fileID: 0}
+  upgradeName: {fileID: 3654918066981034779}
+  gameState: {fileID: 0}

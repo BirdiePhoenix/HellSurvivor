@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
 
     [SerializeField] private PlayerSetup playerSetup;
-    [SerializeField] private MovementState playerMovementState;
+    [FormerlySerializedAs("playerMovementState")] [SerializeField] private MoveStateManager playerMoveStateManager;
     [SerializeField] private DirectionState directionState;
     private void Awake()
     {
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             //playerAnimator.SetBool("isRunning", true);
-            playerMovementState.SetMoveState(MovementState.MoveState.Run);
+            playerMoveStateManager.SetMoveState(MoveStateManager.MoveState.Run);
             
             if (moveInput.x > 0)
             {
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //playerAnimator.SetBool("isRunning", false);
-            playerMovementState.SetMoveState(MovementState.MoveState.Idle);
+            playerMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
         } 
     }
 }

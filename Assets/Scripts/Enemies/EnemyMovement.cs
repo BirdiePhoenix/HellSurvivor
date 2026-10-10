@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private EnemySetup enemySetup;
-    [SerializeField] private MovementState enemyMovementState;
+    [SerializeField] private MoveStateManager enemyMoveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer; 
     [SerializeField] private Rigidbody2D enemyRb;
     [SerializeField] private CalculateDistance calculateDistance;
@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (enemySetup.IsDead)
         {
-            enemyMovementState.SetMoveState(MovementState.MoveState.Die);
+            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Die);
         }
     }
 
@@ -44,11 +44,11 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector2 lookDirection = (player.transform.position - transform.position).normalized;
             enemyRb.MovePosition(enemyRb.position + lookDirection * (enemySetup.CurrentMovementSpeed * Time.fixedDeltaTime));
-            enemyMovementState.SetMoveState(MovementState.MoveState.Run);
+            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Run);
         }
         else
         {
-            enemyMovementState.SetMoveState(MovementState.MoveState.Idle);
+            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
         }
     }
 

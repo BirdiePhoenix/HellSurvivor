@@ -6,7 +6,7 @@ public class UpgradeButton : MonoBehaviour
 {
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private TMP_Text upgradeName;
-    [SerializeField] UIManager uiManager;
+    [SerializeField] GameStateManager gameState;
 
     private float upgrademodifier;
 
@@ -27,7 +27,7 @@ public class UpgradeButton : MonoBehaviour
     public void OnButtonClick()
     {
         UpgradeStats();
-        uiManager.DisableUpgradeMenu();
+        gameState.SetGameState(GameStateManager.GameState.Play);
     } 
     
     public void UpgradeStats()

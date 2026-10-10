@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private PlayerSetup playerSetup;
-    [SerializeField] private MovementState moveState;
+    [FormerlySerializedAs("moveState")] [SerializeField] private MoveStateManager moveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private HealthManager healthManager;
 
@@ -21,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         
         if (playerSetup.CurrentHealth <= 0 && !playerSetup.IsDead)
         {
-            moveState.SetMoveState(MovementState.MoveState.Die);
+            moveStateManager.SetMoveState(MoveStateManager.MoveState.Die);
             playerSetup.IsDead = true;
             Debug.Log("Player is dead");
             

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MovementState : MonoBehaviour
+public class MoveStateManager : MonoBehaviour
 {
     public enum MoveState
     {
