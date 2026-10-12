@@ -5,6 +5,7 @@ public class GameStateManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TimeManager timeManager;
+    [SerializeField] private GameOverManager gameOverManager;
     
     [Header("UI Elements")]
     [SerializeField] private GameObject statsUpgradeMenu;
@@ -88,6 +89,10 @@ public class GameStateManager : MonoBehaviour
         {
             HandlePauseState();
         }
+        else if (PreviousGameState == GameState.GameOver)
+        {
+            HandleGameOverState();
+        }
     }
     
     
@@ -138,6 +143,7 @@ public class GameStateManager : MonoBehaviour
         if (PreviousGameState != GameState.GameOver)
         {
             gameOverMenu.SetActive(true);
+            gameOverManager.GameOver();
         }
         else
         {

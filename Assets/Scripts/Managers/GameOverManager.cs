@@ -7,6 +7,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] HighScoreManager highScoreManager;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] private float timeToWait;
+    [SerializeField] private SaveManager saveManager;
     
     private bool isGameOver;
     public bool IsGameOver
@@ -19,10 +20,8 @@ public class GameOverManager : MonoBehaviour
     public void GameOver()
     {
         IsGameOver = true;
-    }
-
-    private void OnEnable()
-    {
+        highScoreManager.UpdateHighScore(highScoreManager.CurrentScore);
+        saveManager.SaveGame();
         StartCoroutine(RiseScore());
     }
 
