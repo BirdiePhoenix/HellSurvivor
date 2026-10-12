@@ -30,6 +30,7 @@ public class GameStateManager : MonoBehaviour
     {
         statsUpgradeMenu.SetActive(false);
         weaponUpgradeMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         isPaused = false;
     }
 

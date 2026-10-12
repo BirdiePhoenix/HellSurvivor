@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
 
     [SerializeField] private PlayerSetup playerSetup;
-    [FormerlySerializedAs("playerMovementState")] [SerializeField] private MoveStateManager playerMoveStateManager;
+    [SerializeField] private MoveStateManager playerMoveStateManager;
+    [SerializeField] private GameStateManager gameStateManager;
     [SerializeField] private DirectionState directionState;
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        gameStateManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>();
     }
 
     private void OnEnable()
@@ -35,6 +37,12 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
         }
+
+        if (playerInputActions.Player.Pause.IsPressed())
+        {
+            gameStateManager.SetGameState(GameStateManager.GameState.Pause);
+        }
+        
     }
 
     private void MovePlayer()

@@ -290,7 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerSetup: {fileID: 6259741871391180043}
-  playerMovementState: {fileID: 4594516371035884517}
+  playerMoveStateManager: {fileID: 4594516371035884517}
+  gameStateManager: {fileID: 0}
   directionState: {fileID: -4698887816781541060}
 --- !u!114 &6200747617108011736
 MonoBehaviour:
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   playerSetup: {fileID: 6259741871391180043}
-  moveState: {fileID: 4594516371035884517}
+  moveStateManager: {fileID: 4594516371035884517}
   spriteRenderer: {fileID: 4946254177960963457}
 --- !u!114 &4594516371035884517
 MonoBehaviour:
