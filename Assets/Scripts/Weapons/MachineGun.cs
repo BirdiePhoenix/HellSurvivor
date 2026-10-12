@@ -23,6 +23,6 @@ public class MachineGun : MonoBehaviour, IWeapon
     private IEnumerator Shoot()
     {
         Instantiate(bulletType.BulletPrefab);
-        yield return new WaitForSeconds(bulletType.ShootingSpeed);
+        yield return new WaitForSecondsRealtime(bulletType.ShootingSpeed);
     }
 }

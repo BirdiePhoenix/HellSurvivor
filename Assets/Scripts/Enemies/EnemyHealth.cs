@@ -47,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator ReturnEnemy()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSecondsRealtime(0.75f);
         enemyPool.ReturnObject(gameObject);
         enemySetup.IsDead = false;
         enemySetup.CurrentHealth = enemySetup.CurrentMaxHealth;
@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator ChangeColor()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         GetComponent<Renderer>().material.color = Color.white;
     }
 }

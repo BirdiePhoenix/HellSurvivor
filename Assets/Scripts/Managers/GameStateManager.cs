@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private TimeManager timeManager;
+    
+    [Header("UI Elements")]
     [SerializeField] private GameObject statsUpgradeMenu;
     [SerializeField] private GameObject weaponUpgradeMenu;
     [SerializeField] private GameObject pauseMenu;
+    
     public static bool isPaused;
 
     public enum GameState
@@ -37,15 +42,19 @@ public class GameStateManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.Play:
+                timeManager.ResumeTime();
                 HandlePlayState();
                 break;
             case GameState.StatsUpgrade:
+                timeManager.PauseTime();
                 HandelStatsUpgradeState();
                 break;
             case GameState.WeaponUpgrade:
+                timeManager.PauseTime();
                 HandleWeaponUpgradeState();
                 break;
             case GameState.Pause:
+                timeManager.PauseTime();
                 HandlePauseState();
                 break;
             default:

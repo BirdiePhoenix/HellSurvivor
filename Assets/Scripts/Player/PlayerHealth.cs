@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator ChangeColor()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         GetComponent<Renderer>().material.color = Color.white;
     }
 }

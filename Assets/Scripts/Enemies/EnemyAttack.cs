@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
     {
         //moveState.SetMoveState(MovementState.MoveState.Attack);
         playerHealth.TakeDamage(enemySetup.CurrentStrength);
-        yield return new WaitForSeconds(enemySetup.CurrentAttackSpeed);
+        yield return new WaitForSecondsRealtime(enemySetup.CurrentAttackSpeed);
    
         if (enemyMovement.IsInRange)
         {

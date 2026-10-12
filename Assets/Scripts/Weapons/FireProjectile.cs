@@ -59,7 +59,7 @@ public class FireProjectile : MonoBehaviour
         bullet.transform.rotation = transform.rotation;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         StartCoroutine(DeactivateBullet(bullet));
-        yield return new WaitForSeconds(weaponReloadSpeed);
+        yield return new WaitForSecondsRealtime(weaponReloadSpeed);
         
         StartCoroutine(Shoot());
         
@@ -67,7 +67,7 @@ public class FireProjectile : MonoBehaviour
 
     private IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(weaponReloadSpeed);
+        yield return new WaitForSecondsRealtime(weaponReloadSpeed);
         bulletPool.ReturnObject(bullet);
     }
     

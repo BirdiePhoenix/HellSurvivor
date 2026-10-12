@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     
     private IEnumerator SpawnEnemy(float interval)
     {
-        yield return new WaitForSeconds(interval);
+        yield return new WaitForSecondsRealtime(interval);
         HasSpawned = true;
         GameObject newEnemy = enemyPool.GetObject();
         Vector2 spawnPos = new Vector2(Random.Range(player.transform.position.x + 5 -5f, player.transform.position.x + 5 + 5), 
