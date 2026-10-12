@@ -10,6 +10,7 @@ public class XPManager : MonoBehaviour
     [SerializeField] private TMP_Text currentLvlText;
     [SerializeField] UIManager uiManager;
     [SerializeField] UpgradeManager upgradeManager;
+    [SerializeField] HighScoreManager highScoreManager;
     [SerializeField] GameStateManager gameStateManager;
     
     [SerializeField] private int firstWeapon = 10;
@@ -38,6 +39,7 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentXp = 0;
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
+        highScoreManager.UpdateScore(100);
 
         if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon ||
             playerSetup.CurrentLvl == thirdWeapon)

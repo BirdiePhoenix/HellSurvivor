@@ -12,12 +12,14 @@ public class EnemyHealth : MonoBehaviour
     public CapsuleCollider2D CapsuleCollider2D{ get { return capsuleCollider2D; } set { capsuleCollider2D = value; } }
     private float currentHealth;
     private FireProjectile fireProjectile;
+    private HighScoreManager highScoreManager;
     private EnemyPool enemyPool;
     private CoinPool coinPool;
 
     private void Start()
     {
         enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
+        highScoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<HighScoreManager>();
         coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
         fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
         currentHealth = enemySetup.CurrentHealth;
@@ -40,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
                 StartCoroutine(ReturnEnemy());
                 GameObject coin = coinPool.GetObject();
                 coin.transform.position = transform.position;
-                
+                highScoreManager.UpdateScore(100);
             }
         }
     }
