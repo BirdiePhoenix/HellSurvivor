@@ -6,13 +6,15 @@ using UnityEngine.Serialization;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private PlayerSetup playerSetup;
-    [FormerlySerializedAs("moveState")] [SerializeField] private MoveStateManager moveStateManager;
+    [SerializeField] private MoveStateManager moveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private HealthManager healthManager;
+    private GameStateManager gameStateManager;
 
     private void Start()
     {
         healthManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HealthManager>();
+        gameStateManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>();
     }
 
     public void TakeDamage(int damage)
@@ -25,15 +27,19 @@ public class PlayerHealth : MonoBehaviour
             moveStateManager.SetMoveState(MoveStateManager.MoveState.Die);
             playerSetup.IsDead = true;
             Debug.Log("Player is dead");
-            
         }
         Debug.Log("Hit");
+    }
+
+    public void PlayerDeath()
+    {
+        gameStateManager.SetGameState(GameStateManager.GameState.GameOver);
     }
 
     private IEnumerator ChangeColor()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSeconds(0.1f);
         GetComponent<Renderer>().material.color = Color.white;
     }
 }

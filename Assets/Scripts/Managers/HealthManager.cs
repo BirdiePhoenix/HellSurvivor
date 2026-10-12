@@ -20,6 +20,10 @@ public class HealthManager : MonoBehaviour
     public void UpdateHealth(int healthValue)
     {
         playerSetup.CurrentHealth += healthValue;
+        if (playerSetup.CurrentHealth <= 0)
+        {
+            playerSetup.CurrentHealth = 0;
+        }
         UpdateHpUI();
     }
 

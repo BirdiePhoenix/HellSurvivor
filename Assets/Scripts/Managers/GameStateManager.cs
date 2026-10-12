@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject statsUpgradeMenu;
     [SerializeField] private GameObject weaponUpgradeMenu;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
     
     public static bool isPaused;
 
@@ -18,7 +19,8 @@ public class GameStateManager : MonoBehaviour
         Play, 
         StatsUpgrade,
         WeaponUpgrade,
-        Pause
+        Pause,
+        GameOver
     }
     
     public GameState CurrentGameState { get; private set; }
@@ -31,6 +33,7 @@ public class GameStateManager : MonoBehaviour
         statsUpgradeMenu.SetActive(false);
         weaponUpgradeMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        gameOverMenu.SetActive(false);
         isPaused = false;
     }
 
@@ -57,6 +60,10 @@ public class GameStateManager : MonoBehaviour
             case GameState.Pause:
                 timeManager.PauseTime();
                 HandlePauseState();
+                break;
+            case GameState.GameOver:
+                timeManager.PauseTime();
+                HandleGameOverState();
                 break;
             default:
                 Debug.LogError($"{gameState} is an invalid movement state!");
@@ -123,6 +130,18 @@ public class GameStateManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             isPaused = false;
+        }
+    }
+
+    private void HandleGameOverState()
+    {
+        if (PreviousGameState != GameState.GameOver)
+        {
+            gameOverMenu.SetActive(true);
+        }
+        else
+        {
+            gameOverMenu.SetActive(false);
         }
     }
 }

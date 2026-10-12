@@ -4,6 +4,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameOverManager gameOverManager;
 
     int minutes;
     int seconds;
@@ -17,6 +18,14 @@ public class TimeManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (!gameOverManager.IsGameOver)
+        {
+            AddTime();
+        }
+    }
+
+    private void AddTime()
     {
         time += Time.deltaTime;
 
