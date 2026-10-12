@@ -11,6 +11,10 @@ public class XPManager : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] UpgradeManager upgradeManager;
     [SerializeField] GameStateManager gameStateManager;
+    
+    [SerializeField] private int firstWeapon = 10;
+    [SerializeField] private int secondWeapon = 20;
+    [SerializeField] private int thirdWeapon = 30;
 
     void Start()
     {
@@ -34,6 +38,25 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentXp = 0;
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
+
+        if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon ||
+            playerSetup.CurrentLvl == thirdWeapon)
+        {
+            AddWeapon();
+        }
+        else
+        {
+            AddStat();
+        }
+    }
+
+    private void AddWeapon()
+    {
+        
+    }
+
+    private void AddStat()
+    {
         upgradeManager.ButtonSetUp();
         gameStateManager.SetGameState(GameStateManager.GameState.Upgrade);
     }
@@ -43,6 +66,4 @@ public class XPManager : MonoBehaviour
         uiManager.UpdateUI(xpSlider, playerSetup.CurrentMaxXp, playerSetup.CurrentXp);
         currentLvlText.text = $"Level {playerSetup.CurrentLvl}";
     }
-    
-    
 }

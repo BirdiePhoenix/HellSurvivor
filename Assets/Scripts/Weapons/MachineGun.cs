@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MachineGun : Weapon
+public class MachineGun : MonoBehaviour, IWeapon
 {
+    [SerializeField] private SO_Bullet bulletType;
     [SerializeField] private GameObject player;
     private void Start()
     {
@@ -11,7 +12,7 @@ public class MachineGun : Weapon
         WeaponBehaviour();
     }
 
-    protected override void WeaponBehaviour()
+    public void WeaponBehaviour()
     {
         for (int i = 0; i < bulletType.MagSize; i++)
         {
@@ -19,7 +20,7 @@ public class MachineGun : Weapon
         }
     }
 
-    protected override IEnumerator Shoot()
+    private IEnumerator Shoot()
     {
         Instantiate(bulletType.BulletPrefab);
         yield return new WaitForSeconds(bulletType.ShootingSpeed);

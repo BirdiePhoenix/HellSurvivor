@@ -546,6 +546,9 @@ MonoBehaviour:
   uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
   gameStateManager: {fileID: 386402080}
+  firstWeapon: 10
+  secondWeapon: 20
+  thirdWeapon: 30
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,7 +1008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 848, y: 29}
+  m_AnchoredPosition: {x: 848, y: 31}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084687474
