@@ -7,7 +7,15 @@ public class WeaponStorage : MonoBehaviour
     public List<GameObject> weapons;
 
     [SerializeField] private SO_Bullet mgBulletSO;
-    
+    [SerializeField] private GameObject[] weaponIcons;
+    private int weaponIndex = 0;
+
+    public int WeaponIndex
+    {
+        get => weaponIndex;
+        set => weaponIndex = value;
+    }
+
     private GameObject mgBullet;
     private float mgBulletSpeed;
     private float mgBulletRange;
@@ -23,6 +31,13 @@ public class WeaponStorage : MonoBehaviour
         mgBulletReloadSpeed = mgBulletSO.ReloadSpeed;
         mgBulletMagSize = mgBulletSO.MagSize;
         mgBulletDamage = mgBulletSO.Damage;
+    }
+
+    public void EnableWeaponIcons()
+    {
+        weaponIcons[weaponIndex].SetActive(true);
+        WeaponIndex++;
+        Debug.Log(weaponIndex);
     }
 
     public GameObject MgBullet

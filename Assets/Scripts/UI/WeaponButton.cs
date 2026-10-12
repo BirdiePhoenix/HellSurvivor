@@ -8,17 +8,17 @@ public class WeaponButton : MonoBehaviour
     [SerializeField] private Sprite[] weaponImages;
     [SerializeField] private GameStateManager gameStateManager;
 
-    private int i;
+    [SerializeField] private WeaponStorage weaponStorage;
 
     private void Start()
     {
-        i = 0;
         AddSprite();
     }
 
     public void OnButtonClick()
     {
-        if (i < weaponImages.Length)
+        weaponStorage.EnableWeaponIcons();
+        if (weaponStorage.WeaponIndex < weaponImages.Length)
         {
             AddSprite();
         }
@@ -27,7 +27,6 @@ public class WeaponButton : MonoBehaviour
 
     private void AddSprite()
     {
-        image.sprite = weaponImages[i];
-        i++;
+        image.sprite = weaponImages[weaponStorage.WeaponIndex];
     }
 }
