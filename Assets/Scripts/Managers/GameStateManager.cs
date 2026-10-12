@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    [SerializeField] private GameObject upgradeMenu;
+    [SerializeField] private GameObject statsUpgradeMenu;
+    [SerializeField] private GameObject weaponUpgradeMenu;
     [SerializeField] private GameObject pauseMenu;
     public static bool isPaused;
 
     public enum GameState
     {
         Play, 
-        Upgrade,
+        StatsUpgrade,
+        WeaponUpgrade,
         Pause
     }
     
@@ -21,7 +23,8 @@ public class GameStateManager : MonoBehaviour
     
     private void Start()
     {
-        upgradeMenu.SetActive(false);
+        statsUpgradeMenu.SetActive(false);
+        weaponUpgradeMenu.SetActive(false);
         isPaused = false;
     }
 
@@ -36,8 +39,11 @@ public class GameStateManager : MonoBehaviour
             case GameState.Play:
                 HandlePlayState();
                 break;
-            case GameState.Upgrade:
-                HandelUpgradeState();
+            case GameState.StatsUpgrade:
+                HandelStatsUpgradeState();
+                break;
+            case GameState.WeaponUpgrade:
+                HandleWeaponUpgradeState();
                 break;
             case GameState.Pause:
                 HandlePauseState();
@@ -53,9 +59,13 @@ public class GameStateManager : MonoBehaviour
 
     private void HandlePlayState()
     {
-        if(PreviousGameState == GameState.Upgrade)
+        if(PreviousGameState == GameState.StatsUpgrade)
         {
-            HandelUpgradeState();
+            HandelStatsUpgradeState();
+        }
+        else if (PreviousGameState == GameState.WeaponUpgrade)
+        {
+            HandleWeaponUpgradeState();
         }
         else if (PreviousGameState == GameState.Pause)
         {
@@ -64,16 +74,30 @@ public class GameStateManager : MonoBehaviour
     }
     
     
-    public void HandelUpgradeState()
+    public void HandelStatsUpgradeState()
     {
         if (!isPaused)
         {
-            upgradeMenu.SetActive(true);
+            statsUpgradeMenu.SetActive(true);
             isPaused = true;
         }
         else
         {
-            upgradeMenu.SetActive(false);
+            statsUpgradeMenu.SetActive(false);
+            isPaused = false;
+        }
+    }
+
+    private void HandleWeaponUpgradeState()
+    {
+        if (!isPaused)
+        {
+            weaponUpgradeMenu.SetActive(true);
+            isPaused = true;
+        }
+        else
+        {
+            weaponUpgradeMenu.SetActive(false);
             isPaused = false;
         }
     }

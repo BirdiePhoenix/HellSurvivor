@@ -52,13 +52,13 @@ public class XPManager : MonoBehaviour
 
     private void AddWeapon()
     {
-        
+        gameStateManager.SetGameState(GameStateManager.GameState.WeaponUpgrade);
     }
 
     private void AddStat()
     {
-        upgradeManager.ButtonSetUp();
-        gameStateManager.SetGameState(GameStateManager.GameState.Upgrade);
+        upgradeManager.StatsButtonSetUp();
+        gameStateManager.SetGameState(GameStateManager.GameState.StatsUpgrade);
     }
     
     private void UpdateXpUI()

@@ -23,10 +23,10 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
-        ButtonSetUp();
+        StatsButtonSetUp();
     }
 
-    public void ButtonSetUp()
+    public void StatsButtonSetUp()
     {
         availableUpgrades = new List<UpgradeSetup>();
         for (int i = 0; i < upgradeList.Length; i++)
