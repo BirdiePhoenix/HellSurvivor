@@ -26,6 +26,7 @@ public class HealthManager : MonoBehaviour
     public void UpdateMaxHealth(float hpGrowthMultiplierValue)
     {
         playerSetup.CurrentMaxHealth = Mathf.RoundToInt(playerSetup.CurrentMaxHealth * hpGrowthMultiplierValue);
+        playerSetup.CurrentHealth = Mathf.RoundToInt(playerSetup.CurrentHealth * hpGrowthMultiplierValue);
         UpdateHpUI();
     }
     

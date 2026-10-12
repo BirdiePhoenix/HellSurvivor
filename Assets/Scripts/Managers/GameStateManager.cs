@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject upgradeMenu;
+    [SerializeField] private GameObject pauseMenu;
     public static bool isPaused;
 
     public enum GameState
@@ -33,13 +34,13 @@ public class GameStateManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.Play:
-                PlayState();
+                HandlePlayState();
                 break;
             case GameState.Upgrade:
-                EnableUpgradeMenu();
+                HandelUpgradeState();
                 break;
             case GameState.Pause:
-                
+                HandlePauseState();
                 break;
             default:
                 Debug.LogError($"{gameState} is an invalid movement state!");
@@ -50,29 +51,44 @@ public class GameStateManager : MonoBehaviour
         CurrentGameState = gameState;
     }
 
-    private void PlayState()
+    private void HandlePlayState()
     {
         if(PreviousGameState == GameState.Upgrade)
         {
-            DisableUpgradeMenu();
+            HandelUpgradeState();
+        }
+        else if (PreviousGameState == GameState.Pause)
+        {
+            HandlePauseState();
         }
     }
     
     
-    public void EnableUpgradeMenu()
+    public void HandelUpgradeState()
     {
-        upgradeMenu.SetActive(true);
-        GameStateManager.isPaused = true;
-    }
-
-    public void DisableUpgradeMenu()
-    {
-        upgradeMenu.SetActive(false);
-        GameStateManager.isPaused = false;
+        if (!isPaused)
+        {
+            upgradeMenu.SetActive(true);
+            isPaused = true;
+        }
+        else
+        {
+            upgradeMenu.SetActive(false);
+            isPaused = false;
+        }
     }
     
-    private void PauseGame()
+    private void HandlePauseState()
     {
-        GameStateManager.isPaused = true;
+        if (!isPaused)
+        {
+            pauseMenu.SetActive(true);
+            isPaused = true;
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+            isPaused = false;
+        }
     }
 }
