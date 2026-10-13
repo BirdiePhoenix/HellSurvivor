@@ -9,6 +9,12 @@ public class FireProjectile : MonoBehaviour
     [SerializeField] private DirectionState directionState;
     [SerializeField] private BulletPool bulletPool;
     private float weaponReloadSpeed;
+    
+    private GameObject nearestEnemy;
+    private GameObject player;
+    private GameObject[] allEnemies;
+    private float distance;
+    private float nearestDistance = 10000;
 
     public float WeaponReloadSpeed
     {
@@ -54,6 +60,8 @@ public class FireProjectile : MonoBehaviour
     
     private IEnumerator Shoot()
     {
+        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        CalculateClosestEnemy();
         GameObject bullet = bulletPool.GetObject();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
@@ -71,7 +79,21 @@ public class FireProjectile : MonoBehaviour
         bulletPool.ReturnObject(bullet);
     }
     
-    
+    public void CalculateClosestEnemy()
+    {
+        for (int i = 0; i < allEnemies.Length; i++)
+        {
+            distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
+
+            if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
+            {
+                nearestEnemy = allEnemies[i];
+                nearestDistance = distance;
+            }
+        }
+        
+        ShootDirection = (nearestEnemy.transform.position - transform.position).normalized;
+    }
     
     // if (rb != null)
     // {

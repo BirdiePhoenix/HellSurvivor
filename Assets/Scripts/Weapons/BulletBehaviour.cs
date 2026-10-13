@@ -8,33 +8,51 @@ public class BulletBehaviour : MonoBehaviour
     private BulletPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
-  
-    private GameObject nearestEnemy;
-    private GameObject player;
-    private GameObject[] allEnemies;
-    private float distance;
-    private float nearestDistance = 10000;
 
-    private bool hasCalculated;
+    public Vector2 ShootDirection
+    {
+        get => shootDirection;
+        set => shootDirection = value;
+    }
+
+    // private GameObject nearestEnemy;
+    // private GameObject player;
+    // private GameObject[] allEnemies;
+    // private float distance;
+    // private float nearestDistance = 10000;
+    //
+    // private bool hasCalculated;
+
+    private bool isReady = false;
     private void Start()
     {
         bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
+        fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
         bulletRb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        if (isReady)
+        {
+            shootDirection = fireProjectile.ShootDirection;
+        }
+    }
+
+    private void OnDisable()
+    {
+        isReady = true;
     }
 
     private void FixedUpdate()
     {
-        if (gameObject.activeInHierarchy && !hasCalculated)
-        {
-            allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            CalculateClosestEnemy();
-            hasCalculated = true;
-        }
-        else
-        {
-            hasCalculated = false;
-        }
-        
+        // if (gameObject.activeInHierarchy && !hasCalculated)
+        // {
+        //     //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //     //CalculateClosestEnemy();
+        //     hasCalculated = true;
+        // }
+
         bulletRb.MovePosition(bulletRb.position + shootDirection * (bulletSetup.BulletSpeed * Time.fixedDeltaTime));
     }
 
@@ -47,20 +65,20 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
     
-    public void CalculateClosestEnemy()
-    {
-        
-        for (int i = 0; i < allEnemies.Length; i++)
-        {
-            distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
-
-            if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
-            {
-                nearestEnemy = allEnemies[i];
-                nearestDistance = distance;
-            }
-        }
-        
-        shootDirection = (nearestEnemy.transform.position - transform.position).normalized;
-    }
+    // public void CalculateClosestEnemy()
+    // {
+    //     
+    //     for (int i = 0; i < allEnemies.Length; i++)
+    //     {
+    //         distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
+    //
+    //         if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
+    //         {
+    //             nearestEnemy = allEnemies[i];
+    //             nearestDistance = distance;
+    //         }
+    //     }
+    //     
+    //     shootDirection = (nearestEnemy.transform.position - transform.position).normalized;
+    // }
 }
