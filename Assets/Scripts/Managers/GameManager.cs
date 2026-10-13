@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
+        //Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
     }
 
     private void LoadHighscore()

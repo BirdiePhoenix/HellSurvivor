@@ -955,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 386402075}
-  - component: {fileID: 386402076}
+  - component: {fileID: 386402081}
   - component: {fileID: 386402078}
   - component: {fileID: 386402077}
   - component: {fileID: 386402079}
@@ -985,21 +985,6 @@ Transform:
   - {fileID: 229154195}
   m_Father: {fileID: 1947612814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &386402076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386402074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2e51b1549334548b4cfa64885ea472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  playerPrefab: {fileID: 6338419814338829297, guid: 9a99f9a5938041e4c8b59bd0c99cb169, type: 3}
-  playerSpawnPos: {x: 0, y: 0}
-  xpValue: 0
 --- !u!114 &386402077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,7 +1035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7b7884749cb1045a8c333dcf75e414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  upgradeMenu: {fileID: 1465142115}
 --- !u!114 &386402080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1053,20 @@ MonoBehaviour:
   weaponUpgradeMenu: {fileID: 462455422}
   pauseMenu: {fileID: 377330515}
   gameOverMenu: {fileID: 1421027876}
+--- !u!114 &386402081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386402074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba85deb72430c64d9045846e7f68bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_GameManager
+  playerPrefab: {fileID: 6338419814338829297, guid: 9a99f9a5938041e4c8b59bd0c99cb169, type: 3}
+  playerSpawnPos: {x: 0, y: 0}
 --- !u!114 &423423898 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 667910096808821772, guid: 7bbcadc666e0a5841b432e50f76dbab5, type: 3}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerSetup : MonoBehaviour
+public class PlayerSetup : MonoBehaviour, ISetup
 {
     [SerializeField] private SO_PlayerStartingStats playerStats;
     //private static PlayerSetup playerSetup;
@@ -16,28 +16,25 @@ public class PlayerSetup : MonoBehaviour
 
     private void Awake()
     {
-        // if (playerSetup != null && playerSetup != this)
-        // {
-        //     Destroy(gameObject);
-        // }
-        // else
-        // {
-        //     playerSetup = this;
-        // }
+        _GameManager.Instance.RegisterDataObjects(this);
+        GetData();
     }
     
     private void Start()
     {
-        //DontDestroyOnLoad(gameObject);
+        IsDead = false;
+    }
+
+    public void GetData()
+    {
         CurrentHealth = playerStats.MaxHealth;
         CurrentMaxHealth = playerStats.MaxHealth;
         CurrentXp = 0;
         CurrentMaxXp = playerStats.MaxXp;
         
         CurrentMovementSpeed = playerStats.MovementSpeed;
-        IsDead = false;
     }
-    
+
     public int CurrentHealth
     {
         get => currentHealth;

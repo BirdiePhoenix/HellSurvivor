@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponStorage : MonoBehaviour
+public class WeaponStorage : MonoBehaviour, ISetup
 {
     public List<GameObject> weapons;
 
@@ -23,7 +23,22 @@ public class WeaponStorage : MonoBehaviour
     private int mgBulletMagSize;
     private int mgBulletDamage;
 
+    private void Awake()
+    {
+        _GameManager.Instance.RegisterDataObjects(this);
+    }
+
     private void Start()
+    {
+        GetData();
+    }
+
+    public void GetData()
+    {
+        MgBulletSetup();
+    }
+
+    private void MgBulletSetup()
     {
         mgBullet = mgBulletSO.BulletPrefab;
         mgBulletSpeed = mgBulletSO.ShootingSpeed;
