@@ -2876,6 +2876,11 @@ MonoBehaviour:
   scoreText: {fileID: 747709601}
   timeToWait: 0.000001
   saveManager: {fileID: 88526536}
+--- !u!1 &1167497251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9112698851552685282, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
+  m_PrefabInstance: {fileID: 2659414622056237183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1230759855
 GameObject:
   m_ObjectHideFlags: 0
@@ -5714,6 +5719,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7131920252799967294, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
   m_PrefabInstance: {fileID: 2659414622056237183}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1623669304795575695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167497251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711f2755e73d5f34bb1a0a631f9010c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverButton
+  gameStateManager: {fileID: 386402080}
+  timeManager: {fileID: 978901894}
 --- !u!224 &2413299133905385059 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7199044580227710378, guid: 7bbcadc666e0a5841b432e50f76dbab5, type: 3}
@@ -5727,6 +5746,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 729382573}
     m_Modifications:
+    - target: {fileID: 4291423021533661436, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1623669304795575695}
+    - target: {fileID: 4291423021533661436, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRestartClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291423021533661436, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverButton, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5725318548321027870, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
       propertyPath: gameStateManager
       value: 
@@ -5834,7 +5865,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9112698851552685282, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1623669304795575695}
   m_SourcePrefab: {fileID: 100100000, guid: 165ac437b4caa914687c5dedc11376b2, type: 3}
 --- !u!1 &3589854528917393192 stripped
 GameObject:

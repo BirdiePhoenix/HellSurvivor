@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Interfaces;
+using UnityEngine.SceneManagement;
 
 public class _GameManager : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class _GameManager : MonoBehaviour
     private void SpawnPlayer()
     {
         Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
+    }
+
+    public void RestartGame()
+    {
+        var currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void SetupGame()

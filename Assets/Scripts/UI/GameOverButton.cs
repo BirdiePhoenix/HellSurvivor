@@ -3,9 +3,11 @@ using UnityEngine;
 public class GameOverButton : MonoBehaviour
 {
     [SerializeField] private GameStateManager gameStateManager;
+    [SerializeField] private TimeManager timeManager;
 
     public void OnRestartClick()
     {
-        gameStateManager.SetGameState(GameStateManager.GameState.Play);
+        timeManager.ResumeTime();
+        _GameManager.Instance.RestartGame();
     }
 }
