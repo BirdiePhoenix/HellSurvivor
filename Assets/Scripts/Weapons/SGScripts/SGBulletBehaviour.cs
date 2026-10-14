@@ -32,7 +32,7 @@ public class SGBulletBehaviour : MonoBehaviour
     {
         if (isReady)
         {
-            shootDirection = sgWeapon.ShootingDirection;
+            //shootDirection = sgWeapon.ShootingDirection;
         }
     }
 

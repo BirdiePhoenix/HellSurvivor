@@ -6,6 +6,7 @@ public class DirectionState : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private GameObject player;
     [SerializeField] private SGWeapon sgWeapon;
+    [SerializeField] private GameObject child;
 
     private Rigidbody2D rb;
 
@@ -28,9 +29,12 @@ public class DirectionState : MonoBehaviour
         {
             case LookDirection.Right:
                 spriteRenderer.flipX = false;
+                //child.transform.rotation = Quaternion.Euler(0, 0, 0);
+                //FlipShooting();
                 break;
             case LookDirection.Left:
                 spriteRenderer.flipX = true;
+                //child.transform.rotation = Quaternion.Euler(0, -180, 0);
                 break;
             case LookDirection.Up:
                 break;

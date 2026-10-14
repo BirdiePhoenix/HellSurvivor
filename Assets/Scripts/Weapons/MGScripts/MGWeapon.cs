@@ -9,6 +9,7 @@ public class MGWeapon : MonoBehaviour, IWeapon
     [SerializeField] private DirectionState directionState;
     [SerializeField] private MGBulletPool mgBulletPool;
     [SerializeField] private float bulletSpread;
+    [SerializeField] private CalculateDistance calculateDistance;
     
     private WeaponStorage weaponStorage;
     
@@ -61,8 +62,9 @@ public class MGWeapon : MonoBehaviour, IWeapon
     
     private IEnumerator Shoot()
     {
-        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        CalculateClosestEnemy();
+        //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //CalculateClosestEnemy();
+        ShootingDirection = calculateDistance.CalculateClosestEnemy();
 
         for (int i = 0; i < weaponStorage.MgBulletMagSize; i++)
         {
@@ -86,19 +88,19 @@ public class MGWeapon : MonoBehaviour, IWeapon
         mgBulletPool.ReturnObject(bullet);
     }
     
-    public void CalculateClosestEnemy()
-    {
-        for (int i = 0; i < allEnemies.Length; i++)
-        {
-            distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
-
-            if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
-            {
-                nearestEnemy = allEnemies[i];
-                nearestDistance = distance;
-            }
-        }
-        
-        ShootingDirection = (nearestEnemy.transform.position - transform.position).normalized;
-    }
+    // public void CalculateClosestEnemy()
+    // {
+    //     for (int i = 0; i < allEnemies.Length; i++)
+    //     {
+    //         distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
+    //
+    //         if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
+    //         {
+    //             nearestEnemy = allEnemies[i];
+    //             nearestDistance = distance;
+    //         }
+    //     }
+    //     
+    //     ShootingDirection = (nearestEnemy.transform.position - transform.position).normalized;
+    // }
 }
