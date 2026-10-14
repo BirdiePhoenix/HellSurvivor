@@ -3,24 +3,18 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MGWeapon : MonoBehaviour, IWeapon
+public class MGWeapon : MonoBehaviour
 {
     //Redo!!!
     [SerializeField] private DirectionState directionState;
     [SerializeField] private MGBulletPool mgBulletPool;
-    private float weaponReloadSpeed;
+    private WeaponStorage weaponStorage;
     
     private GameObject nearestEnemy;
     private GameObject player;
     private GameObject[] allEnemies;
     private float distance;
     private float nearestDistance = 10000;
-
-    public float WeaponReloadSpeed
-    {
-        get => weaponReloadSpeed;
-        set => weaponReloadSpeed = value;
-    }
 
     private bool hasStartedShooting;
 
@@ -41,11 +35,11 @@ public class MGWeapon : MonoBehaviour, IWeapon
         set => shootingDirection = value;
     }
 
-
     private void Start()
     {
         enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
         mgBulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
+        weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
     }
 
     private void OnTriggerEnter2D(Collider2D targetEnemy)
@@ -67,7 +61,7 @@ public class MGWeapon : MonoBehaviour, IWeapon
         bullet.transform.rotation = transform.rotation;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         StartCoroutine(DeactivateBullet(bullet));
-        yield return new WaitForSeconds(weaponReloadSpeed);
+        yield return new WaitForSeconds(weaponStorage.MgBulletReloadSpeed);
         
         StartCoroutine(Shoot());
         
@@ -75,7 +69,7 @@ public class MGWeapon : MonoBehaviour, IWeapon
 
     private IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSecondsRealtime(weaponReloadSpeed);
+        yield return new WaitForSecondsRealtime(weaponStorage.MgBulletRange);
         mgBulletPool.ReturnObject(bullet);
     }
     
@@ -94,27 +88,4 @@ public class MGWeapon : MonoBehaviour, IWeapon
         
         ShootingDirection = (nearestEnemy.transform.position - transform.position).normalized;
     }
-    
-    // if (rb != null)
-    // {
-    //     
-    //     
-    //     // switch (directionState.CurrentDirection)
-    //     // {
-    //     //     case DirectionState.LookDirection.Right:
-    //     //         rb.linearVelocity = bullet.transform.right * mgBullet.ShootingSpeed;
-    //     //         break;
-    //     //     case DirectionState.LookDirection.Left:
-    //     //         rb.linearVelocity = bullet.transform.right * -mgBullet.ShootingSpeed;
-    //     //         break;
-    //     //     case DirectionState.LookDirection.Up:
-    //     //         rb.linearVelocity = bullet.transform.up * mgBullet.ShootingSpeed;
-    //     //         break;
-    //     //     case DirectionState.LookDirection.Down:
-    //     //         rb.linearVelocity = bullet.transform.up * -mgBullet.ShootingSpeed;
-    //     //         break;
-    //     //     default:
-    //     //         break;
-    //     // }
-    // }
 }

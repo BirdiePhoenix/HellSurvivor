@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
-public class MGBulletSetup : MonoBehaviour, IBullet
+public class SGBulletSetup : MonoBehaviour, IBullet
 {
-    [SerializeField] private string weaponName;
     [SerializeField] private int weaponStorageIndex;
     private bool isReady = false;
     
@@ -21,7 +19,7 @@ public class MGBulletSetup : MonoBehaviour, IBullet
     private void Start()
     {
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        weapon = GameObject.FindGameObjectWithTag(weaponName).GetComponent<IWeapon>();
+        weapon = GameObject.FindGameObjectWithTag(weaponStorage.SgBulletName).GetComponent<IWeapon>();
         
     }
 
@@ -29,11 +27,11 @@ public class MGBulletSetup : MonoBehaviour, IBullet
     {
         if (isReady)
         {
-            bulletSpeed = weaponStorage.MgBulletSpeed;
-            bulletRange = weaponStorage.MgBulletRange;
-            bulletReloadSpeed = weaponStorage.MgBulletReloadSpeed;
-            bulletMagSize = weaponStorage.MgBulletMagSize;
-            bulletDamage = weaponStorage.MgBulletDamage;
+            bulletSpeed = weaponStorage.SgBulletSpeed;
+            bulletRange = weaponStorage.SgBulletRange;
+            bulletReloadSpeed = weaponStorage.SgBulletReloadSpeed;
+            bulletMagSize = weaponStorage.SgBulletMagSize;
+            bulletDamage = weaponStorage.SgBulletDamage;
         
             weapon.WeaponReloadSpeed = bulletReloadSpeed;
         }

@@ -57,19 +57,19 @@ public class PlayerController : MonoBehaviour
             
             if (moveInput.x > 0)
             {
-                directionState.SetLookDirection(DirectionState.LookDirection.Right);
+                directionState.SetLookDirection(DirectionState.LookDirection.Right, this.transform);
             }
             else if (moveInput.x < 0)
             {
-                directionState.SetLookDirection(DirectionState.LookDirection.Left);
+                directionState.SetLookDirection(DirectionState.LookDirection.Left, this.transform);
             }
             else if (moveInput.y > 0)
             {
-                directionState.SetLookDirection(DirectionState.LookDirection.Up);
+                directionState.SetLookDirection(DirectionState.LookDirection.Up,  this.transform);
             }
             else if (moveInput.y < 0)
             {
-                directionState.SetLookDirection(DirectionState.LookDirection.Down);
+                directionState.SetLookDirection(DirectionState.LookDirection.Down,  this.transform);
             }
         }
         else

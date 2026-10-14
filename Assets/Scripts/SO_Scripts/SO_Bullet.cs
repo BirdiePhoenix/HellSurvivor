@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class SO_Bullet : ScriptableObject
 {
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private string bulletName;
     [SerializeField] private float shootingSpeed;
     [SerializeField] private float shootingRange;
     [SerializeField] private float reloadSpeed;
@@ -14,6 +15,11 @@ public class SO_Bullet : ScriptableObject
     public GameObject BulletPrefab
     {
         get { return bulletPrefab; }
+    }
+
+    public string BulletName
+    {
+        get { return bulletName; }
     }
     
     public float ShootingSpeed
