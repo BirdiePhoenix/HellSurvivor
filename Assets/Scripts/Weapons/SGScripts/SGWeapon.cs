@@ -5,6 +5,7 @@ public class SGWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] private DirectionState directionState;
     [SerializeField] private SGBulletPool sgBulletPool;
+    [SerializeField] private GameObject[] directions;
     private WeaponStorage weaponStorage;
 
     private Vector2 shootingDirection;
@@ -35,19 +36,15 @@ public class SGWeapon : MonoBehaviour, IWeapon
 
     private IEnumerator Shoot()
     {
-        /// The spread should be 45 degrease both up and down, 45+45=90. We then devide with amount of bullets in mag.
-        /// Since one bullet is at z=0 we needs to remove with 1
-        float zSpread = 90 / (float)(weaponStorage.MgBulletMagSize - 1);
-        float zRotation = 45f;
-        for (int i = 0; i < weaponStorage.MgBulletMagSize; i++)
+        
+        for (int i = 0; i < weaponStorage.SgBulletMagSize; i++)
         {
             GameObject bullet = sgBulletPool.GetObject();
-            this.transform.rotation = Quaternion.Euler(0, 0, zRotation);
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
+            bullet.GetComponent<SGBulletBehaviour>().ShootDirection = (directions[i].transform.position - transform.position).normalized;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             StartCoroutine(DeactivateBullet(bullet));
-            zRotation -= zSpread;
         }
         yield return new WaitForSeconds(weaponStorage.SgBulletReloadSpeed);
         
@@ -59,5 +56,4 @@ public class SGWeapon : MonoBehaviour, IWeapon
         yield return new WaitForSecondsRealtime(weaponStorage.SgBulletRange);
         sgBulletPool.ReturnObject(bullet);
     }
-
 }

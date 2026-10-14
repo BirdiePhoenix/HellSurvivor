@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MGBulletSetup : MonoBehaviour, IBullet
 {
-    [SerializeField] private int weaponStorageIndex;
     private bool isReady = false;
     
     [Header("References")]

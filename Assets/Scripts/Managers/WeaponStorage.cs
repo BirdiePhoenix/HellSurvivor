@@ -83,6 +83,7 @@ public class WeaponStorage : MonoBehaviour, ISetup
     public void EnableWeapons()
     {
         weapons[weaponIndex].SetActive(true);
+        weapons[weaponIndex].GetComponent<IWeapon>().TriggerShooting();
         WeaponIndex++;
     }
     

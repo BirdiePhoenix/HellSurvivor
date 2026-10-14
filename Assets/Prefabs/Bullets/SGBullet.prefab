@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2105d1d497302498f3c4bdf814d724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SGBulletSetup
-  weaponStorageIndex: 1
+  weaponStorageIndex: 0
 --- !u!114 &3115405085848415536
 MonoBehaviour:
   m_ObjectHideFlags: 0

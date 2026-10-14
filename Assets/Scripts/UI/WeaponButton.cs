@@ -7,7 +7,6 @@ public class WeaponButton : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Sprite[] weaponImages;
     [SerializeField] private GameStateManager gameStateManager;
-
     [SerializeField] private WeaponStorage weaponStorage;
 
     private void Start()
@@ -22,6 +21,7 @@ public class WeaponButton : MonoBehaviour
         {
             AddSprite();
         }
+        weaponStorage.EnableWeapons();
         gameStateManager.SetGameState(GameStateManager.GameState.Play);
     }
 

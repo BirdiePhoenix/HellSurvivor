@@ -4,15 +4,8 @@ using UnityEngine;
 public class DirectionState : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    private Transform transformRotation;
-
-    public Transform TransformRotation
-    {
-        get { return transformRotation; }
-        set { transformRotation = value; }
-    }
-    
     private GameObject player;
+    [SerializeField] private SGWeapon sgWeapon;
 
     private Rigidbody2D rb;
 
@@ -35,11 +28,9 @@ public class DirectionState : MonoBehaviour
         {
             case LookDirection.Right:
                 spriteRenderer.flipX = false;
-                TransformRotation = playerTransform;
                 break;
             case LookDirection.Left:
                 spriteRenderer.flipX = true;
-                TransformRotation = playerTransform;
                 break;
             case LookDirection.Up:
                 break;

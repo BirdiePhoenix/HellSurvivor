@@ -22,7 +22,7 @@ public class SGBulletPool : MonoBehaviour, IObjectPool
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
-        obj.GetComponent<MGBulletBehaviour>().enabled = false;
+        obj.GetComponent<SGBulletBehaviour>().enabled = false;
         sgBulletPool.Enqueue(obj);
     }
 }

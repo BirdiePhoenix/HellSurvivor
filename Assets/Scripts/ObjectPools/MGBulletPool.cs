@@ -12,7 +12,7 @@ public class MGBulletPool : MonoBehaviour, IObjectPool
         {
             GameObject obj = mgBulletPool.Dequeue();
             obj.SetActive(true);
-            obj.GetComponent<MGBulletBehaviour>().enabled = true;
+            //obj.GetComponent<MGBulletBehaviour>().enabled = true;
             return obj;
         }
 
@@ -22,7 +22,7 @@ public class MGBulletPool : MonoBehaviour, IObjectPool
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
-        obj.GetComponent<MGBulletBehaviour>().enabled = false;
+        //obj.GetComponent<MGBulletBehaviour>().enabled = false;
         mgBulletPool.Enqueue(obj);
     }
 }
