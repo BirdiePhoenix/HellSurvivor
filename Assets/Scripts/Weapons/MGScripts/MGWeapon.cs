@@ -8,6 +8,8 @@ public class MGWeapon : MonoBehaviour
     //Redo!!!
     [SerializeField] private DirectionState directionState;
     [SerializeField] private MGBulletPool mgBulletPool;
+    [SerializeField] private float bulletSpread;
+    
     private WeaponStorage weaponStorage;
     
     private GameObject nearestEnemy;
@@ -56,11 +58,17 @@ public class MGWeapon : MonoBehaviour
     {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         CalculateClosestEnemy();
-        GameObject bullet = mgBulletPool.GetObject();
-        bullet.transform.position = transform.position;
-        bullet.transform.rotation = transform.rotation;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        StartCoroutine(DeactivateBullet(bullet));
+
+        for (int i = 0; i < weaponStorage.MgBulletMagSize; i++)
+        {
+            GameObject bullet = mgBulletPool.GetObject();
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            StartCoroutine(DeactivateBullet(bullet));
+
+            yield return new WaitForSeconds(bulletSpread);
+        }
         yield return new WaitForSeconds(weaponStorage.MgBulletReloadSpeed);
         
         StartCoroutine(Shoot());

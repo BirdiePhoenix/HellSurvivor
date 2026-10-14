@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
   directionState: {fileID: -4698887816781541060}
   mgBulletPool: {fileID: 0}
+  bulletSpread: 0.45
 --- !u!58 &1843135770183458780
 CircleCollider2D:
   m_ObjectHideFlags: 0
