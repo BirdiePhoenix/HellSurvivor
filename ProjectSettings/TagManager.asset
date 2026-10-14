@@ -17,6 +17,9 @@ TagManager:
   - HPBar
   - PickUpManager
   - GameManager
+  - SGWeapon
+  - SniperWeapon
+  - RGWeapon
   layers:
   - Default
   - TransparentFX

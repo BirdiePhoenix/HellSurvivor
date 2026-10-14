@@ -7,7 +7,7 @@ public class SGBulletSetup : MonoBehaviour, IBullet
     
     [Header("References")]
     private WeaponStorage weaponStorage;
-    private IWeapon weapon;
+    private SGWeapon sgWeapon;
     
     [Header("Weapon Stats")] 
     private float bulletSpeed;
@@ -19,7 +19,7 @@ public class SGBulletSetup : MonoBehaviour, IBullet
     private void Start()
     {
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        weapon = GameObject.FindGameObjectWithTag(weaponStorage.SgBulletName).GetComponent<IWeapon>();
+        //sgWeapon = GameObject.FindGameObjectWithTag(weaponStorage.SgBulletName).GetComponent<IWeapon>();
         
     }
 
@@ -33,7 +33,7 @@ public class SGBulletSetup : MonoBehaviour, IBullet
             bulletMagSize = weaponStorage.SgBulletMagSize;
             bulletDamage = weaponStorage.SgBulletDamage;
         
-            weapon.WeaponReloadSpeed = bulletReloadSpeed;
+            //sgWeapon.WeaponReloadSpeed = bulletReloadSpeed;
         }
     }
 

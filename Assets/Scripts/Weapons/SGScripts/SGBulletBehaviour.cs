@@ -3,7 +3,7 @@ using UnityEngine;
 public class SGBulletBehaviour : MonoBehaviour
 {
     [SerializeField] private SGBulletSetup sgBulletSetup;
-    private IWeapon weapon;
+    private SGWeapon sgWeapon;
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
@@ -15,12 +15,16 @@ public class SGBulletBehaviour : MonoBehaviour
         set => shootDirection = value;
     }
 
+    private void Awake()
+    {
+        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
+        weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
+        sgWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SGWeapon>();
+    }
+    
     private bool isReady = false;
     private void Start()
     {
-        //bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
-        weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        weapon = GameObject.FindGameObjectWithTag(weaponStorage.SgBulletName).GetComponent<IWeapon>();
         bulletRb = GetComponent<Rigidbody2D>();
     }
 
@@ -28,7 +32,7 @@ public class SGBulletBehaviour : MonoBehaviour
     {
         if (isReady)
         {
-            shootDirection = weapon.ShootingDirection;
+            shootDirection = sgWeapon.ShootingDirection;
         }
     }
 

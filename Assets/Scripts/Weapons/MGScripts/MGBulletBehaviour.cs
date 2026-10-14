@@ -4,7 +4,7 @@ using UnityEngine;
 public class MGBulletBehaviour : MonoBehaviour
 {
     [SerializeField] private MGBulletSetup mgBulletSetup;
-    private MGWeapon weapon;
+    private MGWeapon mgWeapon;
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
@@ -20,7 +20,7 @@ public class MGBulletBehaviour : MonoBehaviour
     {
         bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        weapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<MGWeapon>();
+        mgWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<MGWeapon>();
     }
 
     private void Start()
@@ -30,7 +30,7 @@ public class MGBulletBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        ShootDirection = weapon.ShootingDirection;
+        ShootDirection = mgWeapon.ShootingDirection;
     }
 
     private void FixedUpdate()

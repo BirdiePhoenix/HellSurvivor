@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MGWeapon : MonoBehaviour
+public class MGWeapon : MonoBehaviour, IWeapon
 {
     //Redo!!!
     [SerializeField] private DirectionState directionState;
@@ -49,9 +49,14 @@ public class MGWeapon : MonoBehaviour
         if (targetEnemy.CompareTag("Enemy") && !HasStartedShooting)
         {
             HasStartedShooting = true;
-            StartCoroutine(Shoot());
+            TriggerShooting();
             //ShootDirection = (targetEnemy.transform.position - transform.position).normalized;
         }
+    }
+    
+    public void TriggerShooting()
+    {
+        StartCoroutine(Shoot());
     }
     
     private IEnumerator Shoot()

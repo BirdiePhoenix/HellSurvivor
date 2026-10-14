@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponStorage : MonoBehaviour, ISetup
 {
-    public List<GameObject> weapons;
     
     [Header("BulletStats")]
     [SerializeField] private SO_Bullet mgBulletSO;
@@ -14,21 +13,20 @@ public class WeaponStorage : MonoBehaviour, ISetup
     
     [Header("WeaponIcons")]
     [SerializeField] private GameObject[] weaponIcons;
+    [SerializeField] private GameObject[] weapons;
     private int weaponIndex = 0;
+
+    [Header("References")] 
+    private GameObject player;
+    private GameObject sgWeapon;
+    private GameObject sniperWeapon;
+    private GameObject rgWeapon;
 
     public int WeaponIndex
     {
         get => weaponIndex;
         set => weaponIndex = value;
     }
-    
-    // public enum WeaponType
-    // {
-    //     MachineGun,
-    //     ShotGun,
-    //     Sniper,
-    //     RocketGun
-    // }
 
     [Header("MachineGun")]
     private GameObject mgBullet;
@@ -56,7 +54,18 @@ public class WeaponStorage : MonoBehaviour, ISetup
 
     private void Start()
     {
-        
+        sgWeapon = GameObject.FindGameObjectWithTag("SGWeapon");
+        weapons[0] = sgWeapon;
+        sniperWeapon = GameObject.FindGameObjectWithTag("SniperWeapon");
+        weapons[1] = sniperWeapon;
+        rgWeapon = GameObject.FindGameObjectWithTag("RGWeapon");
+        weapons[2] = rgWeapon;
+
+        foreach (GameObject w in weapons)
+        {
+            w.SetActive(false);
+        }
+
     }
 
     public void GetData()
@@ -65,33 +74,16 @@ public class WeaponStorage : MonoBehaviour, ISetup
         SgBulletSetup();
     }
 
-    // public void SetWeaponType(WeaponType weaponType)
-    // {
-    //     switch (weaponType)
-    //     {
-    //         case WeaponType.MachineGun:
-    //             MgBulletSetup();
-    //             break;
-    //         case WeaponType.ShotGun:
-    //
-    //             break;
-    //         case WeaponType.Sniper:
-    //             
-    //             break;
-    //         case WeaponType.RocketGun:
-    //             
-    //             break;
-    //         default:
-    //             Debug.LogError($"{weaponType} is an invalid weapon type!");
-    //             break;
-    //     }
-    // }
-
     public void EnableWeaponIcons()
     {
         weaponIcons[weaponIndex].SetActive(true);
-        WeaponIndex++;
         Debug.Log(weaponIndex);
+    }
+
+    public void EnableWeapons()
+    {
+        weapons[weaponIndex].SetActive(true);
+        WeaponIndex++;
     }
     
     #region BulletSetups

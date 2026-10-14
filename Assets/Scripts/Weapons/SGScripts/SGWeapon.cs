@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SGWeapon : MonoBehaviour
+public class SGWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] private DirectionState directionState;
     [SerializeField] private SGBulletPool sgBulletPool;
@@ -27,20 +27,31 @@ public class SGWeapon : MonoBehaviour
         sgBulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<SGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
     }
-    
-    private void OnTriggerEnter2D(Collider2D targetEnemy)
+
+    public void TriggerShooting()
     {
-        if (targetEnemy.CompareTag("Enemy") && !HasStartedShooting)
-        {
-            HasStartedShooting = true;
-            StartCoroutine(Shoot());
-            //ShootDirection = (targetEnemy.transform.position - transform.position).normalized;
-        }
+        StartCoroutine(Shoot());
     }
 
     private IEnumerator Shoot()
     {
+        /// The spread should be 45 degrease both up and down, 45+45=90. We then devide with amount of bullets in mag.
+        /// Since one bullet is at z=0 we needs to remove with 1
+        float zSpread = 90 / (float)(weaponStorage.MgBulletMagSize - 1);
+        float zRotation = 45f;
+        for (int i = 0; i < weaponStorage.MgBulletMagSize; i++)
+        {
+            GameObject bullet = sgBulletPool.GetObject();
+            this.transform.rotation = Quaternion.Euler(0, 0, zRotation);
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            StartCoroutine(DeactivateBullet(bullet));
+            zRotation -= zSpread;
+        }
         yield return new WaitForSeconds(weaponStorage.SgBulletReloadSpeed);
+        
+        StartCoroutine(Shoot());
     }
     
     private IEnumerator DeactivateBullet(GameObject bullet)
@@ -48,4 +59,5 @@ public class SGWeapon : MonoBehaviour
         yield return new WaitForSecondsRealtime(weaponStorage.SgBulletRange);
         sgBulletPool.ReturnObject(bullet);
     }
+
 }
