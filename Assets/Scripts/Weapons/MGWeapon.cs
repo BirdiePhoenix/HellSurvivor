@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class FireProjectile : MonoBehaviour
+public class MGWeapon : MonoBehaviour, IWeapon
 {
     //Redo!!!
     [SerializeField] private DirectionState directionState;
-    [SerializeField] private BulletPool bulletPool;
+    [SerializeField] private MGBulletPool mgBulletPool;
     private float weaponReloadSpeed;
     
     private GameObject nearestEnemy;
@@ -33,19 +33,19 @@ public class FireProjectile : MonoBehaviour
     private EnemySpawner enemySpawner;
     private DirectionState.LookDirection lookDirection;
     
-    private Vector2 shootDirection;
+    private Vector2 shootingDirection;
 
-    public Vector2 ShootDirection
+    public Vector2 ShootingDirection
     {
-        get => shootDirection;
-        set => shootDirection = value;
+        get => shootingDirection;
+        set => shootingDirection = value;
     }
 
 
     private void Start()
     {
         enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
-        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
+        mgBulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
     }
 
     private void OnTriggerEnter2D(Collider2D targetEnemy)
@@ -62,7 +62,7 @@ public class FireProjectile : MonoBehaviour
     {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         CalculateClosestEnemy();
-        GameObject bullet = bulletPool.GetObject();
+        GameObject bullet = mgBulletPool.GetObject();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -76,7 +76,7 @@ public class FireProjectile : MonoBehaviour
     private IEnumerator DeactivateBullet(GameObject bullet)
     {
         yield return new WaitForSecondsRealtime(weaponReloadSpeed);
-        bulletPool.ReturnObject(bullet);
+        mgBulletPool.ReturnObject(bullet);
     }
     
     public void CalculateClosestEnemy()
@@ -92,7 +92,7 @@ public class FireProjectile : MonoBehaviour
             }
         }
         
-        ShootDirection = (nearestEnemy.transform.position - transform.position).normalized;
+        ShootingDirection = (nearestEnemy.transform.position - transform.position).normalized;
     }
     
     // if (rb != null)

@@ -4,8 +4,8 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     [SerializeField] private BulletSetup bulletSetup;
-    private FireProjectile fireProjectile;
-    private BulletPool bulletPool;
+    private IWeapon weapon;
+    private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
 
@@ -26,8 +26,8 @@ public class BulletBehaviour : MonoBehaviour
     private bool isReady = false;
     private void Start()
     {
-        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletPool>();
-        fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
+        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
+        weapon = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<MGWeapon>();
         bulletRb = GetComponent<Rigidbody2D>();
     }
 
@@ -35,7 +35,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (isReady)
         {
-            shootDirection = fireProjectile.ShootDirection;
+            shootDirection = weapon.ShootingDirection;
         }
     }
 

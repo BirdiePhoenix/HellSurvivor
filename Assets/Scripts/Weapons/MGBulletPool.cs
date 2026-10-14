@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour, IObjectPool
+public class MGBulletPool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject bulletPrefab;
     private Queue<GameObject>  bulletPool = new Queue<GameObject>();

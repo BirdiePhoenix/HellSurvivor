@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private CapsuleCollider2D capsuleCollider2D;
     public CapsuleCollider2D CapsuleCollider2D{ get { return capsuleCollider2D; } set { capsuleCollider2D = value; } }
     private float currentHealth;
-    private FireProjectile fireProjectile;
+    private MGWeapon mgWeapon;
     private HighScoreManager highScoreManager;
     private EnemyPool enemyPool;
     private CoinPool coinPool;
@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
         enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
         highScoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<HighScoreManager>();
         coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
-        fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
+        mgWeapon = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<MGWeapon>();
         currentHealth = enemySetup.CurrentHealth;
     }
 

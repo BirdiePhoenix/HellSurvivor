@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletSetup : MonoBehaviour
 {
     private WeaponStorage weaponStorage;
-    private FireProjectile fireProjectile;
+    private MGWeapon mgWeapon;
     
     private float bulletSpeed;
     private float bulletRange;
@@ -15,14 +15,14 @@ public class BulletSetup : MonoBehaviour
     private void Start()
     {
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        fireProjectile = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<FireProjectile>();
+        mgWeapon = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<MGWeapon>();
         bulletSpeed = weaponStorage.MgBulletSpeed;
         bulletRange = weaponStorage.MgBulletRange;
         bulletReloadSpeed = weaponStorage.MgBulletReloadSpeed;
         bulletMagSize = weaponStorage.MgBulletMagSize;
         bulletDamage = weaponStorage.MgBulletDamage;
         
-        fireProjectile.WeaponReloadSpeed = bulletReloadSpeed;
+        mgWeapon.WeaponReloadSpeed = bulletReloadSpeed;
     }
     
     public float BulletSpeed
