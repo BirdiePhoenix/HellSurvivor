@@ -1005,7 +1005,7 @@ MonoBehaviour:
   highScoreManager: {fileID: 739934446}
   gameStateManager: {fileID: 386402080}
   firstWeapon: 2
-  secondWeapon: 20
+  secondWeapon: 4
   thirdWeapon: 30
 --- !u!114 &386402078
 MonoBehaviour:
@@ -4694,6 +4694,7 @@ GameObject:
   - component: {fileID: 1735363767}
   - component: {fileID: 1735363768}
   - component: {fileID: 1735363769}
+  - component: {fileID: 1735363770}
   m_Layer: 0
   m_Name: BulletManager
   m_TagString: BulletManager
@@ -4742,6 +4743,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SGBulletPool
   sgBulletPrefab: {fileID: 4969884947947606877, guid: 2cffc26552c2935478b43d7f669901fb, type: 3}
+--- !u!114 &1735363770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735363766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feecae5ce2b013b458797f2cf147fee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SniperBulletPool
+  sniperBulletPrefab: {fileID: 4632814591877230492, guid: c1beb37e1a3abae43899208a525d6a96, type: 3}
 --- !u!1 &1743072060
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,6 +4807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStorage
   mgBulletSO: {fileID: 11400000, guid: 7c908cd92e4decd40b34fa48268a78da, type: 2}
   sgBulletSO: {fileID: 11400000, guid: 1a9efee3bc506354181749f718482bdb, type: 2}
+  sniperBulletSO: {fileID: 11400000, guid: a8a0c71792f7ff643b78c888e39e79d4, type: 2}
   weaponIcons:
   - {fileID: 1437000183}
   - {fileID: 2007241225}

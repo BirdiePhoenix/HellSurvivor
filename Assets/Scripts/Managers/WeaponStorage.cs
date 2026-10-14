@@ -8,8 +8,7 @@ public class WeaponStorage : MonoBehaviour, ISetup
     [Header("BulletStats")]
     [SerializeField] private SO_Bullet mgBulletSO;
     [SerializeField] private SO_Bullet sgBulletSO;
-    // [SerializeField] private SO_Bullet mgBulletSO;
-    // [SerializeField] private SO_Bullet mgBulletSO;
+    [SerializeField] private SO_Bullet sniperBulletSO;
     
     [Header("WeaponIcons")]
     [SerializeField] private GameObject[] weaponIcons;
@@ -45,6 +44,15 @@ public class WeaponStorage : MonoBehaviour, ISetup
     private float sgBulletReloadSpeed;
     private int sgBulletMagSize;
     private int sgBulletDamage;
+    
+    [Header("Sniper")]
+    private GameObject sniperBullet;
+    private string sniperBulletName;
+    private float sniperBulletSpeed;
+    private float sniperBulletRange;
+    private float sniperBulletReloadSpeed;
+    private int sniperBulletMagSize;
+    private int sniperBulletDamage;
 
     private void Awake()
     {
@@ -72,6 +80,7 @@ public class WeaponStorage : MonoBehaviour, ISetup
     {
         MgBulletSetup();
         SgBulletSetup();
+        SniperBulletSetup();
     }
 
     public void EnableWeaponIcons()
@@ -108,96 +117,142 @@ public class WeaponStorage : MonoBehaviour, ISetup
         SgBulletMagSize = sgBulletSO.MagSize;
         SgBulletDamage = sgBulletSO.Damage;
     }
+    
+    private void SniperBulletSetup()
+    {
+        SniperBulletSpeed = sniperBulletSO.ShootingSpeed;
+        SniperBulletRange = sniperBulletSO.ShootingRange;
+        SniperBulletReloadSpeed = sniperBulletSO.ReloadSpeed;
+        SniperBulletMagSize = sniperBulletSO.MagSize;
+        SniperBulletDamage = sniperBulletSO.Damage;
+    }
 
     #endregion
 
     #region Bullet Properties
         #region MachinegunBullet
 
-    public GameObject MgBullet
-    {
-        get => mgBullet;
-        set => mgBullet = value;
-    }
+        public GameObject MgBullet
+        {
+            get => mgBullet;
+            set => mgBullet = value;
+        }
 
-    public string MgBulletName
-    {
-        get => mgBulletName;
-        set => mgBulletName = value;
-    }
+        public string MgBulletName
+        {
+            get => mgBulletName;
+            set => mgBulletName = value;
+        }
 
-    public float MgBulletSpeed
-    {
-        get => mgBulletSpeed;
-        set => mgBulletSpeed = value;
-    }
-    
-    public float MgBulletRange
-    {
-        get => mgBulletRange;
-        set => mgBulletRange = value;
-    }
-    
-    public float MgBulletReloadSpeed
-    {
-        get => mgBulletReloadSpeed;
-        set => mgBulletReloadSpeed = value;
-    }
-    
-    public int MgBulletMagSize
-    {
-        get => mgBulletMagSize;
-        set => mgBulletMagSize = value;
-    }
+        public float MgBulletSpeed
+        {
+            get => mgBulletSpeed;
+            set => mgBulletSpeed = value;
+        }
+        
+        public float MgBulletRange
+        {
+            get => mgBulletRange;
+            set => mgBulletRange = value;
+        }
+        
+        public float MgBulletReloadSpeed
+        {
+            get => mgBulletReloadSpeed;
+            set => mgBulletReloadSpeed = value;
+        }
+        
+        public int MgBulletMagSize
+        {
+            get => mgBulletMagSize;
+            set => mgBulletMagSize = value;
+        }
 
-    public int MgBulletDamage
-    {
-        get => mgBulletDamage;
-        set => mgBulletDamage = value;
-    }
+        public int MgBulletDamage
+        {
+            get => mgBulletDamage;
+            set => mgBulletDamage = value;
+        }
         #endregion
         #region ShotgunBullet
-    public GameObject SgBullet
-    {
-        get => sgBullet;
-        set => sgBullet = value;
-    }
+        public GameObject SgBullet
+        {
+            get => sgBullet;
+            set => sgBullet = value;
+        }
 
-    public string SgBulletName
-    {
-        get => sgBulletName;
-        set => sgBulletName = value;
-    }
-    
-    public float SgBulletSpeed
-    {
-        get => sgBulletSpeed;
-        set => sgBulletSpeed = value;
-    }
-    
-    public float SgBulletRange
-    {
-        get => sgBulletRange;
-        set => sgBulletRange = value;
-    }
-    
-    public float SgBulletReloadSpeed
-    {
-        get => sgBulletReloadSpeed;
-        set => sgBulletReloadSpeed = value;
-    }
-    
-    public int SgBulletMagSize
-    {
-        get => sgBulletMagSize;
-        set => sgBulletMagSize = value;
-    }
+        public string SgBulletName
+        {
+            get => sgBulletName;
+            set => sgBulletName = value;
+        }
+        
+        public float SgBulletSpeed
+        {
+            get => sgBulletSpeed;
+            set => sgBulletSpeed = value;
+        }
+        
+        public float SgBulletRange
+        {
+            get => sgBulletRange;
+            set => sgBulletRange = value;
+        }
+        
+        public float SgBulletReloadSpeed
+        {
+            get => sgBulletReloadSpeed;
+            set => sgBulletReloadSpeed = value;
+        }
+        
+        public int SgBulletMagSize
+        {
+            get => sgBulletMagSize;
+            set => sgBulletMagSize = value;
+        }
 
-    public int SgBulletDamage
-    {
-        get => sgBulletDamage;
-        set => sgBulletDamage = value;
-    }
+        public int SgBulletDamage
+        {
+            get => sgBulletDamage;
+            set => sgBulletDamage = value;
+        }
+        #endregion
+        #region SniperBullet
+        public string SniperBulletName
+        {
+            get => sniperBulletName;
+            set => sniperBulletName = value;
+        }
+    
+        public float SniperBulletSpeed
+        {
+            get => sniperBulletSpeed;
+            set => sniperBulletSpeed = value;
+        }
+    
+        public float SniperBulletRange
+        {
+            get => sniperBulletRange;
+            set => sniperBulletRange = value;
+        }
+    
+        public float SniperBulletReloadSpeed
+        {
+            get => sniperBulletReloadSpeed;
+            set => sniperBulletReloadSpeed = value;
+        }
+    
+        public int SniperBulletMagSize
+        {
+            get => sniperBulletMagSize;
+            set => sniperBulletMagSize = value;
+        }
+
+        public int SniperBulletDamage
+        {
+            get => sniperBulletDamage;
+            set => sniperBulletDamage = value;
+        }
         #endregion
     #endregion
     

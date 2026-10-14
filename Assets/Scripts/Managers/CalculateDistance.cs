@@ -6,15 +6,23 @@ using UnityEngine.Serialization;
 public class CalculateDistance : MonoBehaviour
 {
     private GameObject nearestEnemy;
+    private GameObject furthestEnemy;
     private GameObject player;
     private GameObject[] allEnemies;
     private float distance;
-    private float nearestDistance = 10000;
+    private float nearestDistance;
+    private float furthestDistance;
    
     public GameObject NearestEnemy
     {
-        get { return nearestEnemy; }
-        set { nearestEnemy = value; }
+        get => nearestEnemy;
+        set => nearestEnemy = value;
+    }
+
+    public GameObject FurthestEnemy
+    {
+        get => furthestEnemy;
+        set => furthestEnemy = value;
     }
 
     private void Start()
@@ -22,8 +30,10 @@ public class CalculateDistance : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public Vector2 CalculateClosestEnemy()
+    public Vector2 CalculateClosestEnemy(bool isSniper)
     {
+        nearestDistance = 10000;
+        furthestDistance = 0;
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0; i < allEnemies.Length; i++)
         {
@@ -34,8 +44,22 @@ public class CalculateDistance : MonoBehaviour
                 NearestEnemy = allEnemies[i];
                 nearestDistance = distance;
             }
+
+            if (distance > furthestDistance)
+            {
+                FurthestEnemy = allEnemies[i];
+                furthestDistance = distance;
+            }
         }
-        
-        return (nearestEnemy.transform.position - transform.position).normalized;
+
+        if (!isSniper)
+        {
+            
+            return (nearestEnemy.transform.position - transform.position).normalized;
+        }
+        else
+        {
+            return (furthestEnemy.transform.position - transform.position).normalized;
+        }
     }
 }

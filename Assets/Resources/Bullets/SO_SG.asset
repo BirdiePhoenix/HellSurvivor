@@ -16,6 +16,6 @@ MonoBehaviour:
   bulletName: SGWeapon
   shootingSpeed: 4
   shootingRange: 4
-  reloadSpeed: 1
+  reloadSpeed: 5
   magSize: 5
   damage: 5

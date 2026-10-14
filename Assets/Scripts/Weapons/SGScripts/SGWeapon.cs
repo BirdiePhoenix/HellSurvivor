@@ -7,11 +7,6 @@ public class SGWeapon : MonoBehaviour, IWeapon
     [SerializeField] private SGBulletPool sgBulletPool;
     [SerializeField] private GameObject[] directions;
     [SerializeField] private CalculateDistance calculateDistance;
-    
-    private GameObject nearestEnemy;
-    private GameObject[] allEnemies;
-    private float distance;
-    private float nearestDistance = 10000;
 
     public GameObject[] Directions
     {
@@ -20,11 +15,11 @@ public class SGWeapon : MonoBehaviour, IWeapon
     }
     private WeaponStorage weaponStorage;
 
-    private Vector2 shootingDirection;
-    public Vector2 ShootingDirection
+    private Vector2 weaponShootingDirection;
+    public Vector2 WeaponShootingDirection
     {
-        get => shootingDirection;
-        set => shootingDirection = value;
+        get => weaponShootingDirection;
+        set => weaponShootingDirection = value;
     }
     
     private bool hasStartedShooting;
@@ -41,6 +36,11 @@ public class SGWeapon : MonoBehaviour, IWeapon
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void TriggerShooting()
     {
         StartCoroutine(Shoot());
@@ -48,13 +48,13 @@ public class SGWeapon : MonoBehaviour, IWeapon
 
     private IEnumerator Shoot()
     {
-        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //WeaponShootingDirection = calculateDistance.CalculateClosestEnemy();
         for (int i = 0; i < weaponStorage.SgBulletMagSize; i++)
         {
             GameObject bullet = sgBulletPool.GetObject();
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
-            bullet.GetComponent<SGBulletBehaviour>().ShootDirection = calculateDistance.CalculateClosestEnemy();
+            bullet.GetComponent<SGBulletBehaviour>().ShootDirection = (directions[i].transform.position - transform.position).normalized;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             StartCoroutine(DeactivateBullet(bullet));
         }
@@ -68,20 +68,4 @@ public class SGWeapon : MonoBehaviour, IWeapon
         yield return new WaitForSecondsRealtime(weaponStorage.SgBulletRange);
         sgBulletPool.ReturnObject(bullet);
     }
-    
-    // public void CalculateClosestEnemy()
-    // {
-    //     for (int i = 0; i < allEnemies.Length; i++)
-    //     {
-    //         distance = Vector3.Distance(this.transform.position, allEnemies[i].transform.position);
-    //
-    //         if (distance < nearestDistance && !allEnemies[i].GetComponent<EnemySetup>().IsDead)
-    //         {
-    //             nearestEnemy = allEnemies[i];
-    //             nearestDistance = distance;
-    //         }
-    //     }
-    //     
-    //     ShootingDirection = (nearestEnemy.transform.position - transform.position).normalized;
-    // }
 }

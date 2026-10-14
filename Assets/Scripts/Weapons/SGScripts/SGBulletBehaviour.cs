@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SGBulletBehaviour : MonoBehaviour
 {
-    [SerializeField] private SGBulletSetup sgBulletSetup;
     private SGWeapon sgWeapon;
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
@@ -17,7 +16,7 @@ public class SGBulletBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
+        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<SGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
         sgWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SGWeapon>();
     }
@@ -28,22 +27,9 @@ public class SGBulletBehaviour : MonoBehaviour
         bulletRb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
-    {
-        if (isReady)
-        {
-            //shootDirection = sgWeapon.ShootingDirection;
-        }
-    }
-
-    private void OnDisable()
-    {
-        isReady = true;
-    }
-
     private void FixedUpdate()
     {
-        bulletRb.MovePosition(bulletRb.position + shootDirection * (sgBulletSetup.BulletSpeed * Time.fixedDeltaTime));
+        bulletRb.MovePosition(bulletRb.position + shootDirection * (weaponStorage.SgBulletSpeed * Time.fixedDeltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -51,7 +37,7 @@ public class SGBulletBehaviour : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             bulletPool.ReturnObject(gameObject);
-            other.GetComponent<EnemyHealth>().TakeDamage(sgBulletSetup.BulletDamage);
+            other.GetComponent<EnemyHealth>().TakeDamage(weaponStorage.SgBulletDamage);
         }
     }
 }

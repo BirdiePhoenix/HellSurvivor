@@ -5,20 +5,11 @@ using UnityEngine.Serialization;
 
 public class MGWeapon : MonoBehaviour, IWeapon
 {
-    //Redo!!!
-    [SerializeField] private DirectionState directionState;
     [SerializeField] private MGBulletPool mgBulletPool;
     [SerializeField] private float bulletSpread;
     [SerializeField] private CalculateDistance calculateDistance;
     
     private WeaponStorage weaponStorage;
-    
-    private GameObject nearestEnemy;
-    private GameObject player;
-    private GameObject[] allEnemies;
-    private float distance;
-    private float nearestDistance = 10000;
-
     private bool hasStartedShooting;
 
     public bool HasStartedShooting
@@ -26,9 +17,6 @@ public class MGWeapon : MonoBehaviour, IWeapon
         get => hasStartedShooting;
         set => hasStartedShooting = value;
     }
-
-    private EnemySpawner enemySpawner;
-    private DirectionState.LookDirection lookDirection;
     
     private Vector2 shootingDirection;
 
@@ -40,7 +28,6 @@ public class MGWeapon : MonoBehaviour, IWeapon
 
     private void Start()
     {
-        enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
         mgBulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<MGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
     }
@@ -64,7 +51,7 @@ public class MGWeapon : MonoBehaviour, IWeapon
     {
         //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         //CalculateClosestEnemy();
-        ShootingDirection = calculateDistance.CalculateClosestEnemy();
+        ShootingDirection = calculateDistance.CalculateClosestEnemy(false);
 
         for (int i = 0; i < weaponStorage.MgBulletMagSize; i++)
         {

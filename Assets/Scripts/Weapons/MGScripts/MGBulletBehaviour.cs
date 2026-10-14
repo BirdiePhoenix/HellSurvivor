@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MGBulletBehaviour : MonoBehaviour
 {
-    [SerializeField] private MGBulletSetup mgBulletSetup;
     private MGWeapon mgWeapon;
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
@@ -43,7 +42,7 @@ public class MGBulletBehaviour : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             bulletPool.ReturnObject(gameObject);
-            other.GetComponent<EnemyHealth>().TakeDamage(mgBulletSetup.BulletDamage);
+            other.GetComponent<EnemyHealth>().TakeDamage(weaponStorage.MgBulletDamage);
         }
     }
 }
