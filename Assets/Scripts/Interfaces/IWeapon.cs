@@ -9,6 +9,12 @@ public interface IWeapon
         get => throw new System.NotImplementedException();
         set => throw new System.NotImplementedException();
     }
+    
+    public float WeaponReloadSpeed
+    {
+        get => throw new System.NotImplementedException();
+        set => throw new System.NotImplementedException();
+    }
 
     private IEnumerator Shoot(){
         yield break;

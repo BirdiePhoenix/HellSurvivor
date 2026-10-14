@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c928fdf83cd8384092f38e8e965657b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehaviour
-  bulletSetup: {fileID: 1964865275182844169}
+  mgBulletSetup: {fileID: 1964865275182844169}
 --- !u!114 &1964865275182844169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +184,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c36c09a0e157ee46a1ce092eda6a7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSetup
+  weaponName: MGWeapon
+  weaponStorageIndex: 0

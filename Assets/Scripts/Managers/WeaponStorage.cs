@@ -15,6 +15,14 @@ public class WeaponStorage : MonoBehaviour, ISetup
         get => weaponIndex;
         set => weaponIndex = value;
     }
+    
+    // public enum WeaponType
+    // {
+    //     MachineGun,
+    //     ShotGun,
+    //     Sniper,
+    //     RocketGun
+    // }
 
     private GameObject mgBullet;
     private float mgBulletSpeed;
@@ -37,6 +45,28 @@ public class WeaponStorage : MonoBehaviour, ISetup
     {
         MgBulletSetup();
     }
+
+    // public void SetWeaponType(WeaponType weaponType)
+    // {
+    //     switch (weaponType)
+    //     {
+    //         case WeaponType.MachineGun:
+    //             MgBulletSetup();
+    //             break;
+    //         case WeaponType.ShotGun:
+    //
+    //             break;
+    //         case WeaponType.Sniper:
+    //             
+    //             break;
+    //         case WeaponType.RocketGun:
+    //             
+    //             break;
+    //         default:
+    //             Debug.LogError($"{weaponType} is an invalid weapon type!");
+    //             break;
+    //     }
+    // }
 
     private void MgBulletSetup()
     {
