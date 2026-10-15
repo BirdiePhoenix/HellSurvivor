@@ -1006,7 +1006,7 @@ MonoBehaviour:
   gameStateManager: {fileID: 386402080}
   firstWeapon: 2
   secondWeapon: 4
-  thirdWeapon: 30
+  thirdWeapon: 6
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
