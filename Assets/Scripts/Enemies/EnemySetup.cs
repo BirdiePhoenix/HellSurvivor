@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySetup : MonoBehaviour
 {   //This controls the stats of each different enemy
-    [SerializeField] private EnemyStartingStats  startingStats;
+    [SerializeField] private SO_EnemyStats enemyStats;
     
     private int currentHealth;
     private int currentMaxHealth;
@@ -14,15 +14,28 @@ public class EnemySetup : MonoBehaviour
     private bool isInRange;
     private bool isDead;
     
+    public enum EnemyType
+    {
+        FlyingEye,
+        Slime
+    }
+
+    [SerializeField] private EnemyType enemyType;
+
+    public EnemyType CurrentEnemyType
+    {
+        get => enemyType;
+        set => enemyType = value;
+    }
+    
     private void Start()
     {
-        startingStats = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyStartingStats>();
-        CurrentHealth = startingStats.CurrentMaxHealth;
-        CurrentMaxHealth = startingStats.CurrentMaxHealth;
-        CurrentMovementSpeed = startingStats.CurrentMovementSpeed;
-        CurrentStrength = startingStats.CurrentStrength;
-        CurrentAttackSpeed = startingStats.CurrentAttackSpeed;
-        CurrentAttackRange = startingStats.CurrentAttackRange;
+        CurrentHealth = enemyStats.MaxHealth;
+        CurrentMaxHealth = enemyStats.MaxHealth;
+        CurrentMovementSpeed = enemyStats.MovementSpeed;
+        CurrentStrength = enemyStats.Strength;
+        CurrentAttackSpeed = enemyStats.AttackSpeed;
+        CurrentAttackRange = enemyStats.AttackRange;
         isDead = false;
         IsInRange = false;
     }

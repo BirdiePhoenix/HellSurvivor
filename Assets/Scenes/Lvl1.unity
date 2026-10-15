@@ -1000,10 +1000,10 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
-  firstWeapon: 2
-  secondWeapon: 4
-  thirdWeapon: 6
-  stage2Lvl: 8
+  firstWeapon: 10
+  secondWeapon: 20
+  thirdWeapon: 30
+  stage2Lvl: 2
   stage3Lvl: 15
   uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
@@ -4852,9 +4852,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750282676}
-  - component: {fileID: 1750282677}
   - component: {fileID: 1750282679}
   - component: {fileID: 1750282682}
+  - component: {fileID: 1750282683}
   - component: {fileID: 1750282681}
   - component: {fileID: 1750282680}
   m_Layer: 0
@@ -4879,19 +4879,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1947612814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1750282677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750282675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ea2c82b0eb9e749bbaadd7716dc5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyStartingStats
-  enemyStats: {fileID: 11400000, guid: 095d84704a094c845a51fd4b5e408390, type: 2}
 --- !u!114 &1750282679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4920,7 +4907,7 @@ MonoBehaviour:
   intervalIncrease: 0.2
   interval: 5
   flyingEyePool: {fileID: 1750282679}
-  enemy2Pool: {fileID: 1750282682}
+  slimePool: {fileID: 1750282682}
   enemy3Pool: {fileID: 1750282681}
 --- !u!114 &1750282681
 MonoBehaviour:
@@ -4947,7 +4934,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d57743bedae804a87ae9744d2f2332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy2Pool
-  enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
+  enemyPrefab: {fileID: 2573660797102572754, guid: 6590bbbee634c5e4b98afd9445f92bb8, type: 3}
+--- !u!114 &1750282683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3679d6b674f7fe743aacbae404fed0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlimeProjectilePool
+  slimeProjectilePrefab: {fileID: 8799416018169947553, guid: e4a48735d1c98f949ad3da1a17de5fe0, type: 3}
 --- !u!1001 &1805360179
 PrefabInstance:
   m_ObjectHideFlags: 0

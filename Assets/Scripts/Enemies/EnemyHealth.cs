@@ -8,23 +8,32 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MoveStateManager moveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private CapsuleCollider2D capsuleCollider2D;
-    public CapsuleCollider2D CapsuleCollider2D{ get { return capsuleCollider2D; } set { capsuleCollider2D = value; } }
+    
     private float currentHealth;
-    private MGWeapon mgWeapon;
     private HighScoreManager highScoreManager;
-    private FlyingEyePool flyingEyePool;
+    private IObjectPool enemyPool;
     private CoinPool coinPool;
 
     private void Start()
     {
-        flyingEyePool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<FlyingEyePool>();
+        GetEnemyPool();
         highScoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<HighScoreManager>();
         coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
-        mgWeapon = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<MGWeapon>();
         currentHealth = enemySetup.CurrentHealth;
     }
 
+    private void GetEnemyPool()
+    {
+        if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
+        {
+            enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<FlyingEyePool>();
+        }
+        else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
+        {
+            enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<SlimePool>();
+        }
+    }
+    
     public void TakeDamage(int damage)
     {
         if (!enemySetup.IsDead)
@@ -50,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator ReturnEnemy()
     {
         yield return new WaitForSecondsRealtime(0.75f);
-        flyingEyePool.ReturnObject(gameObject);
+        enemyPool.ReturnObject(gameObject);
         enemySetup.IsDead = false;
         enemySetup.CurrentHealth = enemySetup.CurrentMaxHealth;
     }

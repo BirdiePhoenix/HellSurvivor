@@ -7,7 +7,8 @@ public class MoveStateManager : MonoBehaviour
     {
         Idle,
         Run,
-        Die
+        Die,
+        Attack
     }
     
     public MoveState CurrentMoveState { get; private set; }
@@ -18,6 +19,7 @@ public class MoveStateManager : MonoBehaviour
     private const string IdleAnim = "Idle";
     private const string RunAnim = "Run";
     private const string DieAnim = "Die";
+    private const string AttackAnim = "Attack";
     public static Action<MoveState> OnMoveStateChange;
     private float xPosLastFrame;
     private float yPosLastFrame;
@@ -36,6 +38,9 @@ public class MoveStateManager : MonoBehaviour
                 break;
             case MoveState.Die:
                 HandleDie();
+                break;
+            case MoveState.Attack:
+                HandleAttack();
                 break;
             default:
                 Debug.LogError($"{moveState} is an invalid movement state!");
@@ -59,5 +64,10 @@ public class MoveStateManager : MonoBehaviour
     private void HandleDie()
     {
         animator.Play(DieAnim);
+    }
+
+    private void HandleAttack()
+    {
+        animator.Play(AttackAnim);
     }
 }

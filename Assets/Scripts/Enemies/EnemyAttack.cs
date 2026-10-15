@@ -7,29 +7,66 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private EnemyMovement enemyMovement;
-    [FormerlySerializedAs("moveState")] [SerializeField] private MoveStateManager moveStateManager;
-    
+    [SerializeField] private MoveStateManager moveStateManager;
+
+    private SlimeProjectilePool slimeProjectilePool;
     private PlayerHealth playerHealth;
+    
+    private Vector2 shootingDirection;
+    public Vector2 ShootingDirection
+    {
+        get => shootingDirection;
+        set => shootingDirection = value;
+    }
 
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        slimeProjectilePool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<SlimeProjectilePool>();
     }
 
     public void TriggerAttack()
     {
-        StartCoroutine(Attack());
+        if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
+        {
+            StartCoroutine(FlyingEyeAttack());
+        }
+        else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
+        {
+            StartCoroutine(SlimeAttack());
+        }
     }
 
-    private IEnumerator Attack()
+    private IEnumerator FlyingEyeAttack()
     {
         //moveState.SetMoveState(MovementState.MoveState.Attack);
         playerHealth.TakeDamage(enemySetup.CurrentStrength);
-        yield return new WaitForSecondsRealtime(enemySetup.CurrentAttackSpeed);
+        yield return new WaitForSeconds(enemySetup.CurrentAttackSpeed);
    
-        if (enemyMovement.IsInRange)
+        if (enemySetup.IsInRange)
         {
-            StartCoroutine(Attack());
+            StartCoroutine(FlyingEyeAttack());
         }
+    }
+
+    private IEnumerator SlimeAttack()
+    {
+        moveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
+        SpawnSlimeProjectile();
+        yield return new WaitForSeconds(enemySetup.CurrentAttackSpeed);
+
+        if (enemySetup.IsInRange)
+        {
+            StartCoroutine(SlimeAttack());
+        }
+    }
+
+    private void SpawnSlimeProjectile()
+    {
+        GameObject projectile = slimeProjectilePool.GetObject();
+        projectile.transform.position = transform.position;
+        projectile.transform.rotation = transform.rotation;
+        Rigidbody2D projectileRB = projectile.GetComponent<Rigidbody2D>();  
+        
     }
 }

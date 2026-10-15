@@ -32,7 +32,7 @@ public class _EnemySpawner : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private FlyingEyePool flyingEyePool;
-    [SerializeField] private Enemy2Pool enemy2Pool;
+    [SerializeField] private SlimePool slimePool;
     [SerializeField] private Enemy3Pool enemy3Pool;
     private GameObject player;
     
@@ -125,15 +125,16 @@ public class _EnemySpawner : MonoBehaviour
 
     private GameObject Stage2()
     {
-        float randomNum = Random.Range(0f, 1f);
-        if (randomNum < 0.7f)
-        {
-            return GetFlyingEye();
-        }
-        else
-        {
-            return GetEnemy2();
-        }
+        // float randomNum = Random.Range(0f, 1f);
+        // if (randomNum < 0.7f)
+        // {
+        //     return GetFlyingEye();
+        // }
+        // else
+        // {
+        //     
+        // }
+        return GetSlime();
     }
 
     private GameObject Stage3()
@@ -145,7 +146,7 @@ public class _EnemySpawner : MonoBehaviour
         }
         else if (randomNum < 0.8f)
         {
-            return GetEnemy2();
+            return GetSlime();
         }
         else
         {
@@ -164,9 +165,9 @@ public class _EnemySpawner : MonoBehaviour
         return flyingEyePool.GetObject();
     }
 
-    private GameObject GetEnemy2()
+    private GameObject GetSlime()
     {
-        return enemy2Pool.GetObject();
+        return slimePool.GetObject();
     }
 
     private GameObject GetEnemy3()

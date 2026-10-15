@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySetup
   enemyStats: {fileID: 11400000, guid: 095d84704a094c845a51fd4b5e408390, type: 2}
+  enemyType: 0
 --- !u!114 &4735120953940981454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +195,6 @@ MonoBehaviour:
   enemyMoveStateManager: {fileID: 772735918360729574}
   spriteRenderer: {fileID: 1054059925757435384}
   enemyRb: {fileID: 5047139412016876866}
-  calculateDistance: {fileID: 0}
 --- !u!114 &8539189336869814556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,6 @@ MonoBehaviour:
   enemySetup: {fileID: 3481334637566462215}
   moveStateManager: {fileID: 772735918360729574}
   spriteRenderer: {fileID: 1054059925757435384}
-  capsuleCollider2D: {fileID: 3845458282377547689}
 --- !u!114 &6224082336221303397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
   enemyAttack: {fileID: 6224082336221303397}
   enemyMovement: {fileID: 4735120953940981454}
+  enemySetup: {fileID: 3481334637566462215}
+  moveStateManager: {fileID: 772735918360729574}
 --- !u!95 &6704874515199131448
 Animator:
   serializedVersion: 7

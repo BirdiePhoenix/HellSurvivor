@@ -6,11 +6,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private MoveStateManager enemyMoveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer; 
     [SerializeField] private Rigidbody2D enemyRb;
-    [SerializeField] private CalculateDistance calculateDistance;
+    
+    private Vector2 playerDirection;
+
+    public Vector2 PlayerDirection
+    {
+        get => playerDirection;
+        set => playerDirection = value;
+    }
     
     private GameObject player;
-    private bool isInRange;
-
+    
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
@@ -30,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (!enemySetup.IsDead)
         {
-            EnemyMove(isInRange);
+            EnemyMove();
         }
         else if (enemySetup.IsDead)
         {
@@ -38,23 +44,24 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void EnemyMove(bool _isInRange)
+    void EnemyMove()
     {
-        if (!_isInRange)
+        if (!enemySetup.IsInRange)
         {
-            Vector2 lookDirection = (player.transform.position - transform.position).normalized;
-            enemyRb.MovePosition(enemyRb.position + lookDirection * (enemySetup.CurrentMovementSpeed * Time.fixedDeltaTime));
+            PlayerDirection = (player.transform.position - transform.position).normalized;
+            enemyRb.MovePosition(enemyRb.position + PlayerDirection * (enemySetup.CurrentMovementSpeed * Time.fixedDeltaTime));
             enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Run);
         }
         else
         {
-            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
+            if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
+            {
+                enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
+            }
+            else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
+            {
+                enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
+            }
         }
-    }
-
-    public bool IsInRange
-    {
-        get { return isInRange; }
-        set { isInRange = value; }
     }
 }
