@@ -35,4 +35,12 @@ public class SniperBulletBehaviour : MonoBehaviour
     {
         bulletRb.MovePosition(bulletRb.position + shootDirection * (weaponStorage.SniperBulletSpeed * Time.fixedDeltaTime));
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyHealth>().TakeDamage(weaponStorage.MgBulletDamage);
+        }
+    }
 }
