@@ -40,7 +40,7 @@ public class SniperBulletBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>().TakeDamage(weaponStorage.MgBulletDamage);
+            other.GetComponent<EnemyHealth>().TakeDamage(weaponStorage.SniperBulletDamage);
         }
     }
 }

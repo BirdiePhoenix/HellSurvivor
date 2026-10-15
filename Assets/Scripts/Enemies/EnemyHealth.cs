@@ -13,12 +13,12 @@ public class EnemyHealth : MonoBehaviour
     private float currentHealth;
     private MGWeapon mgWeapon;
     private HighScoreManager highScoreManager;
-    private EnemyPool enemyPool;
+    private FlyingEyePool flyingEyePool;
     private CoinPool coinPool;
 
     private void Start()
     {
-        enemyPool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyPool>();
+        flyingEyePool = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<FlyingEyePool>();
         highScoreManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<HighScoreManager>();
         coinPool = GameObject.FindGameObjectWithTag("PickUpManager").GetComponent<CoinPool>();
         mgWeapon = GameObject.FindGameObjectWithTag("MGWeapon").GetComponent<MGWeapon>();
@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator ReturnEnemy()
     {
         yield return new WaitForSecondsRealtime(0.75f);
-        enemyPool.ReturnObject(gameObject);
+        flyingEyePool.ReturnObject(gameObject);
         enemySetup.IsDead = false;
         enemySetup.CurrentHealth = enemySetup.CurrentMaxHealth;
     }

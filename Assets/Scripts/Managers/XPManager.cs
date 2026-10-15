@@ -4,18 +4,27 @@ using UnityEngine.UI;
 
 public class XPManager : MonoBehaviour
 {
-    private PlayerSetup playerSetup;
+    [Header("Level")]
     [SerializeField] private float xpGrowthMultiplier = 1.2f;
     [SerializeField] private Slider xpSlider;
     [SerializeField] private TMP_Text currentLvlText;
-    [SerializeField] UIManager uiManager;
-    [SerializeField] UpgradeManager upgradeManager;
-    [SerializeField] HighScoreManager highScoreManager;
-    [SerializeField] GameStateManager gameStateManager;
     
+    [Header("Weapons")]
     [SerializeField] private int firstWeapon = 10;
     [SerializeField] private int secondWeapon = 20;
     [SerializeField] private int thirdWeapon = 30;
+
+    [Header("EnemyStages")] 
+    [SerializeField] private int stage2Lvl = 8;
+    [SerializeField] private int stage3Lvl = 15;
+    
+    [Header("References")]
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private HighScoreManager highScoreManager;
+    [SerializeField] private GameStateManager gameStateManager;
+    [SerializeField] private _EnemySpawner enemySpawner;
+    private PlayerSetup playerSetup;
 
     void Start()
     {
@@ -40,6 +49,7 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
         highScoreManager.UpdateScore(100);
+        enemySpawner.IncreaseSpawning();
 
         if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon ||
             playerSetup.CurrentLvl == thirdWeapon)
@@ -49,6 +59,15 @@ public class XPManager : MonoBehaviour
         else
         {
             AddStat();
+        }
+
+        if (playerSetup.CurrentLvl == stage2Lvl)
+        {
+            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage2);
+        }
+        else if (playerSetup.CurrentLvl == stage3Lvl)
+        {
+            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage3);
         }
     }
 

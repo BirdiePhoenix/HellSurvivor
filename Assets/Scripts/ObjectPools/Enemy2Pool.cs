@@ -1,18 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class EnemyPool : MonoBehaviour, IObjectPool
+public class Enemy2Pool : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
-    private Queue<GameObject>  enemyPool = new Queue<GameObject>();
+    private Queue<GameObject>  enemy2Pool = new Queue<GameObject>();
 
     public GameObject GetObject()
     {
         GameObject obj;
-        if (enemyPool.Count > 0)
+        if (enemy2Pool.Count > 0)
         {
-            obj = enemyPool.Dequeue();
+            obj = enemy2Pool.Dequeue();
             obj.SetActive(true);
         }
         else
@@ -26,6 +25,6 @@ public class EnemyPool : MonoBehaviour, IObjectPool
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
-        enemyPool.Enqueue(obj);
+        enemy2Pool.Enqueue(obj);
     }
 }

@@ -1000,13 +1000,16 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
+  firstWeapon: 2
+  secondWeapon: 4
+  thirdWeapon: 6
+  stage2Lvl: 8
+  stage3Lvl: 15
   uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
   highScoreManager: {fileID: 739934446}
   gameStateManager: {fileID: 386402080}
-  firstWeapon: 2
-  secondWeapon: 4
-  thirdWeapon: 6
+  enemySpawner: {fileID: 1750282680}
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4851,7 +4854,9 @@ GameObject:
   - component: {fileID: 1750282676}
   - component: {fileID: 1750282677}
   - component: {fileID: 1750282679}
-  - component: {fileID: 1750282678}
+  - component: {fileID: 1750282682}
+  - component: {fileID: 1750282681}
+  - component: {fileID: 1750282680}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: EnemyManager
@@ -4887,22 +4892,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStartingStats
   enemyStats: {fileID: 11400000, guid: 095d84704a094c845a51fd4b5e408390, type: 2}
---- !u!114 &1750282678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750282675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53307796213496d4298233cc4b8419ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyTypes:
-  - {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
-  spawnInterval: 3.5
-  enemyPool: {fileID: 0}
 --- !u!114 &1750282679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4915,6 +4904,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17023e1362f14514fb33edea3642ff19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
+--- !u!114 &1750282680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dfb28dacc2a1764e8f0078efc947f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_EnemySpawner
+  intervalIncrease: 0.2
+  interval: 5
+  flyingEyePool: {fileID: 1750282679}
+  enemy2Pool: {fileID: 1750282682}
+  enemy3Pool: {fileID: 1750282681}
+--- !u!114 &1750282681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b841de5d5dd83e24a8ad0bc689b2dff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy3Pool
+  enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
+--- !u!114 &1750282682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d57743bedae804a87ae9744d2f2332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy2Pool
   enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
 --- !u!1001 &1805360179
 PrefabInstance:
