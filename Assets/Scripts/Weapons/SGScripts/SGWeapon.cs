@@ -35,12 +35,7 @@ public class SGWeapon : MonoBehaviour, IWeapon
         sgBulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<SGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
     }
-
-    private void Update()
-    {
-        
-    }
-
+    
     public void TriggerShooting()
     {
         StartCoroutine(Shoot());
