@@ -21,7 +21,7 @@ public class EnemySetup : MonoBehaviour
         Slime
     }
 
-    private EnemyType enemyType;
+    [SerializeField]private EnemyType enemyType;
     public EnemyType CurrentEnemyType
     {
         get => enemyType;

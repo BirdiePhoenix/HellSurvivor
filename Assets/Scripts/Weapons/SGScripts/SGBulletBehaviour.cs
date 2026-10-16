@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SGBulletBehaviour : MonoBehaviour
 {
-    private SGWeapon sgWeapon;
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
@@ -18,7 +17,6 @@ public class SGBulletBehaviour : MonoBehaviour
     {
         bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<SGBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
-        sgWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SGWeapon>();
     }
     
     private bool isReady = false;

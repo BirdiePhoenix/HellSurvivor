@@ -10,6 +10,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private MoveStateManager moveStateManager;
     private SlimeProjectilePool slimeProjectilePool;
     private PlayerHealth playerHealth;
+    private Rigidbody2D rb;
     
     private void Start()
     {
@@ -42,8 +43,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
     private IEnumerator SlimeAttack()
-    {
-        moveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
+    {   
         SpawnSlimeProjectile();
         yield return new WaitForSeconds(enemySetup.CurrentAttackSpeed);
 

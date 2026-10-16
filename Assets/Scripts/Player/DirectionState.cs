@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class DirectionState : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private SpriteRenderer spriteRenderer;
-    private GameObject player;
     [SerializeField] private SGWeapon sgWeapon;
     [SerializeField] private GameObject child;
-
+    private GameObject player;
     private Rigidbody2D rb;
 
-
+    
     public enum LookDirection
     {
         Right,

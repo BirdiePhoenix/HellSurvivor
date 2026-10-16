@@ -6,6 +6,7 @@ public class GameStateManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private TimeManager timeManager;
     [SerializeField] private GameOverManager gameOverManager;
+    [SerializeField] private HighScoreManager highScoreManager;
     
     [Header("UI Elements")]
     [SerializeField] private GameObject statsUpgradeMenu;
@@ -128,6 +129,7 @@ public class GameStateManager : MonoBehaviour
     {
         if (!isPaused)
         {
+            highScoreManager.UpdateHighScore(highScoreManager.CurrentScore);
             pauseMenu.SetActive(true);
             isPaused = true;
         }

@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
                 return GetFlyingEye();
             case EnemyStage.Stage2:
                 randomNum = Random.Range(0f, 1f);
-                if (randomNum < 0.7f)
+                if (randomNum < 0.5f)
                 {
                     return GetFlyingEye();
                 }

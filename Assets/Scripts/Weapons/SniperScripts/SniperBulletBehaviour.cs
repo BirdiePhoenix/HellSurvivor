@@ -3,7 +3,6 @@ using UnityEngine;
 public class SniperBulletBehaviour : MonoBehaviour
 {
     private SniperWeapon sniperWeapon;
-    private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
     private WeaponStorage weaponStorage;
@@ -16,7 +15,6 @@ public class SniperBulletBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        bulletPool = GameObject.FindGameObjectWithTag("BulletManager").GetComponent<SniperBulletPool>();
         weaponStorage = GameObject.FindGameObjectWithTag("Storage").GetComponent<WeaponStorage>();
         sniperWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SniperWeapon>();
     }

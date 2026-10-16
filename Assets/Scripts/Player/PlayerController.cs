@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-
     private Animator playerAnimator;
 
+    [Header("References")]
     [SerializeField] private PlayerSetup playerSetup;
     [SerializeField] private MoveStateManager playerMoveStateManager;
     [SerializeField] private GameStateManager gameStateManager;
@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //playerAnimator.SetBool("isRunning", false);
             playerMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
         } 
     }

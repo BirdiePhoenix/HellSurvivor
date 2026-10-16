@@ -24,15 +24,8 @@ public class SlimeProjectilePool : MonoBehaviour, IObjectPool
 
     public void ReturnObject(GameObject obj)
     {
-        if (slimeProjectilePool.Count >= maxPoolSize)
-        {
-            Destroy(obj);//This is in case a lot of object has spawned so we remove some of them 
-        }
-        else
-        {
-            obj.SetActive(false);
-            obj.transform.position = transform.position;
-            slimeProjectilePool.Enqueue(obj);
-        }
+        obj.SetActive(false);
+        obj.transform.position = transform.position;
+        slimeProjectilePool.Enqueue(obj);
     }
 }

@@ -9,6 +9,7 @@ public class HighScoreManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreTextPause;
     [SerializeField] private TextMeshProUGUI higscoreTextGO;
+    private string scoreString;
     
     [Header("References")]
     [SerializeField] private SaveManager saveManager;
@@ -38,7 +39,6 @@ public class HighScoreManager : MonoBehaviour, IDataPersistence
         set { currentScore = value; }
     }
     
-    private string scoreString;
 
     public void UpdateScore(int _score)
     {

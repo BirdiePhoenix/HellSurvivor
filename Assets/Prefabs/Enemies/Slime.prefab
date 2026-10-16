@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4540850714787650868}
   - component: {fileID: 7964157937569074742}
   - component: {fileID: 5920610469185161111}
+  - component: {fileID: 2897962499979728037}
   - component: {fileID: 1532516691574412030}
   m_Layer: 6
   m_Name: Slime
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySetup
   enemyStats: {fileID: 11400000, guid: 075b701731fe21042a9f3837c269a34b, type: 2}
+  enemyType: 1
 --- !u!114 &3548520060688686618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +237,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveStateManager
   animator: {fileID: 1532516691574412030}
   rb: {fileID: 8461607189406663859}
+--- !u!114 &2897962499979728037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573660797102572754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399e667aaa751c0458825df843e2a4e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
+  enemyAttack: {fileID: 7964157937569074742}
+  enemyMovement: {fileID: 3548520060688686618}
+  enemySetup: {fileID: 1040851505640557007}
+  moveStateManager: {fileID: 5920610469185161111}
+  distanceToAttack: 5
+  distanceToStop: 0
 --- !u!95 &1532516691574412030
 Animator:
   serializedVersion: 7

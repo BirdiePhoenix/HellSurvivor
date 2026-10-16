@@ -1411,7 +1411,6 @@ GameObject:
   - component: {fileID: 386402081}
   - component: {fileID: 386402078}
   - component: {fileID: 386402077}
-  - component: {fileID: 386402079}
   - component: {fileID: 386402080}
   m_Layer: 0
   m_Name: GameManager
@@ -1453,8 +1452,8 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
-  firstWeapon: 2
-  secondWeapon: 15
+  firstWeapon: 3
+  secondWeapon: 8
   stage2Lvl: 5
   upgradeManager: {fileID: 1743072063}
   highScoreManager: {fileID: 739934446}
@@ -1475,18 +1474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   hpSlider: {fileID: 1941472329}
   currentHpText: {fileID: 1056100650}
---- !u!114 &386402079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386402074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7b7884749cb1045a8c333dcf75e414, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
 --- !u!114 &386402080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   timeManager: {fileID: 978901894}
   gameOverManager: {fileID: 229154196}
+  highScoreManager: {fileID: 739934446}
   statsUpgradeMenu: {fileID: 1465142115}
   weaponUpgradeMenu: {fileID: 462455422}
   pauseMenu: {fileID: 377330515}
@@ -10105,11 +10093,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3324428732008732597, guid: d37282480f0c07f4faff70c5ab9b86d6, type: 3}
   m_PrefabInstance: {fileID: 2903726234305251231}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3589854528917393192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7437458830507150888, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-  m_PrefabInstance: {fileID: 5472839843114921364}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3714866976126347871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10185,18 +10168,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828800974}
     m_Modifications:
-    - target: {fileID: 1601240338351235189, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 3150810725923085098, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
+      propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 8575099124162727704}
-    - target: {fileID: 1601240338351235189, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnResumeButtonClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601240338351235189, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseButtons, Assembly-CSharp
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 386402080}
     - target: {fileID: 7437458830507150888, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
       propertyPath: m_Name
       value: ResumeButton
@@ -10232,18 +10207,6 @@ PrefabInstance:
     - target: {fileID: 8587741987567914538, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
       propertyPath: m_SizeDelta.y
       value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587741987567914538, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.9036719
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587741987567914538, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 6.294001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587741987567914538, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.47855
       objectReference: {fileID: 0}
     - target: {fileID: 8587741987567914538, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10296,10 +10259,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7437458830507150888, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8575099124162727704}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 823a35dc91f60c44fbaadcd251906c27, type: 3}
 --- !u!1001 &6114401220725394588
 PrefabInstance:
@@ -10869,19 +10829,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6526968653998554676, guid: 8219500d5ac3dda4e8cc59425c833d90, type: 3}
   m_PrefabInstance: {fileID: 8382400976268059423}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8575099124162727704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589854528917393192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff472c77315c2c74196cadf2838eed6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseButtons
-  gameStateManager: {fileID: 386402080}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

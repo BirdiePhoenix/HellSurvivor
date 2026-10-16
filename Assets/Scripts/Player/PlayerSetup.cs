@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerSetup : MonoBehaviour, ISetup
 {
     [SerializeField] private SO_PlayerStartingStats playerStats;
-    //private static PlayerSetup playerSetup;
     private int currentHealth;
     private int currentMaxHealth;
     private float currentMovementSpeed;

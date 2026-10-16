@@ -24,15 +24,8 @@ public class MGBulletPool : MonoBehaviour, IObjectPool
 
     public void ReturnObject(GameObject obj)
     {
-        if (mgBulletPool.Count >= maxPoolSize)
-        {
-            Destroy(obj);//This is in case a lot of object has spawned so we remove some of them 
-        }
-        else
-        {
-            obj.SetActive(false);
-            obj.transform.position = transform.position;
-            mgBulletPool.Enqueue(obj);
-        }
+        obj.SetActive(false);
+        obj.transform.position = transform.position;
+        mgBulletPool.Enqueue(obj);
     }
 }
