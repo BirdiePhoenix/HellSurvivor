@@ -6,28 +6,22 @@ using Random = UnityEngine.Random;
 
 public class _EnemySpawner : MonoBehaviour
 {
-    //State machine
-    //List of available enemies
-    //Increase amount of enemies to spawn
-    [Header("Enemies")]
-    // [SerializeField] private GameObject flyingEye;
-    // [SerializeField] private GameObject enemy2;
-    // [SerializeField] private GameObject enemy3;
-    // private List<GameObject> enemieList = new List<GameObject>();
-    // private GameObject enemyToSpawn;
-    // public GameObject EnemyToSpawn
-    // {
-    //     get => enemyToSpawn;
-    //     set => enemyToSpawn = value;
-    // }
-
     [Header("Interval")]
     [SerializeField] private float intervalIncrease;
-    [SerializeField] private float interval;
+    [SerializeField] private float spawnInterval;
     public float IntervalIncrease
     {
         get => intervalIncrease;
         set => intervalIncrease = value;
+    }
+    
+    [Header("SpawnPoints")]
+    [SerializeField] private GameObject[] spawnPoints;
+
+    public GameObject[] SpawnPoints
+    {
+        get => spawnPoints;
+        set => spawnPoints = value;
     }
     
     [Header("References")]
@@ -62,31 +56,15 @@ public class _EnemySpawner : MonoBehaviour
 
     public void IncreaseSpawning()
     {
-        if (interval > 0.5)
+        if (spawnInterval > 0.5)
         {
-            interval -= intervalIncrease;
+            spawnInterval -= intervalIncrease;
         }
     }
 
     public void SetEnemyStage(EnemyStage enemyStage)
     {
         if(enemyStage == CurrentEnemyStage) return;
-
-        // switch (enemyStage)
-        // {
-        //     case EnemyStage.Stage1:
-        //         enemieList.Add(flyingEye);
-        //         break;
-        //     case EnemyStage.Stage2:
-        //         enemieList.Add(enemy2);
-        //         break;
-        //     case EnemyStage.Stage3:
-        //         enemieList.Add(enemy3);
-        //         break;
-        //     default:
-        //         Debug.LogError($"{enemyStage} is an invalid stage!");
-        //         break;
-        // }
         
         OnEnemyStageChange?.Invoke(enemyStage);
         CurrentEnemyStage = enemyStage;
@@ -94,11 +72,8 @@ public class _EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        GetEnemies(CurrentEnemyStage);
         GameObject newEnemy = GetEnemies(CurrentEnemyStage);///
-        Vector2 spawnPos = CalculateSpawnPoint();
-        newEnemy.transform.position = spawnPos;
-        yield return new WaitForSeconds(interval);
+        yield return new WaitForSeconds(spawnInterval);
         StartCoroutine(SpawnEnemies());
     }
     
@@ -107,58 +82,38 @@ public class _EnemySpawner : MonoBehaviour
         switch (enemyStage)
         {
             case EnemyStage.Stage1:
-                return Stage1();
+                return GetFlyingEye();
             case EnemyStage.Stage2:
-                return Stage2();
+                // float randomNum = Random.Range(0f, 1f);
+                // if (randomNum < 0.7f)
+                // {
+                //     return GetFlyingEye();
+                // }
+                // else
+                // {
+                //     
+                // }
+                return GetSlime();
             case EnemyStage.Stage3:
-                return Stage3();
+                float randomNum = Random.Range(0f, 1f);
+                if (randomNum < 0.5f)
+                {
+                    return GetFlyingEye();
+                }
+                else if (randomNum < 0.8f)
+                {
+                    return GetSlime();
+                }
+                else
+                {
+                    return GetEnemy3();
+                }
             default:
                 Debug.LogError($"{enemyStage} is an invalid stage!");
                 return null;
         }
     }
     
-    private GameObject Stage1()
-    {
-        return GetFlyingEye();
-    }
-
-    private GameObject Stage2()
-    {
-        // float randomNum = Random.Range(0f, 1f);
-        // if (randomNum < 0.7f)
-        // {
-        //     return GetFlyingEye();
-        // }
-        // else
-        // {
-        //     
-        // }
-        return GetSlime();
-    }
-
-    private GameObject Stage3()
-    {
-        float randomNum = Random.Range(0f, 1f);
-        if (randomNum < 0.5f)
-        {
-            return GetFlyingEye();
-        }
-        else if (randomNum < 0.8f)
-        {
-            return GetSlime();
-        }
-        else
-        {
-            return GetEnemy3();
-        }
-    }
-
-    private Vector2 CalculateSpawnPoint()
-    {
-        return new Vector2(Random.Range(player.transform.position.x + 5 -5f, player.transform.position.x + 5 + 5), 
-            Random.Range(player.transform.position.y + 5 -6f, player.transform.position.y + 5 + 6));
-    }
 
     private GameObject GetFlyingEye()
     {
@@ -173,5 +128,12 @@ public class _EnemySpawner : MonoBehaviour
     private GameObject GetEnemy3()
     {
         return enemy3Pool.GetObject();
+    }
+    
+    public GameObject GenerateSpawnPoint()
+    {
+        
+        int index = Random.Range(0, spawnPoints.Length);
+        return spawnPoints[index];
     }
 }

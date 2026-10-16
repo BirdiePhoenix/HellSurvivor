@@ -4,6 +4,7 @@ using UnityEngine;
 public class SlimePool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private _EnemySpawner enemySpawner;
     private Queue<GameObject>  slimePool = new Queue<GameObject>();
 
     public GameObject GetObject()
@@ -12,11 +13,12 @@ public class SlimePool : MonoBehaviour, IObjectPool
         if (slimePool.Count > 0)
         {
             obj = slimePool.Dequeue();
+            obj.transform.position = enemySpawner.GenerateSpawnPoint().transform.position;
             obj.SetActive(true);
         }
         else
         {
-            obj = Instantiate(enemyPrefab, transform.position, transform.rotation);
+            obj = Instantiate(enemyPrefab, enemySpawner.GenerateSpawnPoint().transform.position, transform.rotation);
         }
 
         return obj;
@@ -25,6 +27,7 @@ public class SlimePool : MonoBehaviour, IObjectPool
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
+        obj.transform.position = transform.position;
         slimePool.Enqueue(obj);
     }
 }

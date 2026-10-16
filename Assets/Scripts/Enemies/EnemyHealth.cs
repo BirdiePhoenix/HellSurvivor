@@ -14,6 +14,11 @@ public class EnemyHealth : MonoBehaviour
     private IObjectPool enemyPool;
     private CoinPool coinPool;
 
+    private void OnEnable()
+    {
+        enemySetup.IsDead = false;
+    }
+
     private void Start()
     {
         GetEnemyPool();
@@ -60,7 +65,6 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.75f);
         enemyPool.ReturnObject(gameObject);
-        enemySetup.IsDead = false;
         enemySetup.CurrentHealth = enemySetup.CurrentMaxHealth;
     }
 
