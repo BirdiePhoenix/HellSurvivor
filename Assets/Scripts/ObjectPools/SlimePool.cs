@@ -5,7 +5,7 @@ public class SlimePool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private _EnemySpawner enemySpawner;
-    private Queue<GameObject>  slimePool = new Queue<GameObject>();
+    private readonly Queue<GameObject>  slimePool = new Queue<GameObject>();
 
     public GameObject GetObject()
     {

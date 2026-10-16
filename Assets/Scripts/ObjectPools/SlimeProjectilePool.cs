@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlimeProjectilePool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject slimeProjectilePrefab;
-    private Queue<GameObject>  slimeProjectilePool = new Queue<GameObject>();
+    private readonly Queue<GameObject>  slimeProjectilePool = new Queue<GameObject>();
 
     public GameObject GetObject()
     {

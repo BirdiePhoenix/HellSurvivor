@@ -4,7 +4,7 @@ using UnityEngine;
 public class CoinPool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject coinPrefab;
-    private Queue<GameObject> coinPool = new  Queue<GameObject>();
+    private readonly Queue<GameObject> coinPool = new  Queue<GameObject>();
     public GameObject GetObject()
     {
         GameObject obj;

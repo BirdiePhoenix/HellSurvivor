@@ -4,7 +4,7 @@ using UnityEngine;
 public class MGBulletPool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject mgBulletPrefab;
-    private Queue<GameObject>  mgBulletPool = new Queue<GameObject>();
+    private readonly Queue<GameObject>  mgBulletPool = new Queue<GameObject>();
 
     public GameObject GetObject()
     {

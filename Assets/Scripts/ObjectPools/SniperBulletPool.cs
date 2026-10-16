@@ -4,7 +4,7 @@ using UnityEngine;
 public class SniperBulletPool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject sniperBulletPrefab;
-    private Queue<GameObject>  sniperBulletPool = new Queue<GameObject>();
+    private readonly Queue<GameObject>  sniperBulletPool = new Queue<GameObject>();
 
     public GameObject GetObject()
     {
