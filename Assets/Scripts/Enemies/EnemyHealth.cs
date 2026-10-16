@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MoveStateManager moveStateManager;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    
-    private float currentHealth;
     private HighScoreManager highScoreManager;
     private IObjectPool enemyPool;
     private CoinPool coinPool;
+    
+    [Header("Local Variables")]
+    private float currentHealth;
 
     private void OnEnable()
     {

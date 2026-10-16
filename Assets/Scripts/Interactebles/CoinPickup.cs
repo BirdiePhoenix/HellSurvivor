@@ -4,7 +4,7 @@ using UnityEngine;
 public class CoinPickup : MonoBehaviour
 {
     //Redo with SO
-    [SerializeField] private int xpValue;
+    [SerializeField] private SO_Coin coinSO;
     private XPManager playerXp;
     private CoinPool coinPool;
 
@@ -18,7 +18,7 @@ public class CoinPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerXp.GainXp(xpValue);
+            playerXp.GainXp(coinSO.xpValue);
             coinPool.ReturnObject(gameObject);
         }
     }

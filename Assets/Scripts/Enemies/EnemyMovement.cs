@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private MoveStateManager enemyMoveStateManager;
     [SerializeField] private SpriteRenderer spriteRenderer; 
     [SerializeField] private Rigidbody2D enemyRb;
     
+    [Header("Movement")]
     private Vector2 playerDirection;
-
     public Vector2 PlayerDirection
     {
         get => playerDirection;
@@ -38,10 +39,6 @@ public class EnemyMovement : MonoBehaviour
         {
             EnemyMove();
         }
-        else if (enemySetup.IsDead)
-        {
-            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Die);
-        }
     }
 
     void EnemyMove()
@@ -55,14 +52,6 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
-            // if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
-            // {
-            //     enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
-            // }
-            // else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
-            // {
-            //     enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
-            // }
         }
     }
 }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CalculateDistance : MonoBehaviour
-{
+public class CalculateDistance : MonoBehaviour 
+{ //Calculates the closest and furthest enemies for the mg and sniper weapons
+    [Header("References")]
+    private GameObject player;
+    
+    [Header("Calculating Distance")]
     private GameObject nearestEnemy;
     private GameObject furthestEnemy;
-    private GameObject player;
     private GameObject[] allEnemies;
     private float distance;
     private float nearestDistance;

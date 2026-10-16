@@ -7,19 +7,10 @@ public class EnemyAttack : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemySetup enemySetup;
-    [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private MoveStateManager moveStateManager;
     private SlimeProjectilePool slimeProjectilePool;
     private PlayerHealth playerHealth;
     
-    [Header("Local variables")]
-    private Vector2 shootingDirection;
-    public Vector2 ShootingDirection
-    {
-        get => shootingDirection;
-        set => shootingDirection = value;
-    }
-
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
@@ -67,7 +58,5 @@ public class EnemyAttack : MonoBehaviour
         GameObject projectile = slimeProjectilePool.GetObject();
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
-        Rigidbody2D projectileRB = projectile.GetComponent<Rigidbody2D>();  
-        
     }
 }

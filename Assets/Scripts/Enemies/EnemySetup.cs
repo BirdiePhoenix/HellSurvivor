@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class EnemySetup : MonoBehaviour
 {   //This controls the stats of each different enemy
-    [SerializeField] private SO_EnemyStats enemyStats;
     
+    [Header("Stats")]
+    [SerializeField] private SO_EnemyStats enemyStats;
     private int currentHealth;
     private int currentMaxHealth;
     private float currentMovementSpeed;
@@ -20,8 +21,7 @@ public class EnemySetup : MonoBehaviour
         Slime
     }
 
-    [SerializeField] private EnemyType enemyType;
-
+    private EnemyType enemyType;
     public EnemyType CurrentEnemyType
     {
         get => enemyType;

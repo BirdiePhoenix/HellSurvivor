@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SlimeProjectile : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private SO_EnemyStats enemyStats;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private float projectileRange;
+    
+    [Header("References")]
     private IObjectPool bulletPool;
     private Rigidbody2D bulletRb;
     private Vector2 shootDirection;
     private GameObject player;
     
-    [SerializeField] private float projectileSpeed;
-    [SerializeField] private float projectileRange;
-    [SerializeField] private SO_EnemyStats enemyStats;
-
     public Vector2 ShootDirection
     {
         get => shootDirection;

@@ -434,7 +434,6 @@ GameObject:
   - component: {fileID: 474301855108111546}
   - component: {fileID: 4594516371035884517}
   - component: {fileID: -4698887816781541060}
-  - component: {fileID: 2674598636174536711}
   - component: {fileID: 7141227058000091740}
   m_Layer: 3
   m_Name: Player
@@ -670,19 +669,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4946254177960963457}
   sgWeapon: {fileID: 703740640499397347}
   child: {fileID: 5631584447701685253}
---- !u!114 &2674598636174536711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6338419814338829297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ef53bd8f692324ba8b63d7d463febb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SGRotate
-  shotGun: {fileID: 5631584447701685253}
 --- !u!95 &7141227058000091740
 Animator:
   serializedVersion: 7

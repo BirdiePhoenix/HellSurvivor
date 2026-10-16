@@ -1,12 +1,10 @@
 using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
-{
+{ //Makes the camera follow the player with a slight delay
     [SerializeField] private Vector3 offset;
     [SerializeField] private float damping;
-
     private Transform target;
-
     private Vector3 vel = Vector3.zero;
 
     private void Start()

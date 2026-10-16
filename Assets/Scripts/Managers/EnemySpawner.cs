@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
     public EnemyStage CurrentEnemyStage{get; private set;}
 
     public static Action<EnemyStage> OnEnemyStageChange;
-    public enum EnemyStage
+    public enum EnemyStage //Is for making the spawning of different enemy type into stages
     {
         Stage1,
         Stage2
@@ -57,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnInterval > 0.5)
         {
-            spawnInterval -= intervalIncrease;
+            spawnInterval -= IntervalIncrease;
         }
     }
 
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        GameObject newEnemy = GetEnemies(CurrentEnemyStage);///
+        GameObject newEnemy = GetEnemies(CurrentEnemyStage);
         yield return new WaitForSeconds(spawnInterval);
         StartCoroutine(SpawnEnemies());
     }
