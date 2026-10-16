@@ -21,7 +21,7 @@ public class XPManager : MonoBehaviour
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private HighScoreManager highScoreManager;
     [SerializeField] private GameStateManager gameStateManager;
-    [SerializeField] private _EnemySpawner enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private WeaponStorage weaponStorage;
     private PlayerSetup playerSetup;
 
@@ -69,7 +69,7 @@ public class XPManager : MonoBehaviour
 
         if (playerSetup.CurrentLvl == stage2Lvl)
         {
-            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage2);
+            enemySpawner.SetEnemyStage(EnemySpawner.EnemyStage.Stage2);
         }
     }
 

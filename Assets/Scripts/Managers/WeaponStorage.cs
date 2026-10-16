@@ -95,7 +95,6 @@ public class WeaponStorage : MonoBehaviour, ISetup
     public void EnableWeaponIcons()
     {
         weaponIcons[weaponIndex].SetActive(true);
-        Debug.Log(weaponIndex);
     }
 
     public void EnableWeapons()

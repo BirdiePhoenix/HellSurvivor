@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class FlyingEyePool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private _EnemySpawner enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
     private readonly Queue<GameObject>  flyingEyePool = new Queue<GameObject>();
     
     private GameObject player;

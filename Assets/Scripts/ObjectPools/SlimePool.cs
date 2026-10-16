@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlimePool : MonoBehaviour, IObjectPool
 {
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private _EnemySpawner enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
     private readonly Queue<GameObject>  slimePool = new Queue<GameObject>();
 
     public GameObject GetObject()

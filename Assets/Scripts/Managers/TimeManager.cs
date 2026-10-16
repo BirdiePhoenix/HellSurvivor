@@ -5,7 +5,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameOverManager gameOverManager;
-    [SerializeField] private _EnemySpawner enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
     private bool hasIncreasedSpawning = false;
 
     int minutes;
@@ -32,9 +32,9 @@ public class TimeManager : MonoBehaviour
             hasIncreasedSpawning = false;
         }
 
-        if (seconds == 30 && enemySpawner.CurrentEnemyStage == _EnemySpawner.EnemyStage.Stage1)
+        if (seconds == 30 && enemySpawner.CurrentEnemyStage == EnemySpawner.EnemyStage.Stage1)
         {
-            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage2);
+            enemySpawner.SetEnemyStage(EnemySpawner.EnemyStage.Stage2);
         }
     }
 
