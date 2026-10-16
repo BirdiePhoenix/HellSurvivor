@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
-{
+{   //Controls the canvases depending on what game state the game is in
     [Header("References")]
     [SerializeField] private TimeManager timeManager;
     [SerializeField] private GameOverManager gameOverManager;
@@ -12,8 +12,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject weaponUpgradeMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
-    
-    public static bool isPaused;
+
+    private static bool isPaused;
 
     public enum GameState
     {

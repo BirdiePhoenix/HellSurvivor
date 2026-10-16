@@ -13,9 +13,11 @@ public class MoveStateManager : MonoBehaviour
     
     public MoveState CurrentMoveState { get; private set; }
     
+    [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
 
+    [Header("Local Variables")]
     private const string IdleAnim = "Idle";
     private const string RunAnim = "Run";
     private const string DieAnim = "Die";

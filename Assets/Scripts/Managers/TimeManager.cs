@@ -3,10 +3,15 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI text;
+    [Header("References")]
     [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] private EnemySpawner enemySpawner;
-    private bool hasIncreasedSpawning = false;
+    
+    [Header("Text")]
+    [SerializeField] private TextMeshProUGUI text;
+    
+    [Header("Local Variables")]
+    private bool hasIncreasedSpawning = false; //Is for preventing the increasing to trigger more than once
 
     int minutes;
     int seconds;
@@ -58,7 +63,4 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
-    public int Minutes { get => minutes; }
-    public int Seconds { get => seconds; }
 }

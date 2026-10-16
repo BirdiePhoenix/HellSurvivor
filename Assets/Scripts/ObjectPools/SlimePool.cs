@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class SlimePool : MonoBehaviour, IObjectPool
 {
+    [Header("References")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private EnemySpawner enemySpawner;
+    
+    [Header("Object Pool")]
+    [SerializeField] private int maxPoolSize;
     private readonly Queue<GameObject>  slimePool = new Queue<GameObject>();
 
     public GameObject GetObject()
@@ -26,8 +30,15 @@ public class SlimePool : MonoBehaviour, IObjectPool
 
     public void ReturnObject(GameObject obj)
     {
-        obj.SetActive(false);
-        obj.transform.position = transform.position;
-        slimePool.Enqueue(obj);
+        if (slimePool.Count >= maxPoolSize)
+        {
+            Destroy(obj);//This is in case a lot of object has spawned so we remove some of them 
+        }
+        else
+        {
+            obj.SetActive(false);
+            obj.transform.position = transform.position;
+            slimePool.Enqueue(obj);
+        }
     }
 }

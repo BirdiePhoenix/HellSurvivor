@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] HighScoreManager highScoreManager;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] private float timeToWait;
     [SerializeField] private SaveManager saveManager;
+    
+    [Header("High Score")]
+    [SerializeField] private float timeToWait;
     
     private bool isGameOver;
     public bool IsGameOver
@@ -25,7 +28,7 @@ public class GameOverManager : MonoBehaviour
         StartCoroutine(RiseScore());
     }
 
-    private IEnumerator RiseScore()
+    private IEnumerator RiseScore() //Rises the high score text gradually
     {
         while (showScore < highScoreManager.CurrentScore)
         {

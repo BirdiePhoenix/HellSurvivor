@@ -5,9 +5,11 @@ public class CoinPool : MonoBehaviour, IObjectPool
 {
     [Header("Prefab")]
     [SerializeField] private GameObject coinPrefab;
-    [Header("Variables")]
+    
+    [Header("Object Pool")]
     [SerializeField] private int maxPoolSize;
     private readonly Queue<GameObject> coinPool = new  Queue<GameObject>();
+    
     public GameObject GetObject()
     {
         GameObject obj;
@@ -33,6 +35,7 @@ public class CoinPool : MonoBehaviour, IObjectPool
         else
         {
             obj.SetActive(false);
+            obj.transform.position = transform.position;
             coinPool.Enqueue(obj);
         }
     }

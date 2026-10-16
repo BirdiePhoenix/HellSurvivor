@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class MGBulletPool : MonoBehaviour, IObjectPool
 {
+    [Header("Prefab")]
     [SerializeField] private GameObject mgBulletPrefab;
+    
+    [Header("Object Pool")]
+    [SerializeField] private int maxPoolSize;
     private readonly Queue<GameObject>  mgBulletPool = new Queue<GameObject>();
 
     public GameObject GetObject()
@@ -12,7 +16,6 @@ public class MGBulletPool : MonoBehaviour, IObjectPool
         {
             GameObject obj = mgBulletPool.Dequeue();
             obj.SetActive(true);
-            //obj.GetComponent<MGBulletBehaviour>().enabled = true;
             return obj;
         }
 
@@ -21,8 +24,15 @@ public class MGBulletPool : MonoBehaviour, IObjectPool
 
     public void ReturnObject(GameObject obj)
     {
-        obj.SetActive(false);
-        //obj.GetComponent<MGBulletBehaviour>().enabled = false;
-        mgBulletPool.Enqueue(obj);
+        if (mgBulletPool.Count >= maxPoolSize)
+        {
+            Destroy(obj);//This is in case a lot of object has spawned so we remove some of them 
+        }
+        else
+        {
+            obj.SetActive(false);
+            obj.transform.position = transform.position;
+            mgBulletPool.Enqueue(obj);
+        }
     }
 }

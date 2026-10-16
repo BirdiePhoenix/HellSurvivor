@@ -63,7 +63,7 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log(playerSetup.CurrentMovementSpeed);
     }
 
-    public void UpgradeReloadSpeed()
+    public void UpgradeReloadSpeed() //If more weapons has been acquired they will also get the upgrade
     {
         switch (weaponStorage.CurrentWeaponStage)
         {

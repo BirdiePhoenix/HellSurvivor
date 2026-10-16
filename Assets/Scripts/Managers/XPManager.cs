@@ -48,7 +48,7 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentLvl++;
         highScoreManager.UpdateScore(100);
 
-        if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon)
+        if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon) //If level is at level for unlocking weapon
         {
             AddWeapon();
         }

@@ -6,12 +6,15 @@ using Random = UnityEngine.Random;
 
 public class FlyingEyePool : MonoBehaviour, IObjectPool
 {
+    [Header("References")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private EnemySpawner enemySpawner;
+    private GameObject player;
+    
+    [Header("Object Pool")]
+    [SerializeField] private int maxPoolSize;
     private readonly Queue<GameObject>  flyingEyePool = new Queue<GameObject>();
     
-    private GameObject player;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -36,8 +39,15 @@ public class FlyingEyePool : MonoBehaviour, IObjectPool
 
     public void ReturnObject(GameObject obj)
     {
-        obj.SetActive(false);
-        obj.transform.position = transform.position;
-        flyingEyePool.Enqueue(obj);
+        if (flyingEyePool.Count >= maxPoolSize)
+        {
+            Destroy(obj);//This is in case a lot of object has spawned so we remove some of them 
+        }
+        else
+        {
+            obj.SetActive(false);
+            obj.transform.position = transform.position;
+            flyingEyePool.Enqueue(obj);
+        }
     }
 }

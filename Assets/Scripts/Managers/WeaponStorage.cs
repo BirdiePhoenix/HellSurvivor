@@ -66,7 +66,6 @@ public class WeaponStorage : MonoBehaviour, ISetup
 
     private void Awake()
     {
-        GameManager.Instance.RegisterDataObjects(this);
         GetData();
     }
 

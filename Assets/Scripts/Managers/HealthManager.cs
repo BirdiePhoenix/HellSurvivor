@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    private PlayerSetup playerSetup;
-    [SerializeField] private float hpGrowthMultiplier = 1.2f;
+    [Header("Slider")]
     [SerializeField] private Slider hpSlider;
+  
+    [Header("Text")]
     [SerializeField] private TMP_Text currentHpText;
     private string hpText;
+    private PlayerSetup playerSetup;
     
     void Start()
     {

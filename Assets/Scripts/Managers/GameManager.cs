@@ -7,23 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager Instance{get{return _instance;}}
-    
-    private readonly List<ISetup> setupObjects = new List<ISetup>();
-    
+    [Header("Player References")]
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector2 playerSpawnPos;
+    
+    [Header("Singleton Variables")]
+    private static GameManager instance;
+    public static GameManager Instance{get{return instance;}}
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            _instance = this;
+            instance = this;
         }
         
         SpawnPlayer();
@@ -38,18 +38,5 @@ public class GameManager : MonoBehaviour
     {
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-    }
-
-    public void SetupGame()
-    {
-        foreach (var obj in setupObjects)
-        {
-            obj.GetData();
-        }
-    }
-
-    public void RegisterDataObjects(ISetup setupObject)
-    {
-        setupObjects.Add(setupObject);
     }
 }

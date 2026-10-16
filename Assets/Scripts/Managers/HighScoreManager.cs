@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class HighScoreManager : MonoBehaviour, IDataPersistence
 {
+    [Header("Text")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreTextPause;
     [SerializeField] private TextMeshProUGUI higscoreTextGO;
+    
+    [Header("References")]
     [SerializeField] private SaveManager saveManager;
     
     private int currentHighScore;
@@ -55,12 +58,12 @@ public class HighScoreManager : MonoBehaviour, IDataPersistence
         higscoreTextGO.text = string.Format("{0:00000000}", CurrentHighScore);
     }
     
-    public void SaveData(SaveData saveData)
+    public void SaveData(SaveData saveData) //Saves data to file
     {
         saveData.HighScore = CurrentHighScore;
     }
 
-    public void LoadData(SaveData saveData)
+    public void LoadData(SaveData saveData) //Loads data to file
     {
         CurrentHighScore = saveData.HighScore;
     }
