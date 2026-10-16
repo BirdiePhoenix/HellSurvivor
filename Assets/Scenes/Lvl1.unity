@@ -2498,6 +2498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   text: {fileID: 1576294571}
   gameOverManager: {fileID: 229154196}
+  enemySpawner: {fileID: 1750282680}
 --- !u!1 &1056100649
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,7 +4910,6 @@ GameObject:
   - component: {fileID: 1750282679}
   - component: {fileID: 1750282682}
   - component: {fileID: 1750282683}
-  - component: {fileID: 1750282681}
   - component: {fileID: 1750282680}
   m_Layer: 0
   m_Name: EnemyManager
@@ -4959,7 +4959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfb28dacc2a1764e8f0078efc947f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_EnemySpawner
-  intervalIncrease: 0.2
+  intervalIncrease: 0.1
   spawnInterval: 5
   spawnPoints:
   - {fileID: 1965574358}
@@ -4973,19 +4973,6 @@ MonoBehaviour:
   - {fileID: 2076059383}
   flyingEyePool: {fileID: 1750282679}
   slimePool: {fileID: 1750282682}
---- !u!114 &1750282681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750282675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b841de5d5dd83e24a8ad0bc689b2dff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy3Pool
-  enemyPrefab: {fileID: 7601076057249476200, guid: 29659140eb4e814458221c8ddf70c8b4, type: 3}
 --- !u!114 &1750282682
 MonoBehaviour:
   m_ObjectHideFlags: 0
