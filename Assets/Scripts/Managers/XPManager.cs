@@ -17,7 +17,6 @@ public class XPManager : MonoBehaviour
     [SerializeField] private int stage2Lvl = 8;
     
     [Header("References")]
-    [SerializeField] private UIManager uiManager;
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private HighScoreManager highScoreManager;
     [SerializeField] private GameStateManager gameStateManager;
@@ -86,7 +85,8 @@ public class XPManager : MonoBehaviour
     
     private void UpdateXpUI()
     {
-        uiManager.UpdateUI(xpSlider, playerSetup.CurrentMaxXp, playerSetup.CurrentXp);
+        xpSlider.maxValue = playerSetup.CurrentMaxXp;
+        xpSlider.value = playerSetup.CurrentXp;
         currentLvlText.text = $"Level {playerSetup.CurrentLvl}";
     }
 }

@@ -9,7 +9,6 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private Slider hpSlider;
     [SerializeField] private TMP_Text currentHpText;
     private string hpText;
-    [SerializeField] UIManager uiManager;
     
     void Start()
     {
@@ -36,7 +35,8 @@ public class HealthManager : MonoBehaviour
     
     private void UpdateHpUI()
     {
-        uiManager.UpdateUI(hpSlider, playerSetup.CurrentMaxHealth, playerSetup.CurrentHealth);
+        hpSlider.maxValue = playerSetup.CurrentMaxHealth;
+        hpSlider.value = playerSetup.CurrentHealth;
         currentHpText.text = $"{playerSetup.CurrentHealth}/{playerSetup.CurrentMaxHealth}";
     }
 }

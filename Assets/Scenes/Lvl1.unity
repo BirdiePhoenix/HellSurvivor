@@ -925,10 +925,9 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
-  firstWeapon: 10
+  firstWeapon: 2
   secondWeapon: 15
   stage2Lvl: 5
-  uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
   highScoreManager: {fileID: 739934446}
   gameStateManager: {fileID: 386402080}
@@ -949,7 +948,6 @@ MonoBehaviour:
   hpGrowthMultiplier: 1.2
   hpSlider: {fileID: 1941472329}
   currentHpText: {fileID: 1056100650}
-  uiManager: {fileID: 386402079}
 --- !u!114 &386402079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1718,7 @@ MonoBehaviour:
   scoreText: {fileID: 1441771892}
   highScoreTextPause: {fileID: 829255371}
   higscoreTextGO: {fileID: 1544258162}
+  saveManager: {fileID: 88526536}
 --- !u!114 &739934447
 MonoBehaviour:
   m_ObjectHideFlags: 0
