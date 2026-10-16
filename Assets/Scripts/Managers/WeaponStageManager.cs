@@ -7,8 +7,7 @@ public class WeaponStageManager : MonoBehaviour
     {
         MG,
         SG,
-        Sniper,
-        RG
+        Sniper
     }
     
     public WeaponStage CurrentWeaponStage { get; private set; }

@@ -1,14 +1,22 @@
 using System;
+using Interfaces;
 using TMPro;
 using UnityEngine;
 
-public class HighScoreManager : MonoBehaviour
+public class HighScoreManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreTextPause;
     [SerializeField] private TextMeshProUGUI higscoreTextGO;
+    [SerializeField] private SaveManager saveManager;
     
     private int currentHighScore;
+    
+    private void Awake()
+    {
+        saveManager.Register(this);
+    }
+
 
     private void Start()
     {
@@ -45,5 +53,15 @@ public class HighScoreManager : MonoBehaviour
         scoreString = CurrentHighScore.ToString();
         highScoreTextPause.text = string.Format("{0:00000000}", CurrentHighScore);
         higscoreTextGO.text = string.Format("{0:00000000}", CurrentHighScore);
+    }
+    
+    public void SaveData(SaveData saveData)
+    {
+        saveData.HighScore = CurrentHighScore;
+    }
+
+    public void LoadData(SaveData saveData)
+    {
+        CurrentHighScore = saveData.HighScore;
     }
 }
