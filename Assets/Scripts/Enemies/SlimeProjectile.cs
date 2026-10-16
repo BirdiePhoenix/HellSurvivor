@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class SlimeProjectile : MonoBehaviour
@@ -9,6 +10,7 @@ public class SlimeProjectile : MonoBehaviour
     private GameObject player;
     
     [SerializeField] private float projectileSpeed;
+    [SerializeField] private float projectileRange;
     [SerializeField] private SO_EnemyStats enemyStats;
 
     public Vector2 ShootDirection
@@ -25,7 +27,7 @@ public class SlimeProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        ShootDirection = (player.transform.position - transform.position).normalized;
+        StartCoroutine(DeactivateBullet());
     }
 
     private void Start()
@@ -35,6 +37,7 @@ public class SlimeProjectile : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ShootDirection = (player.transform.position - transform.position).normalized;
         bulletRb.MovePosition(bulletRb.position + ShootDirection * (projectileSpeed * Time.fixedDeltaTime));
     }
 
@@ -45,5 +48,11 @@ public class SlimeProjectile : MonoBehaviour
             bulletPool.ReturnObject(gameObject);
             other.GetComponent<PlayerHealth>().TakeDamage(enemyStats.Strength);
         }
+    }
+    
+    private IEnumerator DeactivateBullet()
+    {
+        yield return new WaitForSecondsRealtime(projectileRange);
+        bulletPool.ReturnObject(gameObject);
     }
 }

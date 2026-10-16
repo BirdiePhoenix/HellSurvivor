@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeProjectile
   projectileSpeed: 2
+  projectileRange: 3
   enemyStats: {fileID: 11400000, guid: 075b701731fe21042a9f3837c269a34b, type: 2}
 --- !u!50 &4321878993711927406
 Rigidbody2D:

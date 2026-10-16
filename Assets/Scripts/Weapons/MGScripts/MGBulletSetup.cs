@@ -29,7 +29,6 @@ public class MGBulletSetup : MonoBehaviour, IBullet
 
     private void OnEnable()
     {
-        Debug.Log("Enabled");
         BulletSpeed = weaponStorage.MgBulletSpeed;
         BulletRange = weaponStorage.MgBulletRange;
         BulletReloadSpeed = weaponStorage.MgBulletReloadSpeed;

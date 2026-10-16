@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8539189336869814556}
   - component: {fileID: 6224082336221303397}
   - component: {fileID: 772735918360729574}
-  - component: {fileID: 7685919213768944583}
+  - component: {fileID: 1089006213296731246}
   - component: {fileID: 6704874515199131448}
   m_Layer: 6
   m_Name: FlyingEye
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovementState
   animator: {fileID: 6704874515199131448}
   rb: {fileID: 5047139412016876866}
---- !u!114 &7685919213768944583
+--- !u!114 &1089006213296731246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,6 +255,8 @@ MonoBehaviour:
   enemyMovement: {fileID: 4735120953940981454}
   enemySetup: {fileID: 3481334637566462215}
   moveStateManager: {fileID: 772735918360729574}
+  distanceToAttack: 0
+  distanceToStop: 0
 --- !u!95 &6704874515199131448
 Animator:
   serializedVersion: 7

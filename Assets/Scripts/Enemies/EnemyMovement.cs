@@ -54,14 +54,15 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
-            {
-                enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
-            }
-            else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
-            {
-                enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
-            }
+            enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
+            // if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.FlyingEye)
+            // {
+            //     enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Idle);
+            // }
+            // else if (enemySetup.CurrentEnemyType == EnemySetup.EnemyType.Slime)
+            // {
+            //     enemyMoveStateManager.SetMoveState(MoveStateManager.MoveState.Attack);
+            // }
         }
     }
 }

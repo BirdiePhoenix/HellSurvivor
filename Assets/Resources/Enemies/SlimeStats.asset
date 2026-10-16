@@ -15,5 +15,5 @@ MonoBehaviour:
   maxHealth: 50
   movementSpeed: 0.75
   strength: 15
-  attackSpeed: 4
+  attackSpeed: 10
   attackRange: 0
