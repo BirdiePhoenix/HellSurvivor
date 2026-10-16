@@ -8,6 +8,6 @@ public class GameOverButton : MonoBehaviour
     public void OnRestartClick()
     {
         timeManager.ResumeTime();
-        _GameManager.Instance.RestartGame();
+        GameManager.Instance.RestartGame();
     }
 }

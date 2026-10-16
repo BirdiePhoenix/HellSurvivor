@@ -46,26 +46,4 @@ public class HighScoreManager : MonoBehaviour
         highScoreTextPause.text = string.Format("{0:00000000}", CurrentHighScore);
         higscoreTextGO.text = string.Format("{0:00000000}", CurrentHighScore);
     }
-
-    // #region Save and Load
-    //
-    // public void Save(ref HighScoreSaveData highScoreSave)
-    // {
-    //     highScoreSave.HighScoreAmount = CurrentHighScore;
-    // }
-    //
-    // public void Load(HighScoreSaveData highScoreSave)
-    // {
-    //     CurrentHighScore = highScoreSave.HighScoreAmount;
-    //     
-    //     UpdateHighScore(highScoreSave.HighScoreAmount);
-    // }
-    //
-    // #endregion
 }
-//
-// [Serializable]
-// public struct HighScoreSaveData
-// {
-//     public int HighScoreAmount;
-// }

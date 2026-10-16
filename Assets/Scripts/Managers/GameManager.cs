@@ -1,69 +1,55 @@
 using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Interfaces;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager Instance{get{return _instance;}}
+    
+    private readonly List<ISetup> setupObjects = new List<ISetup>();
+    
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector2 playerSpawnPos;
-    [SerializeField] private float xpValue;
-    private PlayerSetup playerSetup;
-    private PlayerInput playerInput;
-    
-    // private static GameManager _instance;
-    //
-    // public static GameManager Instance
-    // {
-    //     get
-    //     {
-    //         if (!Application.isPlaying)
-    //         {
-    //             return null;
-    //         }
-    //
-    //         if (_instance == null)
-    //         {
-    //             Instantiate(Resources.Load<GameObject>("Prefabs/GameManager"));
-    //         }
-    //         return _instance;
-    //     }
-    // }
-    
-    public HighScoreManager HighScoreManager { get; private set; }
+
     private void Awake()
     {
-        LoadHighscore();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+        
         SpawnPlayer();
     }
 
-    private void Start()
-    {
-        playerSetup = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSetup>();
-    }
-    
-
     private void SpawnPlayer()
     {
-        //Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
+        Instantiate(playerPrefab, playerSpawnPos, quaternion.identity);
     }
 
-    private void LoadHighscore()
+    public void RestartGame()
     {
+        var currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
-    public void SaveHighScore()
+    public void SetupGame()
     {
+        foreach (var obj in setupObjects)
+        {
+            obj.GetData();
+        }
     }
 
-    private void SpawnEnemies()
+    public void RegisterDataObjects(ISetup setupObject)
     {
-        
+        setupObjects.Add(setupObject);
     }
-
-    public void SceneTransition()
-    {
-        
-    }
-    
 }

@@ -16,7 +16,7 @@ public class PlayerSetup : MonoBehaviour, ISetup
 
     private void Awake()
     {
-        _GameManager.Instance.RegisterDataObjects(this);
+        GameManager.Instance.RegisterDataObjects(this);
         GetData();
     }
     
