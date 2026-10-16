@@ -48,7 +48,6 @@ public class XPManager : MonoBehaviour
         playerSetup.CurrentMaxXp = Mathf.RoundToInt(playerSetup.CurrentMaxXp * xpGrowthMultiplier);
         playerSetup.CurrentLvl++;
         highScoreManager.UpdateScore(100);
-        enemySpawner.IncreaseSpawning();
 
         if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon)
         {

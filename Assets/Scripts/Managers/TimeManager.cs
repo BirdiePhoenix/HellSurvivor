@@ -5,23 +5,36 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameOverManager gameOverManager;
+    [SerializeField] private _EnemySpawner enemySpawner;
+    private bool hasIncreasedSpawning = false;
 
     int minutes;
     int seconds;
 
     private float time;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        //StartTimer(0.5f);
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
         if (!gameOverManager.IsGameOver)
         {
             AddTime();
+        }
+        
+        if (seconds % 10 == 0 && seconds > 0 && !hasIncreasedSpawning)
+        {
+            enemySpawner.IncreaseSpawning();
+            hasIncreasedSpawning = true;
+        }
+
+        if (seconds % 2 != 0 && hasIncreasedSpawning)
+        {
+            hasIncreasedSpawning = false;
+        }
+
+        if (seconds == 30 && enemySpawner.CurrentEnemyStage == _EnemySpawner.EnemyStage.Stage1)
+        {
+            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage2);
         }
     }
 
@@ -44,12 +57,6 @@ public class TimeManager : MonoBehaviour
     public void ResumeTime()
     {
         Time.timeScale = 1;
-    }
-
-    private void StartTimer(float minutes)
-    {
-        time = minutes * 60;
-        text.color = Color.cyan;
     }
 
     public int Minutes { get => minutes; }
