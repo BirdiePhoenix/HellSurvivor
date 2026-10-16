@@ -12,11 +12,9 @@ public class XPManager : MonoBehaviour
     [Header("Weapons")]
     [SerializeField] private int firstWeapon = 10;
     [SerializeField] private int secondWeapon = 20;
-    [SerializeField] private int thirdWeapon = 30;
 
     [Header("EnemyStages")] 
     [SerializeField] private int stage2Lvl = 8;
-    [SerializeField] private int stage3Lvl = 15;
     
     [Header("References")]
     [SerializeField] private UIManager uiManager;
@@ -24,6 +22,7 @@ public class XPManager : MonoBehaviour
     [SerializeField] private HighScoreManager highScoreManager;
     [SerializeField] private GameStateManager gameStateManager;
     [SerializeField] private _EnemySpawner enemySpawner;
+    [SerializeField] private WeaponStorage weaponStorage;
     private PlayerSetup playerSetup;
 
     void Start()
@@ -51,8 +50,7 @@ public class XPManager : MonoBehaviour
         highScoreManager.UpdateScore(100);
         enemySpawner.IncreaseSpawning();
 
-        if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon ||
-            playerSetup.CurrentLvl == thirdWeapon)
+        if (playerSetup.CurrentLvl == firstWeapon || playerSetup.CurrentLvl == secondWeapon)
         {
             AddWeapon();
         }
@@ -61,13 +59,18 @@ public class XPManager : MonoBehaviour
             AddStat();
         }
 
+        if (playerSetup.CurrentLvl == firstWeapon)
+        {
+            weaponStorage.SetWeaponStage(WeaponStorage.WeaponStage.SG);
+        }
+        else if (playerSetup.CurrentLvl == secondWeapon)
+        {
+            weaponStorage.SetWeaponStage(WeaponStorage.WeaponStage.Sniper);
+        }
+
         if (playerSetup.CurrentLvl == stage2Lvl)
         {
             enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage2);
-        }
-        else if (playerSetup.CurrentLvl == stage3Lvl)
-        {
-            enemySpawner.SetEnemyStage(_EnemySpawner.EnemyStage.Stage3);
         }
     }
 

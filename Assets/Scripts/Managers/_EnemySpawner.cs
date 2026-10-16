@@ -28,7 +28,6 @@ public class _EnemySpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private FlyingEyePool flyingEyePool;
     [SerializeField] private SlimePool slimePool;
-    [SerializeField] private Enemy3Pool enemy3Pool;
     private GameObject player;
     
     [Header("EnemyStage")]
@@ -38,8 +37,7 @@ public class _EnemySpawner : MonoBehaviour
     public enum EnemyStage
     {
         Stage1,
-        Stage2,
-        Stage3
+        Stage2
     }
     
 
@@ -94,20 +92,6 @@ public class _EnemySpawner : MonoBehaviour
                 {
                     return GetSlime();
                 }
-            case EnemyStage.Stage3:
-                randomNum = Random.Range(0f, 1f);
-                if (randomNum < 0.5f)
-                {
-                    return GetFlyingEye();
-                }
-                else if (randomNum < 0.8f)
-                {
-                    return GetSlime();
-                }
-                else
-                {
-                    return GetEnemy3();
-                }
             default:
                 Debug.LogError($"{enemyStage} is an invalid stage!");
                 return null;
@@ -125,11 +109,6 @@ public class _EnemySpawner : MonoBehaviour
         return slimePool.GetObject();
     }
 
-    private GameObject GetEnemy3()
-    {
-        return enemy3Pool.GetObject();
-    }
-    
     public GameObject GenerateSpawnPoint()
     {
         int index = Random.Range(0, spawnPoints.Length);

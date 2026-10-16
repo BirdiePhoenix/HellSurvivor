@@ -15,7 +15,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   bulletName: SniperBullet
   shootingSpeed: 10.7
-  shootingRange: 10
+  shootingRange: 5
   reloadSpeed: 8
   magSize: 1
   damage: 10

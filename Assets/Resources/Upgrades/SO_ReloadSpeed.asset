@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Upgrade
   upgradeName: Reload Speed
   upgradeModifier: 1.2
-  enumInt: 2

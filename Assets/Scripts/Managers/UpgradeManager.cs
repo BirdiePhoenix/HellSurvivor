@@ -65,15 +65,50 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeReloadSpeed()
     {
-        Debug.Log("ReloadSpeed");
-        weaponStorage.MgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
-        Debug.Log(weaponStorage.MgBulletReloadSpeed);
+        switch (weaponStorage.CurrentWeaponStage)
+        {
+            case WeaponStorage.WeaponStage.MG:
+                weaponStorage.MgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                break;
+            case WeaponStorage.WeaponStage.SG:
+                weaponStorage.MgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                weaponStorage.SgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                break;
+            case WeaponStorage.WeaponStage.Sniper:
+                weaponStorage.MgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                weaponStorage.SgBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                weaponStorage.SniperBulletReloadSpeed *= upgradeList[2].UpgradeModifier;
+                break;
+            default:
+                Debug.LogError($"{weaponStorage.CurrentWeaponStage} isn't a valid weapon stage!");
+                break;
+        }
+        
+        
     }
 
     public void UpgradeBulletDamage()
     {
+        switch (weaponStorage.CurrentWeaponStage)
+        {
+            case WeaponStorage.WeaponStage.MG:
+                weaponStorage.MgBulletDamage = Mathf.RoundToInt(weaponStorage.MgBulletDamage * upgradeList[3].UpgradeModifier);
+                break;
+            case WeaponStorage.WeaponStage.SG:
+                weaponStorage.MgBulletDamage = Mathf.RoundToInt(weaponStorage.MgBulletDamage * upgradeList[3].UpgradeModifier);
+                weaponStorage.SgBulletDamage = Mathf.RoundToInt(weaponStorage.SgBulletDamage * upgradeList[3].UpgradeModifier);
+                break;
+            case WeaponStorage.WeaponStage.Sniper:
+                weaponStorage.MgBulletDamage = Mathf.RoundToInt(weaponStorage.MgBulletDamage * upgradeList[3].UpgradeModifier);
+                weaponStorage.SgBulletDamage = Mathf.RoundToInt(weaponStorage.SgBulletDamage * upgradeList[3].UpgradeModifier);
+                weaponStorage.SniperBulletDamage = Mathf.RoundToInt(weaponStorage.SgBulletDamage * upgradeList[3].UpgradeModifier);
+                break;
+            default:
+                Debug.LogError($"{weaponStorage.CurrentWeaponStage} isn't a valid weapon stage!");
+                break;
+        }
+        
         Debug.Log("BulletDamage");
-        weaponStorage.MgBulletDamage = Mathf.RoundToInt(weaponStorage.MgBulletDamage * upgradeList[3].UpgradeModifier);
+        
     }
-    
 }

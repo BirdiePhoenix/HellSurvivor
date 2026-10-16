@@ -15,7 +15,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   bulletName: SGWeapon
   shootingSpeed: 4
-  shootingRange: 4
+  shootingRange: 3
   reloadSpeed: 5
   magSize: 10
   damage: 5

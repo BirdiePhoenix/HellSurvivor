@@ -1000,16 +1000,15 @@ MonoBehaviour:
   xpGrowthMultiplier: 1.2
   xpSlider: {fileID: 1933355400}
   currentLvlText: {fileID: 1230759857}
-  firstWeapon: 10
+  firstWeapon: 2
   secondWeapon: 20
-  thirdWeapon: 30
-  stage2Lvl: 2
-  stage3Lvl: 15
+  stage2Lvl: 5
   uiManager: {fileID: 386402079}
   upgradeManager: {fileID: 1743072063}
   highScoreManager: {fileID: 739934446}
   gameStateManager: {fileID: 386402080}
   enemySpawner: {fileID: 1750282680}
+  weaponStorage: {fileID: 1743072062}
 --- !u!114 &386402078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4951,7 +4950,6 @@ MonoBehaviour:
   weapons:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1743072063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5052,7 +5050,6 @@ MonoBehaviour:
   - {fileID: 2076059383}
   flyingEyePool: {fileID: 1750282679}
   slimePool: {fileID: 1750282682}
-  enemy3Pool: {fileID: 1750282681}
 --- !u!114 &1750282681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6535,6 +6532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7255479202260222528, guid: 7bbcadc666e0a5841b432e50f76dbab5, type: 3}
+      propertyPath: weaponStorage
+      value: 
+      objectReference: {fileID: 1743072062}
     - target: {fileID: 8575099122334740901, guid: 7bbcadc666e0a5841b432e50f76dbab5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

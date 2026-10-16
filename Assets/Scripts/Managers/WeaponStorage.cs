@@ -14,12 +14,20 @@ public class WeaponStorage : MonoBehaviour, ISetup
     [SerializeField] private GameObject[] weaponIcons;
     [SerializeField] private GameObject[] weapons;
     private int weaponIndex = 0;
+    
+    public enum WeaponStage
+    {
+        MG,
+        SG,
+        Sniper
+    }
+    
+    public WeaponStage CurrentWeaponStage { get; private set; }
 
     [Header("References")] 
     private GameObject player;
     private GameObject sgWeapon;
     private GameObject sniperWeapon;
-    private GameObject rgWeapon;
 
     public int WeaponIndex
     {
@@ -27,6 +35,7 @@ public class WeaponStorage : MonoBehaviour, ISetup
         set => weaponIndex = value;
     }
 
+    #region BulletReferences
     [Header("MachineGun")]
     private GameObject mgBullet;
     private string mgBulletName;
@@ -53,6 +62,7 @@ public class WeaponStorage : MonoBehaviour, ISetup
     private float sniperBulletReloadSpeed;
     private int sniperBulletMagSize;
     private int sniperBulletDamage;
+    #endregion
 
     private void Awake()
     {
@@ -66,14 +76,13 @@ public class WeaponStorage : MonoBehaviour, ISetup
         weapons[0] = sgWeapon;
         sniperWeapon = GameObject.FindGameObjectWithTag("SniperWeapon");
         weapons[1] = sniperWeapon;
-        rgWeapon = GameObject.FindGameObjectWithTag("RGWeapon");
-        weapons[2] = rgWeapon;
 
         foreach (GameObject w in weapons)
         {
             w.SetActive(false);
         }
 
+        CurrentWeaponStage = WeaponStage.MG;
     }
 
     public void GetData()
@@ -93,7 +102,16 @@ public class WeaponStorage : MonoBehaviour, ISetup
     {
         weapons[weaponIndex].SetActive(true);
         weapons[weaponIndex].GetComponent<IWeapon>().TriggerShooting();
-        WeaponIndex++;
+        if(WeaponIndex < weapons.Length)
+        {
+            WeaponIndex++;
+        }
+    }
+    
+    public void SetWeaponStage(WeaponStage weaponStage)
+    {
+        if (weaponStage == CurrentWeaponStage) return;
+        CurrentWeaponStage = weaponStage;
     }
     
     #region BulletSetups
