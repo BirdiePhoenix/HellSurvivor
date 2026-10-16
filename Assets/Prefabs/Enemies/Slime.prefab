@@ -86,9 +86,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -150154501
+  m_SortingLayer: 1
+  m_SortingOrder: -5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8793639957104055765, guid: df6e574b84354394e8f320364f10d595, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,7 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySetup
   enemyStats: {fileID: 11400000, guid: 075b701731fe21042a9f3837c269a34b, type: 2}
-  enemyType: 1
 --- !u!114 &3548520060688686618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   enemySetup: {fileID: 1040851505640557007}
   moveStateManager: {fileID: 5920610469185161111}
-  spriteRenderer: {fileID: 278150859972339526}
 --- !u!114 &7964157937569074742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   enemySetup: {fileID: 1040851505640557007}
-  enemyMovement: {fileID: 3548520060688686618}
   moveStateManager: {fileID: 5920610469185161111}
 --- !u!114 &5920610469185161111
 MonoBehaviour:

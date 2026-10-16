@@ -80,9 +80,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -150154501
+  m_SortingLayer: 1
+  m_SortingOrder: -5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: d1f94eb541d98c94c9e0a776707e9c7c, type: 3}
   m_Color: {r: 0.3287627, g: 0.6415094, b: 0.26931292, a: 1}
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6397962f5aaab4e4eb44ef2bf4b2d336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeProjectile
+  enemyStats: {fileID: 11400000, guid: 075b701731fe21042a9f3837c269a34b, type: 2}
   projectileSpeed: 2
   projectileRange: 3
-  enemyStats: {fileID: 11400000, guid: 075b701731fe21042a9f3837c269a34b, type: 2}
 --- !u!50 &4321878993711927406
 Rigidbody2D:
   serializedVersion: 5
