@@ -5,13 +5,14 @@ using UnityEngine.Serialization;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemySetup enemySetup;
     [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private MoveStateManager moveStateManager;
-
     private SlimeProjectilePool slimeProjectilePool;
     private PlayerHealth playerHealth;
     
+    [Header("Local variables")]
     private Vector2 shootingDirection;
     public Vector2 ShootingDirection
     {

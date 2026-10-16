@@ -6,7 +6,7 @@ using System.IO;
 using Interfaces;
 
 public class SaveManager : MonoBehaviour
-{
+{ //This script controls the saving and loading of data
     private readonly List<IDataPersistence> persistencesObjects = new List<IDataPersistence>();
     private string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
 
@@ -21,8 +21,8 @@ public class SaveManager : MonoBehaviour
         LoadGame();
     }
     
-    public void Register(IDataPersistence persistenceObjects)
-    {
+    public void Register(IDataPersistence persistenceObjects) //Stores all scripts with the interface IDataPersistence 
+    {                                                         
         persistencesObjects.Add(persistenceObjects);
     }
     
@@ -32,7 +32,7 @@ public class SaveManager : MonoBehaviour
 
         foreach (var obj in persistencesObjects)
         {
-            obj.SaveData(saveData);
+            obj.SaveData(saveData); //Calls the SaveData method in all IDataPersistance classes
         }
         
         string json = JsonUtility.ToJson(saveData, true);
