@@ -17,6 +17,7 @@ public class _EnemySpawner : MonoBehaviour
     
     [Header("SpawnPoints")]
     [SerializeField] private GameObject[] spawnPoints;
+    private float randomNum;
 
     public GameObject[] SpawnPoints
     {
@@ -84,18 +85,17 @@ public class _EnemySpawner : MonoBehaviour
             case EnemyStage.Stage1:
                 return GetFlyingEye();
             case EnemyStage.Stage2:
-                // float randomNum = Random.Range(0f, 1f);
-                // if (randomNum < 0.7f)
-                // {
-                //     return GetFlyingEye();
-                // }
-                // else
-                // {
-                //     
-                // }
-                return GetSlime();
+                randomNum = Random.Range(0f, 1f);
+                if (randomNum < 0.7f)
+                {
+                    return GetFlyingEye();
+                }
+                else
+                {
+                    return GetSlime();
+                }
             case EnemyStage.Stage3:
-                float randomNum = Random.Range(0f, 1f);
+                randomNum = Random.Range(0f, 1f);
                 if (randomNum < 0.5f)
                 {
                     return GetFlyingEye();
@@ -132,7 +132,6 @@ public class _EnemySpawner : MonoBehaviour
     
     public GameObject GenerateSpawnPoint()
     {
-        
         int index = Random.Range(0, spawnPoints.Length);
         return spawnPoints[index];
     }

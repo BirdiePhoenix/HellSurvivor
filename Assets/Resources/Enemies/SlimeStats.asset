@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec97176ff5116544b9ff68b7e56c2ea, type: 3}
   m_Name: SlimeStats
   m_EditorClassIdentifier: Assembly-CSharp::SO_EnemyStats
-  maxHealth: 50
+  maxHealth: 25
   movementSpeed: 0.75
   strength: 15
-  attackSpeed: 10
+  attackSpeed: 5
   attackRange: 0

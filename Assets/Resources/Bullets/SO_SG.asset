@@ -17,5 +17,5 @@ MonoBehaviour:
   shootingSpeed: 4
   shootingRange: 4
   reloadSpeed: 5
-  magSize: 5
+  magSize: 10
   damage: 5
